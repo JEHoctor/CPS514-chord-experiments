@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package chord;
+
+service Chord {
+    rpc DumpNode (DumpRequest) returns (DumpResponse) {}
+}
+
+message DumpRequest {
+     // nothing for now ,
+     // but we might add some fields here for logging
+}
+
+message DumpResponse {
+    Node node = 1;
+}
+
+message Node {
+    string addr = 1;
+    uint32 n = 2;
+    string succ = 3;
+    string pred = 4;
+    FingerTable tbl = 5;
+}
+
+message FingerTable {
+    repeated Finger fingers = 1;
+}
+
+message Finger {
+    string addr = 1;
+    uint32 idx = 2;
+}
