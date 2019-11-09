@@ -444,11 +444,11 @@ class Node final :
   ::chord::FingerTable* mutable_tbl();
   void set_allocated_tbl(::chord::FingerTable* tbl);
 
-  // uint32 n = 2;
-  void clear_n();
-  static const int kNFieldNumber = 2;
-  ::google::protobuf::uint32 n() const;
-  void set_n(::google::protobuf::uint32 value);
+  // uint32 m = 2;
+  void clear_m();
+  static const int kMFieldNumber = 2;
+  ::google::protobuf::uint32 m() const;
+  void set_m(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:chord.Node)
  private:
@@ -459,7 +459,7 @@ class Node final :
   ::google::protobuf::internal::ArenaStringPtr succ_;
   ::google::protobuf::internal::ArenaStringPtr pred_;
   ::chord::FingerTable* tbl_;
-  ::google::protobuf::uint32 n_;
+  ::google::protobuf::uint32 m_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_chord_2eproto;
 };
@@ -831,18 +831,18 @@ inline void Node::set_allocated_addr(::std::string* addr) {
   // @@protoc_insertion_point(field_set_allocated:chord.Node.addr)
 }
 
-// uint32 n = 2;
-inline void Node::clear_n() {
-  n_ = 0u;
+// uint32 m = 2;
+inline void Node::clear_m() {
+  m_ = 0u;
 }
-inline ::google::protobuf::uint32 Node::n() const {
-  // @@protoc_insertion_point(field_get:chord.Node.n)
-  return n_;
+inline ::google::protobuf::uint32 Node::m() const {
+  // @@protoc_insertion_point(field_get:chord.Node.m)
+  return m_;
 }
-inline void Node::set_n(::google::protobuf::uint32 value) {
+inline void Node::set_m(::google::protobuf::uint32 value) {
   
-  n_ = value;
-  // @@protoc_insertion_point(field_set:chord.Node.n)
+  m_ = value;
+  // @@protoc_insertion_point(field_set:chord.Node.m)
 }
 
 // string succ = 3;

@@ -20,15 +20,8 @@ public:
     explicit FingerTable(int size);
 
     // "" if the address of the node isn't found yet
-    string getAddr(int idx) { return tbl[idx]; }
-
-    void setAddr(int idx, const string& addr) {
-        if(0 <= idx && idx < size) {
-            tbl[idx] = addr;
-        } else {
-            throw("FingerTable index out of bounds\n");
-        }
-    }
+    string getAddr(int idx);
+    void setAddr(int idx, string addr);
 };
 
 #endif //CHORD_FINGER_TABLE_H

@@ -144,7 +144,7 @@ const ::google::protobuf::uint32 TableStruct_chord_2eproto::offsets[] PROTOBUF_S
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::chord::Node, addr_),
-  PROTOBUF_FIELD_OFFSET(::chord::Node, n_),
+  PROTOBUF_FIELD_OFFSET(::chord::Node, m_),
   PROTOBUF_FIELD_OFFSET(::chord::Node, succ_),
   PROTOBUF_FIELD_OFFSET(::chord::Node, pred_),
   PROTOBUF_FIELD_OFFSET(::chord::Node, tbl_),
@@ -187,7 +187,7 @@ static ::google::protobuf::Message const * const file_default_instances[] = {
 const char descriptor_table_protodef_chord_2eproto[] =
   "\n\013chord.proto\022\005chord\"\r\n\013DumpRequest\")\n\014D"
   "umpResponse\022\031\n\004node\030\001 \001(\0132\013.chord.Node\"\\"
-  "\n\004Node\022\014\n\004addr\030\001 \001(\t\022\t\n\001n\030\002 \001(\r\022\014\n\004succ\030"
+  "\n\004Node\022\014\n\004addr\030\001 \001(\t\022\t\n\001m\030\002 \001(\r\022\014\n\004succ\030"
   "\003 \001(\t\022\014\n\004pred\030\004 \001(\t\022\037\n\003tbl\030\005 \001(\0132\022.chord"
   ".FingerTable\"-\n\013FingerTable\022\036\n\007fingers\030\001"
   " \003(\0132\r.chord.Finger\"#\n\006Finger\022\014\n\004addr\030\001 "
@@ -725,7 +725,7 @@ Node::HasBitSetters::tbl(const Node* msg) {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int Node::kAddrFieldNumber;
-const int Node::kNFieldNumber;
+const int Node::kMFieldNumber;
 const int Node::kSuccFieldNumber;
 const int Node::kPredFieldNumber;
 const int Node::kTblFieldNumber;
@@ -757,7 +757,7 @@ Node::Node(const Node& from)
   } else {
     tbl_ = nullptr;
   }
-  n_ = from.n_;
+  m_ = from.m_;
   // @@protoc_insertion_point(copy_constructor:chord.Node)
 }
 
@@ -768,8 +768,8 @@ void Node::SharedCtor() {
   succ_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   pred_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(&tbl_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&n_) -
-      reinterpret_cast<char*>(&tbl_)) + sizeof(n_));
+      reinterpret_cast<char*>(&m_) -
+      reinterpret_cast<char*>(&tbl_)) + sizeof(m_));
 }
 
 Node::~Node() {
@@ -806,7 +806,7 @@ void Node::Clear() {
     delete tbl_;
   }
   tbl_ = nullptr;
-  n_ = 0u;
+  m_ = 0u;
   _internal_metadata_.Clear();
 }
 
@@ -839,10 +839,10 @@ const char* Node::_InternalParse(const char* begin, const char* end, void* objec
         ptr += size;
         break;
       }
-      // uint32 n = 2;
+      // uint32 m = 2;
       case 2: {
         if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
-        msg->set_n(::google::protobuf::internal::ReadVarint(&ptr));
+        msg->set_m(::google::protobuf::internal::ReadVarint(&ptr));
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
       }
@@ -940,13 +940,13 @@ bool Node::MergePartialFromCodedStream(
         break;
       }
 
-      // uint32 n = 2;
+      // uint32 m = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) == (16 & 0xFF)) {
 
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::uint32, ::google::protobuf::internal::WireFormatLite::TYPE_UINT32>(
-                 input, &n_)));
+                 input, &m_)));
         } else {
           goto handle_unusual;
         }
@@ -1031,9 +1031,9 @@ void Node::SerializeWithCachedSizes(
       1, this->addr(), output);
   }
 
-  // uint32 n = 2;
-  if (this->n() != 0) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->n(), output);
+  // uint32 m = 2;
+  if (this->m() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->m(), output);
   }
 
   // string succ = 3;
@@ -1086,9 +1086,9 @@ void Node::SerializeWithCachedSizes(
         1, this->addr(), target);
   }
 
-  // uint32 n = 2;
-  if (this->n() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->n(), target);
+  // uint32 m = 2;
+  if (this->m() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->m(), target);
   }
 
   // string succ = 3;
@@ -1169,11 +1169,11 @@ size_t Node::ByteSizeLong() const {
         *tbl_);
   }
 
-  // uint32 n = 2;
-  if (this->n() != 0) {
+  // uint32 m = 2;
+  if (this->m() != 0) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::UInt32Size(
-        this->n());
+        this->m());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -1218,8 +1218,8 @@ void Node::MergeFrom(const Node& from) {
   if (from.has_tbl()) {
     mutable_tbl()->::chord::FingerTable::MergeFrom(from.tbl());
   }
-  if (from.n() != 0) {
-    set_n(from.n());
+  if (from.m() != 0) {
+    set_m(from.m());
   }
 }
 
@@ -1255,7 +1255,7 @@ void Node::InternalSwap(Node* other) {
   pred_.Swap(&other->pred_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(tbl_, other->tbl_);
-  swap(n_, other->n_);
+  swap(m_, other->m_);
 }
 
 ::google::protobuf::Metadata Node::GetMetadata() const {

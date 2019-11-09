@@ -17,7 +17,7 @@ message DumpResponse {
 
 message Node {
     string addr = 1;
-    uint32 n = 2;
+    uint32 m = 2;
     string succ = 3;
     string pred = 4;
     FingerTable tbl = 5;
