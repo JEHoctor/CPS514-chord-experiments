@@ -19,6 +19,7 @@ private:
 public:
     Node();
     explicit Node(const std::string& addr);
+    explicit Node(const chord::Node& proto);
 
     void set(std::string addr_);
     std::string getAddr();

@@ -12,7 +12,7 @@ file(GLOB_RECURSE SRCS LIST_DIRECTORIES true *.h *.cpp)
 add_executable(${BINARY}
         ${SRCS}
         ${PROTO_SRCS}
-        ${GRPC_SRCS})
+        ${GRPC_SRCS} chord_client.cpp chord_client.h)
 target_link_libraries(${BINARY}
         gRPC::grpc++_reflection
         protobuf::libprotobuf

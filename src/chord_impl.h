@@ -9,6 +9,7 @@
 #include <grpcpp/grpcpp.h>
 #include "generated/chord.grpc.pb.h"
 #include "context.h"
+#include "chord_client.h"
 
 using grpc::ServerContext;
 using grpc::Status;
@@ -36,7 +37,20 @@ using chord::FixFingersResp;
 
 class ChordImpl final : public Chord::Service {
 private:
-    Context myContext;
+    Context myCtx;
+    ChordClient client;
+
+    // methods that call the right (local or remote) method for a given
+    bool callGetInfo(Node target, chord::NodeInfo* dst);
+    void callGetClosestFinger(Node target, uint32_t key, Node* dst);
+    bool callFindPred(Node target, uint32_t key, Node* dst);
+    bool callFindSucc(Node target, uint32_t key, Node* dst);
+
+    // local handlers
+    bool localGetInfo(chord::NodeInfo* dst);
+    bool localFindSucc(uint32_t key, Node* dst);
+    bool localFindPred(uint32_t key, Node* dst);
+    void localGetClosestFinger(uint32_t key, Node* dst);
 
 public:
     explicit ChordImpl(Context myContext);

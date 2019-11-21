@@ -20,6 +20,10 @@ Context::Context(Node me): me(std::move(me)) {
     this->pred = Node();
 }
 
+Node Context::getMe() { return me; }
+Node Context::getSucc() { return succ; }
+Node Context::getPred() { return pred; }
+
 void Context::setSucc(Node succ_) {
     this->succ = std::move(succ_);
 }

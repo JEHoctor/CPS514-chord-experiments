@@ -16,6 +16,10 @@ Node::Node(const std::string &addr): addr(addr) {
     isValid = true;
 }
 
+Node::Node(const chord::Node& proto) {
+    set(proto.addr());
+}
+
 void Node::set(std::string addr_) {
     this->addr = std::move(addr_);
     this->id = extractID(addr);

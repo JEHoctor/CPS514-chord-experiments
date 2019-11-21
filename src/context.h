@@ -18,6 +18,11 @@ private:
 
 public:
     explicit Context(Node me);
+
+    Node getMe();
+    Node getSucc();
+    Node getPred();
+
     void setSucc(Node succ_);
     void setPred(Node pred_);
     void setFinger(int idx, Node node);
