@@ -14,9 +14,16 @@ class Node {
 private:
     std::string addr;
     uint32_t id;
+    bool isValid;
 
 public:
+    Node();
     explicit Node(const std::string& addr);
+
+    void set(std::string addr_);
+    std::string getAddr();
+    uint32_t getID();
+    bool getIsValid();
 
     chord::Node* genProto();
 };

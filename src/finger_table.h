@@ -12,13 +12,13 @@
 
 class FingerTable {
 private:
-    std::unordered_map<int, Node*> tbl;
+    std::unordered_map<int, Node> tbl;
 
 public:
     explicit FingerTable();
 
-    Node* getNode(int idx);
-    void setNode(int idx, Node* node);
+    bool getNode(int idx, Node* dst);
+    void setNode(int idx, Node node);
 };
 
 #endif //CHORD_FINGER_TABLE_H

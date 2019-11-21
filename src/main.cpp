@@ -17,9 +17,9 @@ int main(int argc, char **argv) {
 
     Node me(myHost+":"+myPort);
 
-    Context myContext(&me);
+    Context myContext(me);
 
-    ChordImpl chord(&myContext);
+    ChordImpl chord(myContext);
 
     startServer(myPort, &chord);
 

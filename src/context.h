@@ -11,17 +11,17 @@
 
 class Context {
 private:
-    Node* me;
-    Node* succ;
-    Node* pred;
+    Node me;
+    Node succ;
+    Node pred;
     FingerTable tbl;
 
 public:
-    explicit Context(Node* me);
-    void setSucc(Node* succ_);
-    void setPred(Node* pred_);
-    void setFinger(int idx, Node* node);
-    Node* getFinger(int idx);
+    explicit Context(Node me);
+    void setSucc(Node succ_);
+    void setPred(Node pred_);
+    void setFinger(int idx, Node node);
+    bool getFinger(int idx, Node* dst);
 
     chord::NodeInfo* genProto();
 };

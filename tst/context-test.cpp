@@ -11,9 +11,9 @@ TEST(context_test,test1) {
     Node succ("localhost:8081");
     Node pred("localhost:8082");
 
-    Context ctx(&me);
-    ctx.setSucc(&succ);
-    ctx.setPred(&pred);
+    Context ctx(me);
+    ctx.setSucc(succ);
+    ctx.setPred(pred);
 
     ASSERT_EQ("localhost:8080", ctx.genProto()->mutable_self()->addr());
     ASSERT_EQ("localhost:8081", ctx.genProto()->mutable_succ()->addr());

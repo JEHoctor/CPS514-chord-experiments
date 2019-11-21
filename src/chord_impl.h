@@ -36,10 +36,10 @@ using chord::FixFingersResp;
 
 class ChordImpl final : public Chord::Service {
 private:
-    Context* myContext;
+    Context myContext;
 
 public:
-    explicit ChordImpl(Context* myContext);
+    explicit ChordImpl(Context myContext);
 
     Status join(ServerContext* context, const JoinReq* request, JoinResp* response) override;
     Status getInfo(ServerContext* context, const GetInfoReq* request, GetInfoResp* response) override;

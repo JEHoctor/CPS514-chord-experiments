@@ -11,9 +11,12 @@ TEST(finger_table_test,test1) {
     auto n0 = Node("localhost:8081");
     auto n2 = Node("localhost:8081");
 
-    tbl.setNode(0, &n0);
-    tbl.setNode(2, &n2);
+    tbl.setNode(0, n0);
+    tbl.setNode(2, n2);
 
-    EXPECT_EQ(tbl.getNode(0)->genProto()->addr(), "localhost:8081");
-    EXPECT_EQ(tbl.getNode(1), nullptr);
+    Node* ret = new Node();
+    EXPECT_FALSE(tbl.getNode(1, ret));
+    EXPECT_TRUE(tbl.getNode(0, ret));
+
+    EXPECT_EQ(ret->genProto()->addr(), "localhost:8081");
 }

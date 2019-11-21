@@ -1,3 +1,5 @@
+#include <utility>
+
 //
 // Created by Inchan Hwang on 2019-11-07.
 //
@@ -10,7 +12,7 @@
 using grpc::ServerContext;
 using grpc::Status;
 
-ChordImpl::ChordImpl(Context* myContext): myContext(myContext) { }
+ChordImpl::ChordImpl(Context myContext): myContext(std::move(myContext)) { }
 
 //Status ChordImpl::DumpNode(ServerContext* context, const DumpRequest* request, DumpResponse* response) {
 //    response->mutable_node()->CopyFrom(myContext.dumpProto());

@@ -12,14 +12,14 @@ using namespace std;
 
 FingerTable::FingerTable() = default;
 
-Node* FingerTable::getNode(int idx) {
-    if(tbl.find(idx) == tbl.end()) {
-        return nullptr;
-    } else {
-        return tbl[idx];
+bool FingerTable::getNode(int idx, Node* dst) {
+    if(tbl.find(idx) != tbl.end()) {
+        dst->set(tbl[idx].getAddr());
+        return true;
     }
+    return false;
 }
 
-void FingerTable::setNode(int idx, Node* node) {
+void FingerTable::setNode(int idx, Node node) {
     tbl[idx] = std::move(node);
 }
