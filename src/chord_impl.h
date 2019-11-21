@@ -45,12 +45,18 @@ private:
     void callGetClosestFinger(Node target, uint32_t key, Node* dst);
     bool callFindPred(Node target, uint32_t key, Node* dst);
     bool callFindSucc(Node target, uint32_t key, Node* dst);
+    void callNotify(Node target, const Node& potentialPred);
 
     // local handlers
-    bool localGetInfo(chord::NodeInfo* dst);
-    bool localFindSucc(uint32_t key, Node* dst);
-    bool localFindPred(uint32_t key, Node* dst);
-    void localGetClosestFinger(uint32_t key, Node* dst);
+    bool handleJoin(Node buddy);
+    bool handleGetInfo(chord::NodeInfo* dst);
+    bool handleFindSucc(uint32_t key, Node* dst);
+    bool handleFindPred(uint32_t key, Node* dst);
+    void handleGetClosestFinger(uint32_t key, Node* dst);
+    void handleStabilize();
+    void handleNotify(Node potentialPred);
+    void handleFixFingers();
+
 
 public:
     explicit ChordImpl(Context myContext);

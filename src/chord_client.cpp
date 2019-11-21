@@ -1,5 +1,7 @@
 #include <utility>
 
+#include <utility>
+
 //
 // Created by Inchan Hwang on 2019-11-21.
 //
@@ -38,6 +40,7 @@ bool ChordClient::findSucc(Node target, uint32_t key, Node* dst) {
 
     chord::FindSuccReq req;
     chord::FindSuccResp resp;
+    req.set_key(key);
 
     Status status = stub->findSucc(&clientCtx, req, &resp);
 
@@ -56,6 +59,7 @@ bool ChordClient::findPred(Node target, uint32_t key, Node* dst) {
 
     chord::FindPredReq req;
     chord::FindPredResp resp;
+    req.set_key(key);
 
     Status status = stub->findPred(&clientCtx, req, &resp);
 
@@ -74,6 +78,7 @@ void ChordClient::getClosestFinger(Node target, uint32_t key, Node* dst) {
 
     chord::ClosestPredFingerReq req;
     chord::ClosestPredFingerResp resp;
+    req.set_key(key);
 
     Status status = stub->closestPredFinger(&clientCtx, req, &resp);
 
@@ -82,4 +87,16 @@ void ChordClient::getClosestFinger(Node target, uint32_t key, Node* dst) {
     } else {
         dst->set(target.getAddr());
     }
+}
+
+void ChordClient::notify(Node target, Node potentialPred) {
+    auto channel = makeChannel(std::move(target));
+    auto stub = chord::Chord::NewStub(channel);
+    ClientContext clientCtx;
+
+    chord::NotifyReq req;
+    req.set_allocated_potential_pred(potentialPred.genProto());
+    chord::NotifyResp resp;
+
+    stub->notify(&clientCtx, req, &resp);
 }
