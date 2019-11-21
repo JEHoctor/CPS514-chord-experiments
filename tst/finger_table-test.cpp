@@ -6,15 +6,14 @@
 #include "finger_table.h"
 
 TEST(finger_table_test,test1) {
-    FingerTable tbl(10);
+    FingerTable tbl;
 
-    tbl.setAddr(0, "one");
-    tbl.setAddr(1, "two");
+    auto n0 = Node("localhost:8081");
+    auto n2 = Node("localhost:8081");
 
-    EXPECT_EQ(tbl.getAddr(0), "one");
-    EXPECT_EQ(tbl.getAddr(1), "two");
+    tbl.setNode(0, &n0);
+    tbl.setNode(2, &n2);
 
-    EXPECT_ANY_THROW(
-            tbl.setAddr(10, "huh");
-    );
+    EXPECT_EQ(tbl.getNode(0)->genProto()->addr(), "localhost:8081");
+    EXPECT_EQ(tbl.getNode(1), nullptr);
 }

@@ -41,7 +41,7 @@ struct TableStruct_chord_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::google::protobuf::internal::AuxillaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::google::protobuf::internal::ParseTable schema[5]
+  static const ::google::protobuf::internal::ParseTable schema[18]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::google::protobuf::internal::FieldMetadata field_metadata[];
   static const ::google::protobuf::internal::SerializationTable serialization_table[];
@@ -49,54 +49,106 @@ struct TableStruct_chord_2eproto {
 };
 void AddDescriptors_chord_2eproto();
 namespace chord {
-class DumpRequest;
-class DumpRequestDefaultTypeInternal;
-extern DumpRequestDefaultTypeInternal _DumpRequest_default_instance_;
-class DumpResponse;
-class DumpResponseDefaultTypeInternal;
-extern DumpResponseDefaultTypeInternal _DumpResponse_default_instance_;
-class Finger;
-class FingerDefaultTypeInternal;
-extern FingerDefaultTypeInternal _Finger_default_instance_;
-class FingerTable;
-class FingerTableDefaultTypeInternal;
-extern FingerTableDefaultTypeInternal _FingerTable_default_instance_;
+class ClosestPredFingerReq;
+class ClosestPredFingerReqDefaultTypeInternal;
+extern ClosestPredFingerReqDefaultTypeInternal _ClosestPredFingerReq_default_instance_;
+class ClosestPredFingerResp;
+class ClosestPredFingerRespDefaultTypeInternal;
+extern ClosestPredFingerRespDefaultTypeInternal _ClosestPredFingerResp_default_instance_;
+class FindPredReq;
+class FindPredReqDefaultTypeInternal;
+extern FindPredReqDefaultTypeInternal _FindPredReq_default_instance_;
+class FindPredResp;
+class FindPredRespDefaultTypeInternal;
+extern FindPredRespDefaultTypeInternal _FindPredResp_default_instance_;
+class FindSuccReq;
+class FindSuccReqDefaultTypeInternal;
+extern FindSuccReqDefaultTypeInternal _FindSuccReq_default_instance_;
+class FindSuccResp;
+class FindSuccRespDefaultTypeInternal;
+extern FindSuccRespDefaultTypeInternal _FindSuccResp_default_instance_;
+class FixFingersReq;
+class FixFingersReqDefaultTypeInternal;
+extern FixFingersReqDefaultTypeInternal _FixFingersReq_default_instance_;
+class FixFingersResp;
+class FixFingersRespDefaultTypeInternal;
+extern FixFingersRespDefaultTypeInternal _FixFingersResp_default_instance_;
+class GetInfoReq;
+class GetInfoReqDefaultTypeInternal;
+extern GetInfoReqDefaultTypeInternal _GetInfoReq_default_instance_;
+class GetInfoResp;
+class GetInfoRespDefaultTypeInternal;
+extern GetInfoRespDefaultTypeInternal _GetInfoResp_default_instance_;
+class JoinReq;
+class JoinReqDefaultTypeInternal;
+extern JoinReqDefaultTypeInternal _JoinReq_default_instance_;
+class JoinResp;
+class JoinRespDefaultTypeInternal;
+extern JoinRespDefaultTypeInternal _JoinResp_default_instance_;
 class Node;
 class NodeDefaultTypeInternal;
 extern NodeDefaultTypeInternal _Node_default_instance_;
+class NodeInfo;
+class NodeInfoDefaultTypeInternal;
+extern NodeInfoDefaultTypeInternal _NodeInfo_default_instance_;
+class NotifyReq;
+class NotifyReqDefaultTypeInternal;
+extern NotifyReqDefaultTypeInternal _NotifyReq_default_instance_;
+class NotifyResp;
+class NotifyRespDefaultTypeInternal;
+extern NotifyRespDefaultTypeInternal _NotifyResp_default_instance_;
+class StabilizeReq;
+class StabilizeReqDefaultTypeInternal;
+extern StabilizeReqDefaultTypeInternal _StabilizeReq_default_instance_;
+class StabilizeResp;
+class StabilizeRespDefaultTypeInternal;
+extern StabilizeRespDefaultTypeInternal _StabilizeResp_default_instance_;
 }  // namespace chord
 namespace google {
 namespace protobuf {
-template<> ::chord::DumpRequest* Arena::CreateMaybeMessage<::chord::DumpRequest>(Arena*);
-template<> ::chord::DumpResponse* Arena::CreateMaybeMessage<::chord::DumpResponse>(Arena*);
-template<> ::chord::Finger* Arena::CreateMaybeMessage<::chord::Finger>(Arena*);
-template<> ::chord::FingerTable* Arena::CreateMaybeMessage<::chord::FingerTable>(Arena*);
+template<> ::chord::ClosestPredFingerReq* Arena::CreateMaybeMessage<::chord::ClosestPredFingerReq>(Arena*);
+template<> ::chord::ClosestPredFingerResp* Arena::CreateMaybeMessage<::chord::ClosestPredFingerResp>(Arena*);
+template<> ::chord::FindPredReq* Arena::CreateMaybeMessage<::chord::FindPredReq>(Arena*);
+template<> ::chord::FindPredResp* Arena::CreateMaybeMessage<::chord::FindPredResp>(Arena*);
+template<> ::chord::FindSuccReq* Arena::CreateMaybeMessage<::chord::FindSuccReq>(Arena*);
+template<> ::chord::FindSuccResp* Arena::CreateMaybeMessage<::chord::FindSuccResp>(Arena*);
+template<> ::chord::FixFingersReq* Arena::CreateMaybeMessage<::chord::FixFingersReq>(Arena*);
+template<> ::chord::FixFingersResp* Arena::CreateMaybeMessage<::chord::FixFingersResp>(Arena*);
+template<> ::chord::GetInfoReq* Arena::CreateMaybeMessage<::chord::GetInfoReq>(Arena*);
+template<> ::chord::GetInfoResp* Arena::CreateMaybeMessage<::chord::GetInfoResp>(Arena*);
+template<> ::chord::JoinReq* Arena::CreateMaybeMessage<::chord::JoinReq>(Arena*);
+template<> ::chord::JoinResp* Arena::CreateMaybeMessage<::chord::JoinResp>(Arena*);
 template<> ::chord::Node* Arena::CreateMaybeMessage<::chord::Node>(Arena*);
+template<> ::chord::NodeInfo* Arena::CreateMaybeMessage<::chord::NodeInfo>(Arena*);
+template<> ::chord::NotifyReq* Arena::CreateMaybeMessage<::chord::NotifyReq>(Arena*);
+template<> ::chord::NotifyResp* Arena::CreateMaybeMessage<::chord::NotifyResp>(Arena*);
+template<> ::chord::StabilizeReq* Arena::CreateMaybeMessage<::chord::StabilizeReq>(Arena*);
+template<> ::chord::StabilizeResp* Arena::CreateMaybeMessage<::chord::StabilizeResp>(Arena*);
 }  // namespace protobuf
 }  // namespace google
 namespace chord {
 
 // ===================================================================
 
-class DumpRequest final :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:chord.DumpRequest) */ {
+class JoinReq final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:chord.JoinReq) */ {
  public:
-  DumpRequest();
-  virtual ~DumpRequest();
+  JoinReq();
+  virtual ~JoinReq();
 
-  DumpRequest(const DumpRequest& from);
+  JoinReq(const JoinReq& from);
 
-  inline DumpRequest& operator=(const DumpRequest& from) {
+  inline JoinReq& operator=(const JoinReq& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  DumpRequest(DumpRequest&& from) noexcept
-    : DumpRequest() {
+  JoinReq(JoinReq&& from) noexcept
+    : JoinReq() {
     *this = ::std::move(from);
   }
 
-  inline DumpRequest& operator=(DumpRequest&& from) noexcept {
+  inline JoinReq& operator=(JoinReq&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -108,34 +160,34 @@ class DumpRequest final :
   static const ::google::protobuf::Descriptor* descriptor() {
     return default_instance().GetDescriptor();
   }
-  static const DumpRequest& default_instance();
+  static const JoinReq& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const DumpRequest* internal_default_instance() {
-    return reinterpret_cast<const DumpRequest*>(
-               &_DumpRequest_default_instance_);
+  static inline const JoinReq* internal_default_instance() {
+    return reinterpret_cast<const JoinReq*>(
+               &_JoinReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
     0;
 
-  void Swap(DumpRequest* other);
-  friend void swap(DumpRequest& a, DumpRequest& b) {
+  void Swap(JoinReq* other);
+  friend void swap(JoinReq& a, JoinReq& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline DumpRequest* New() const final {
-    return CreateMaybeMessage<DumpRequest>(nullptr);
+  inline JoinReq* New() const final {
+    return CreateMaybeMessage<JoinReq>(nullptr);
   }
 
-  DumpRequest* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<DumpRequest>(arena);
+  JoinReq* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<JoinReq>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const DumpRequest& from);
-  void MergeFrom(const DumpRequest& from);
+  void CopyFrom(const JoinReq& from);
+  void MergeFrom(const JoinReq& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -157,7 +209,7 @@ class DumpRequest final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(DumpRequest* other);
+  void InternalSwap(JoinReq* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return nullptr;
@@ -173,7 +225,122 @@ class DumpRequest final :
 
   // accessors -------------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:chord.DumpRequest)
+  // .chord.Node buddy = 1;
+  bool has_buddy() const;
+  void clear_buddy();
+  static const int kBuddyFieldNumber = 1;
+  const ::chord::Node& buddy() const;
+  ::chord::Node* release_buddy();
+  ::chord::Node* mutable_buddy();
+  void set_allocated_buddy(::chord::Node* buddy);
+
+  // @@protoc_insertion_point(class_scope:chord.JoinReq)
+ private:
+  class HasBitSetters;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::chord::Node* buddy_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_chord_2eproto;
+};
+// -------------------------------------------------------------------
+
+class JoinResp final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:chord.JoinResp) */ {
+ public:
+  JoinResp();
+  virtual ~JoinResp();
+
+  JoinResp(const JoinResp& from);
+
+  inline JoinResp& operator=(const JoinResp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  JoinResp(JoinResp&& from) noexcept
+    : JoinResp() {
+    *this = ::std::move(from);
+  }
+
+  inline JoinResp& operator=(JoinResp&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return default_instance().GetDescriptor();
+  }
+  static const JoinResp& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const JoinResp* internal_default_instance() {
+    return reinterpret_cast<const JoinResp*>(
+               &_JoinResp_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  void Swap(JoinResp* other);
+  friend void swap(JoinResp& a, JoinResp& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline JoinResp* New() const final {
+    return CreateMaybeMessage<JoinResp>(nullptr);
+  }
+
+  JoinResp* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<JoinResp>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const JoinResp& from);
+  void MergeFrom(const JoinResp& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  static const char* _InternalParse(const char* begin, const char* end, void* object, ::google::protobuf::internal::ParseContext* ctx);
+  ::google::protobuf::internal::ParseFunc _ParseFunc() const final { return _InternalParse; }
+  #else
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(JoinResp* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:chord.JoinResp)
  private:
   class HasBitSetters;
 
@@ -183,25 +350,25 @@ class DumpRequest final :
 };
 // -------------------------------------------------------------------
 
-class DumpResponse final :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:chord.DumpResponse) */ {
+class GetInfoReq final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:chord.GetInfoReq) */ {
  public:
-  DumpResponse();
-  virtual ~DumpResponse();
+  GetInfoReq();
+  virtual ~GetInfoReq();
 
-  DumpResponse(const DumpResponse& from);
+  GetInfoReq(const GetInfoReq& from);
 
-  inline DumpResponse& operator=(const DumpResponse& from) {
+  inline GetInfoReq& operator=(const GetInfoReq& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  DumpResponse(DumpResponse&& from) noexcept
-    : DumpResponse() {
+  GetInfoReq(GetInfoReq&& from) noexcept
+    : GetInfoReq() {
     *this = ::std::move(from);
   }
 
-  inline DumpResponse& operator=(DumpResponse&& from) noexcept {
+  inline GetInfoReq& operator=(GetInfoReq&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -213,34 +380,34 @@ class DumpResponse final :
   static const ::google::protobuf::Descriptor* descriptor() {
     return default_instance().GetDescriptor();
   }
-  static const DumpResponse& default_instance();
+  static const GetInfoReq& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const DumpResponse* internal_default_instance() {
-    return reinterpret_cast<const DumpResponse*>(
-               &_DumpResponse_default_instance_);
+  static inline const GetInfoReq* internal_default_instance() {
+    return reinterpret_cast<const GetInfoReq*>(
+               &_GetInfoReq_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    2;
 
-  void Swap(DumpResponse* other);
-  friend void swap(DumpResponse& a, DumpResponse& b) {
+  void Swap(GetInfoReq* other);
+  friend void swap(GetInfoReq& a, GetInfoReq& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline DumpResponse* New() const final {
-    return CreateMaybeMessage<DumpResponse>(nullptr);
+  inline GetInfoReq* New() const final {
+    return CreateMaybeMessage<GetInfoReq>(nullptr);
   }
 
-  DumpResponse* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<DumpResponse>(arena);
+  GetInfoReq* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<GetInfoReq>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const DumpResponse& from);
-  void MergeFrom(const DumpResponse& from);
+  void CopyFrom(const GetInfoReq& from);
+  void MergeFrom(const GetInfoReq& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -262,7 +429,7 @@ class DumpResponse final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(DumpResponse* other);
+  void InternalSwap(GetInfoReq* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return nullptr;
@@ -278,21 +445,1447 @@ class DumpResponse final :
 
   // accessors -------------------------------------------------------
 
-  // .chord.Node node = 1;
-  bool has_node() const;
-  void clear_node();
-  static const int kNodeFieldNumber = 1;
-  const ::chord::Node& node() const;
-  ::chord::Node* release_node();
-  ::chord::Node* mutable_node();
-  void set_allocated_node(::chord::Node* node);
-
-  // @@protoc_insertion_point(class_scope:chord.DumpResponse)
+  // @@protoc_insertion_point(class_scope:chord.GetInfoReq)
  private:
   class HasBitSetters;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::chord::Node* node_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_chord_2eproto;
+};
+// -------------------------------------------------------------------
+
+class GetInfoResp final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:chord.GetInfoResp) */ {
+ public:
+  GetInfoResp();
+  virtual ~GetInfoResp();
+
+  GetInfoResp(const GetInfoResp& from);
+
+  inline GetInfoResp& operator=(const GetInfoResp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  GetInfoResp(GetInfoResp&& from) noexcept
+    : GetInfoResp() {
+    *this = ::std::move(from);
+  }
+
+  inline GetInfoResp& operator=(GetInfoResp&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return default_instance().GetDescriptor();
+  }
+  static const GetInfoResp& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const GetInfoResp* internal_default_instance() {
+    return reinterpret_cast<const GetInfoResp*>(
+               &_GetInfoResp_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    3;
+
+  void Swap(GetInfoResp* other);
+  friend void swap(GetInfoResp& a, GetInfoResp& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline GetInfoResp* New() const final {
+    return CreateMaybeMessage<GetInfoResp>(nullptr);
+  }
+
+  GetInfoResp* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<GetInfoResp>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const GetInfoResp& from);
+  void MergeFrom(const GetInfoResp& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  static const char* _InternalParse(const char* begin, const char* end, void* object, ::google::protobuf::internal::ParseContext* ctx);
+  ::google::protobuf::internal::ParseFunc _ParseFunc() const final { return _InternalParse; }
+  #else
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(GetInfoResp* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // .chord.NodeInfo info = 1;
+  bool has_info() const;
+  void clear_info();
+  static const int kInfoFieldNumber = 1;
+  const ::chord::NodeInfo& info() const;
+  ::chord::NodeInfo* release_info();
+  ::chord::NodeInfo* mutable_info();
+  void set_allocated_info(::chord::NodeInfo* info);
+
+  // @@protoc_insertion_point(class_scope:chord.GetInfoResp)
+ private:
+  class HasBitSetters;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::chord::NodeInfo* info_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_chord_2eproto;
+};
+// -------------------------------------------------------------------
+
+class FindSuccReq final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:chord.FindSuccReq) */ {
+ public:
+  FindSuccReq();
+  virtual ~FindSuccReq();
+
+  FindSuccReq(const FindSuccReq& from);
+
+  inline FindSuccReq& operator=(const FindSuccReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  FindSuccReq(FindSuccReq&& from) noexcept
+    : FindSuccReq() {
+    *this = ::std::move(from);
+  }
+
+  inline FindSuccReq& operator=(FindSuccReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return default_instance().GetDescriptor();
+  }
+  static const FindSuccReq& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const FindSuccReq* internal_default_instance() {
+    return reinterpret_cast<const FindSuccReq*>(
+               &_FindSuccReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    4;
+
+  void Swap(FindSuccReq* other);
+  friend void swap(FindSuccReq& a, FindSuccReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline FindSuccReq* New() const final {
+    return CreateMaybeMessage<FindSuccReq>(nullptr);
+  }
+
+  FindSuccReq* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<FindSuccReq>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const FindSuccReq& from);
+  void MergeFrom(const FindSuccReq& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  static const char* _InternalParse(const char* begin, const char* end, void* object, ::google::protobuf::internal::ParseContext* ctx);
+  ::google::protobuf::internal::ParseFunc _ParseFunc() const final { return _InternalParse; }
+  #else
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(FindSuccReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // uint32 key = 1;
+  void clear_key();
+  static const int kKeyFieldNumber = 1;
+  ::google::protobuf::uint32 key() const;
+  void set_key(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:chord.FindSuccReq)
+ private:
+  class HasBitSetters;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 key_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_chord_2eproto;
+};
+// -------------------------------------------------------------------
+
+class FindSuccResp final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:chord.FindSuccResp) */ {
+ public:
+  FindSuccResp();
+  virtual ~FindSuccResp();
+
+  FindSuccResp(const FindSuccResp& from);
+
+  inline FindSuccResp& operator=(const FindSuccResp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  FindSuccResp(FindSuccResp&& from) noexcept
+    : FindSuccResp() {
+    *this = ::std::move(from);
+  }
+
+  inline FindSuccResp& operator=(FindSuccResp&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return default_instance().GetDescriptor();
+  }
+  static const FindSuccResp& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const FindSuccResp* internal_default_instance() {
+    return reinterpret_cast<const FindSuccResp*>(
+               &_FindSuccResp_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    5;
+
+  void Swap(FindSuccResp* other);
+  friend void swap(FindSuccResp& a, FindSuccResp& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline FindSuccResp* New() const final {
+    return CreateMaybeMessage<FindSuccResp>(nullptr);
+  }
+
+  FindSuccResp* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<FindSuccResp>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const FindSuccResp& from);
+  void MergeFrom(const FindSuccResp& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  static const char* _InternalParse(const char* begin, const char* end, void* object, ::google::protobuf::internal::ParseContext* ctx);
+  ::google::protobuf::internal::ParseFunc _ParseFunc() const final { return _InternalParse; }
+  #else
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(FindSuccResp* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // .chord.Node succ = 1;
+  bool has_succ() const;
+  void clear_succ();
+  static const int kSuccFieldNumber = 1;
+  const ::chord::Node& succ() const;
+  ::chord::Node* release_succ();
+  ::chord::Node* mutable_succ();
+  void set_allocated_succ(::chord::Node* succ);
+
+  // @@protoc_insertion_point(class_scope:chord.FindSuccResp)
+ private:
+  class HasBitSetters;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::chord::Node* succ_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_chord_2eproto;
+};
+// -------------------------------------------------------------------
+
+class FindPredReq final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:chord.FindPredReq) */ {
+ public:
+  FindPredReq();
+  virtual ~FindPredReq();
+
+  FindPredReq(const FindPredReq& from);
+
+  inline FindPredReq& operator=(const FindPredReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  FindPredReq(FindPredReq&& from) noexcept
+    : FindPredReq() {
+    *this = ::std::move(from);
+  }
+
+  inline FindPredReq& operator=(FindPredReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return default_instance().GetDescriptor();
+  }
+  static const FindPredReq& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const FindPredReq* internal_default_instance() {
+    return reinterpret_cast<const FindPredReq*>(
+               &_FindPredReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    6;
+
+  void Swap(FindPredReq* other);
+  friend void swap(FindPredReq& a, FindPredReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline FindPredReq* New() const final {
+    return CreateMaybeMessage<FindPredReq>(nullptr);
+  }
+
+  FindPredReq* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<FindPredReq>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const FindPredReq& from);
+  void MergeFrom(const FindPredReq& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  static const char* _InternalParse(const char* begin, const char* end, void* object, ::google::protobuf::internal::ParseContext* ctx);
+  ::google::protobuf::internal::ParseFunc _ParseFunc() const final { return _InternalParse; }
+  #else
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(FindPredReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // uint32 key = 1;
+  void clear_key();
+  static const int kKeyFieldNumber = 1;
+  ::google::protobuf::uint32 key() const;
+  void set_key(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:chord.FindPredReq)
+ private:
+  class HasBitSetters;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 key_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_chord_2eproto;
+};
+// -------------------------------------------------------------------
+
+class FindPredResp final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:chord.FindPredResp) */ {
+ public:
+  FindPredResp();
+  virtual ~FindPredResp();
+
+  FindPredResp(const FindPredResp& from);
+
+  inline FindPredResp& operator=(const FindPredResp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  FindPredResp(FindPredResp&& from) noexcept
+    : FindPredResp() {
+    *this = ::std::move(from);
+  }
+
+  inline FindPredResp& operator=(FindPredResp&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return default_instance().GetDescriptor();
+  }
+  static const FindPredResp& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const FindPredResp* internal_default_instance() {
+    return reinterpret_cast<const FindPredResp*>(
+               &_FindPredResp_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    7;
+
+  void Swap(FindPredResp* other);
+  friend void swap(FindPredResp& a, FindPredResp& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline FindPredResp* New() const final {
+    return CreateMaybeMessage<FindPredResp>(nullptr);
+  }
+
+  FindPredResp* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<FindPredResp>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const FindPredResp& from);
+  void MergeFrom(const FindPredResp& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  static const char* _InternalParse(const char* begin, const char* end, void* object, ::google::protobuf::internal::ParseContext* ctx);
+  ::google::protobuf::internal::ParseFunc _ParseFunc() const final { return _InternalParse; }
+  #else
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(FindPredResp* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // .chord.Node pred = 1;
+  bool has_pred() const;
+  void clear_pred();
+  static const int kPredFieldNumber = 1;
+  const ::chord::Node& pred() const;
+  ::chord::Node* release_pred();
+  ::chord::Node* mutable_pred();
+  void set_allocated_pred(::chord::Node* pred);
+
+  // @@protoc_insertion_point(class_scope:chord.FindPredResp)
+ private:
+  class HasBitSetters;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::chord::Node* pred_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_chord_2eproto;
+};
+// -------------------------------------------------------------------
+
+class ClosestPredFingerReq final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:chord.ClosestPredFingerReq) */ {
+ public:
+  ClosestPredFingerReq();
+  virtual ~ClosestPredFingerReq();
+
+  ClosestPredFingerReq(const ClosestPredFingerReq& from);
+
+  inline ClosestPredFingerReq& operator=(const ClosestPredFingerReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  ClosestPredFingerReq(ClosestPredFingerReq&& from) noexcept
+    : ClosestPredFingerReq() {
+    *this = ::std::move(from);
+  }
+
+  inline ClosestPredFingerReq& operator=(ClosestPredFingerReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return default_instance().GetDescriptor();
+  }
+  static const ClosestPredFingerReq& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const ClosestPredFingerReq* internal_default_instance() {
+    return reinterpret_cast<const ClosestPredFingerReq*>(
+               &_ClosestPredFingerReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    8;
+
+  void Swap(ClosestPredFingerReq* other);
+  friend void swap(ClosestPredFingerReq& a, ClosestPredFingerReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline ClosestPredFingerReq* New() const final {
+    return CreateMaybeMessage<ClosestPredFingerReq>(nullptr);
+  }
+
+  ClosestPredFingerReq* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<ClosestPredFingerReq>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const ClosestPredFingerReq& from);
+  void MergeFrom(const ClosestPredFingerReq& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  static const char* _InternalParse(const char* begin, const char* end, void* object, ::google::protobuf::internal::ParseContext* ctx);
+  ::google::protobuf::internal::ParseFunc _ParseFunc() const final { return _InternalParse; }
+  #else
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ClosestPredFingerReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // uint32 key = 1;
+  void clear_key();
+  static const int kKeyFieldNumber = 1;
+  ::google::protobuf::uint32 key() const;
+  void set_key(::google::protobuf::uint32 value);
+
+  // @@protoc_insertion_point(class_scope:chord.ClosestPredFingerReq)
+ private:
+  class HasBitSetters;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::google::protobuf::uint32 key_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_chord_2eproto;
+};
+// -------------------------------------------------------------------
+
+class ClosestPredFingerResp final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:chord.ClosestPredFingerResp) */ {
+ public:
+  ClosestPredFingerResp();
+  virtual ~ClosestPredFingerResp();
+
+  ClosestPredFingerResp(const ClosestPredFingerResp& from);
+
+  inline ClosestPredFingerResp& operator=(const ClosestPredFingerResp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  ClosestPredFingerResp(ClosestPredFingerResp&& from) noexcept
+    : ClosestPredFingerResp() {
+    *this = ::std::move(from);
+  }
+
+  inline ClosestPredFingerResp& operator=(ClosestPredFingerResp&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return default_instance().GetDescriptor();
+  }
+  static const ClosestPredFingerResp& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const ClosestPredFingerResp* internal_default_instance() {
+    return reinterpret_cast<const ClosestPredFingerResp*>(
+               &_ClosestPredFingerResp_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    9;
+
+  void Swap(ClosestPredFingerResp* other);
+  friend void swap(ClosestPredFingerResp& a, ClosestPredFingerResp& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline ClosestPredFingerResp* New() const final {
+    return CreateMaybeMessage<ClosestPredFingerResp>(nullptr);
+  }
+
+  ClosestPredFingerResp* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<ClosestPredFingerResp>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const ClosestPredFingerResp& from);
+  void MergeFrom(const ClosestPredFingerResp& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  static const char* _InternalParse(const char* begin, const char* end, void* object, ::google::protobuf::internal::ParseContext* ctx);
+  ::google::protobuf::internal::ParseFunc _ParseFunc() const final { return _InternalParse; }
+  #else
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(ClosestPredFingerResp* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // .chord.Node pred_finger = 1;
+  bool has_pred_finger() const;
+  void clear_pred_finger();
+  static const int kPredFingerFieldNumber = 1;
+  const ::chord::Node& pred_finger() const;
+  ::chord::Node* release_pred_finger();
+  ::chord::Node* mutable_pred_finger();
+  void set_allocated_pred_finger(::chord::Node* pred_finger);
+
+  // @@protoc_insertion_point(class_scope:chord.ClosestPredFingerResp)
+ private:
+  class HasBitSetters;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::chord::Node* pred_finger_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_chord_2eproto;
+};
+// -------------------------------------------------------------------
+
+class StabilizeReq final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:chord.StabilizeReq) */ {
+ public:
+  StabilizeReq();
+  virtual ~StabilizeReq();
+
+  StabilizeReq(const StabilizeReq& from);
+
+  inline StabilizeReq& operator=(const StabilizeReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  StabilizeReq(StabilizeReq&& from) noexcept
+    : StabilizeReq() {
+    *this = ::std::move(from);
+  }
+
+  inline StabilizeReq& operator=(StabilizeReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return default_instance().GetDescriptor();
+  }
+  static const StabilizeReq& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const StabilizeReq* internal_default_instance() {
+    return reinterpret_cast<const StabilizeReq*>(
+               &_StabilizeReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    10;
+
+  void Swap(StabilizeReq* other);
+  friend void swap(StabilizeReq& a, StabilizeReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline StabilizeReq* New() const final {
+    return CreateMaybeMessage<StabilizeReq>(nullptr);
+  }
+
+  StabilizeReq* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<StabilizeReq>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const StabilizeReq& from);
+  void MergeFrom(const StabilizeReq& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  static const char* _InternalParse(const char* begin, const char* end, void* object, ::google::protobuf::internal::ParseContext* ctx);
+  ::google::protobuf::internal::ParseFunc _ParseFunc() const final { return _InternalParse; }
+  #else
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(StabilizeReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:chord.StabilizeReq)
+ private:
+  class HasBitSetters;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_chord_2eproto;
+};
+// -------------------------------------------------------------------
+
+class StabilizeResp final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:chord.StabilizeResp) */ {
+ public:
+  StabilizeResp();
+  virtual ~StabilizeResp();
+
+  StabilizeResp(const StabilizeResp& from);
+
+  inline StabilizeResp& operator=(const StabilizeResp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  StabilizeResp(StabilizeResp&& from) noexcept
+    : StabilizeResp() {
+    *this = ::std::move(from);
+  }
+
+  inline StabilizeResp& operator=(StabilizeResp&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return default_instance().GetDescriptor();
+  }
+  static const StabilizeResp& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const StabilizeResp* internal_default_instance() {
+    return reinterpret_cast<const StabilizeResp*>(
+               &_StabilizeResp_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    11;
+
+  void Swap(StabilizeResp* other);
+  friend void swap(StabilizeResp& a, StabilizeResp& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline StabilizeResp* New() const final {
+    return CreateMaybeMessage<StabilizeResp>(nullptr);
+  }
+
+  StabilizeResp* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<StabilizeResp>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const StabilizeResp& from);
+  void MergeFrom(const StabilizeResp& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  static const char* _InternalParse(const char* begin, const char* end, void* object, ::google::protobuf::internal::ParseContext* ctx);
+  ::google::protobuf::internal::ParseFunc _ParseFunc() const final { return _InternalParse; }
+  #else
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(StabilizeResp* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:chord.StabilizeResp)
+ private:
+  class HasBitSetters;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_chord_2eproto;
+};
+// -------------------------------------------------------------------
+
+class NotifyReq final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:chord.NotifyReq) */ {
+ public:
+  NotifyReq();
+  virtual ~NotifyReq();
+
+  NotifyReq(const NotifyReq& from);
+
+  inline NotifyReq& operator=(const NotifyReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  NotifyReq(NotifyReq&& from) noexcept
+    : NotifyReq() {
+    *this = ::std::move(from);
+  }
+
+  inline NotifyReq& operator=(NotifyReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return default_instance().GetDescriptor();
+  }
+  static const NotifyReq& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const NotifyReq* internal_default_instance() {
+    return reinterpret_cast<const NotifyReq*>(
+               &_NotifyReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    12;
+
+  void Swap(NotifyReq* other);
+  friend void swap(NotifyReq& a, NotifyReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline NotifyReq* New() const final {
+    return CreateMaybeMessage<NotifyReq>(nullptr);
+  }
+
+  NotifyReq* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<NotifyReq>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const NotifyReq& from);
+  void MergeFrom(const NotifyReq& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  static const char* _InternalParse(const char* begin, const char* end, void* object, ::google::protobuf::internal::ParseContext* ctx);
+  ::google::protobuf::internal::ParseFunc _ParseFunc() const final { return _InternalParse; }
+  #else
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(NotifyReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // .chord.Node potential_pred = 1;
+  bool has_potential_pred() const;
+  void clear_potential_pred();
+  static const int kPotentialPredFieldNumber = 1;
+  const ::chord::Node& potential_pred() const;
+  ::chord::Node* release_potential_pred();
+  ::chord::Node* mutable_potential_pred();
+  void set_allocated_potential_pred(::chord::Node* potential_pred);
+
+  // @@protoc_insertion_point(class_scope:chord.NotifyReq)
+ private:
+  class HasBitSetters;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  ::chord::Node* potential_pred_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_chord_2eproto;
+};
+// -------------------------------------------------------------------
+
+class NotifyResp final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:chord.NotifyResp) */ {
+ public:
+  NotifyResp();
+  virtual ~NotifyResp();
+
+  NotifyResp(const NotifyResp& from);
+
+  inline NotifyResp& operator=(const NotifyResp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  NotifyResp(NotifyResp&& from) noexcept
+    : NotifyResp() {
+    *this = ::std::move(from);
+  }
+
+  inline NotifyResp& operator=(NotifyResp&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return default_instance().GetDescriptor();
+  }
+  static const NotifyResp& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const NotifyResp* internal_default_instance() {
+    return reinterpret_cast<const NotifyResp*>(
+               &_NotifyResp_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    13;
+
+  void Swap(NotifyResp* other);
+  friend void swap(NotifyResp& a, NotifyResp& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline NotifyResp* New() const final {
+    return CreateMaybeMessage<NotifyResp>(nullptr);
+  }
+
+  NotifyResp* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<NotifyResp>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const NotifyResp& from);
+  void MergeFrom(const NotifyResp& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  static const char* _InternalParse(const char* begin, const char* end, void* object, ::google::protobuf::internal::ParseContext* ctx);
+  ::google::protobuf::internal::ParseFunc _ParseFunc() const final { return _InternalParse; }
+  #else
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(NotifyResp* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:chord.NotifyResp)
+ private:
+  class HasBitSetters;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_chord_2eproto;
+};
+// -------------------------------------------------------------------
+
+class FixFingersReq final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:chord.FixFingersReq) */ {
+ public:
+  FixFingersReq();
+  virtual ~FixFingersReq();
+
+  FixFingersReq(const FixFingersReq& from);
+
+  inline FixFingersReq& operator=(const FixFingersReq& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  FixFingersReq(FixFingersReq&& from) noexcept
+    : FixFingersReq() {
+    *this = ::std::move(from);
+  }
+
+  inline FixFingersReq& operator=(FixFingersReq&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return default_instance().GetDescriptor();
+  }
+  static const FixFingersReq& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const FixFingersReq* internal_default_instance() {
+    return reinterpret_cast<const FixFingersReq*>(
+               &_FixFingersReq_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    14;
+
+  void Swap(FixFingersReq* other);
+  friend void swap(FixFingersReq& a, FixFingersReq& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline FixFingersReq* New() const final {
+    return CreateMaybeMessage<FixFingersReq>(nullptr);
+  }
+
+  FixFingersReq* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<FixFingersReq>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const FixFingersReq& from);
+  void MergeFrom(const FixFingersReq& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  static const char* _InternalParse(const char* begin, const char* end, void* object, ::google::protobuf::internal::ParseContext* ctx);
+  ::google::protobuf::internal::ParseFunc _ParseFunc() const final { return _InternalParse; }
+  #else
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(FixFingersReq* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:chord.FixFingersReq)
+ private:
+  class HasBitSetters;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
+  mutable ::google::protobuf::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_chord_2eproto;
+};
+// -------------------------------------------------------------------
+
+class FixFingersResp final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:chord.FixFingersResp) */ {
+ public:
+  FixFingersResp();
+  virtual ~FixFingersResp();
+
+  FixFingersResp(const FixFingersResp& from);
+
+  inline FixFingersResp& operator=(const FixFingersResp& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  #if LANG_CXX11
+  FixFingersResp(FixFingersResp&& from) noexcept
+    : FixFingersResp() {
+    *this = ::std::move(from);
+  }
+
+  inline FixFingersResp& operator=(FixFingersResp&& from) noexcept {
+    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
+      if (this != &from) InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+  #endif
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return default_instance().GetDescriptor();
+  }
+  static const FixFingersResp& default_instance();
+
+  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
+  static inline const FixFingersResp* internal_default_instance() {
+    return reinterpret_cast<const FixFingersResp*>(
+               &_FixFingersResp_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    15;
+
+  void Swap(FixFingersResp* other);
+  friend void swap(FixFingersResp& a, FixFingersResp& b) {
+    a.Swap(&b);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline FixFingersResp* New() const final {
+    return CreateMaybeMessage<FixFingersResp>(nullptr);
+  }
+
+  FixFingersResp* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<FixFingersResp>(arena);
+  }
+  void CopyFrom(const ::google::protobuf::Message& from) final;
+  void MergeFrom(const ::google::protobuf::Message& from) final;
+  void CopyFrom(const FixFingersResp& from);
+  void MergeFrom(const FixFingersResp& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  static const char* _InternalParse(const char* begin, const char* end, void* object, ::google::protobuf::internal::ParseContext* ctx);
+  ::google::protobuf::internal::ParseFunc _ParseFunc() const final { return _InternalParse; }
+  #else
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input) final;
+  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const final;
+  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
+      ::google::protobuf::uint8* target) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(FixFingersResp* other);
+  private:
+  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
+    return nullptr;
+  }
+  inline void* MaybeArenaPtr() const {
+    return nullptr;
+  }
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:chord.FixFingersResp)
+ private:
+  class HasBitSetters;
+
+  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_chord_2eproto;
 };
@@ -336,7 +1929,7 @@ class Node final :
                &_Node_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    2;
+    16;
 
   void Swap(Node* other);
   friend void swap(Node& a, Node& b) {
@@ -407,48 +2000,11 @@ class Node final :
   ::std::string* release_addr();
   void set_allocated_addr(::std::string* addr);
 
-  // string succ = 3;
-  void clear_succ();
-  static const int kSuccFieldNumber = 3;
-  const ::std::string& succ() const;
-  void set_succ(const ::std::string& value);
-  #if LANG_CXX11
-  void set_succ(::std::string&& value);
-  #endif
-  void set_succ(const char* value);
-  void set_succ(const char* value, size_t size);
-  ::std::string* mutable_succ();
-  ::std::string* release_succ();
-  void set_allocated_succ(::std::string* succ);
-
-  // string pred = 4;
-  void clear_pred();
-  static const int kPredFieldNumber = 4;
-  const ::std::string& pred() const;
-  void set_pred(const ::std::string& value);
-  #if LANG_CXX11
-  void set_pred(::std::string&& value);
-  #endif
-  void set_pred(const char* value);
-  void set_pred(const char* value, size_t size);
-  ::std::string* mutable_pred();
-  ::std::string* release_pred();
-  void set_allocated_pred(::std::string* pred);
-
-  // .chord.FingerTable tbl = 5;
-  bool has_tbl() const;
-  void clear_tbl();
-  static const int kTblFieldNumber = 5;
-  const ::chord::FingerTable& tbl() const;
-  ::chord::FingerTable* release_tbl();
-  ::chord::FingerTable* mutable_tbl();
-  void set_allocated_tbl(::chord::FingerTable* tbl);
-
-  // uint32 m = 2;
-  void clear_m();
-  static const int kMFieldNumber = 2;
-  ::google::protobuf::uint32 m() const;
-  void set_m(::google::protobuf::uint32 value);
+  // uint32 id = 2;
+  void clear_id();
+  static const int kIdFieldNumber = 2;
+  ::google::protobuf::uint32 id() const;
+  void set_id(::google::protobuf::uint32 value);
 
   // @@protoc_insertion_point(class_scope:chord.Node)
  private:
@@ -456,34 +2012,31 @@ class Node final :
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr addr_;
-  ::google::protobuf::internal::ArenaStringPtr succ_;
-  ::google::protobuf::internal::ArenaStringPtr pred_;
-  ::chord::FingerTable* tbl_;
-  ::google::protobuf::uint32 m_;
+  ::google::protobuf::uint32 id_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_chord_2eproto;
 };
 // -------------------------------------------------------------------
 
-class FingerTable final :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:chord.FingerTable) */ {
+class NodeInfo final :
+    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:chord.NodeInfo) */ {
  public:
-  FingerTable();
-  virtual ~FingerTable();
+  NodeInfo();
+  virtual ~NodeInfo();
 
-  FingerTable(const FingerTable& from);
+  NodeInfo(const NodeInfo& from);
 
-  inline FingerTable& operator=(const FingerTable& from) {
+  inline NodeInfo& operator=(const NodeInfo& from) {
     CopyFrom(from);
     return *this;
   }
   #if LANG_CXX11
-  FingerTable(FingerTable&& from) noexcept
-    : FingerTable() {
+  NodeInfo(NodeInfo&& from) noexcept
+    : NodeInfo() {
     *this = ::std::move(from);
   }
 
-  inline FingerTable& operator=(FingerTable&& from) noexcept {
+  inline NodeInfo& operator=(NodeInfo&& from) noexcept {
     if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
       if (this != &from) InternalSwap(&from);
     } else {
@@ -495,34 +2048,34 @@ class FingerTable final :
   static const ::google::protobuf::Descriptor* descriptor() {
     return default_instance().GetDescriptor();
   }
-  static const FingerTable& default_instance();
+  static const NodeInfo& default_instance();
 
   static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const FingerTable* internal_default_instance() {
-    return reinterpret_cast<const FingerTable*>(
-               &_FingerTable_default_instance_);
+  static inline const NodeInfo* internal_default_instance() {
+    return reinterpret_cast<const NodeInfo*>(
+               &_NodeInfo_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    3;
+    17;
 
-  void Swap(FingerTable* other);
-  friend void swap(FingerTable& a, FingerTable& b) {
+  void Swap(NodeInfo* other);
+  friend void swap(NodeInfo& a, NodeInfo& b) {
     a.Swap(&b);
   }
 
   // implements Message ----------------------------------------------
 
-  inline FingerTable* New() const final {
-    return CreateMaybeMessage<FingerTable>(nullptr);
+  inline NodeInfo* New() const final {
+    return CreateMaybeMessage<NodeInfo>(nullptr);
   }
 
-  FingerTable* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<FingerTable>(arena);
+  NodeInfo* New(::google::protobuf::Arena* arena) const final {
+    return CreateMaybeMessage<NodeInfo>(arena);
   }
   void CopyFrom(const ::google::protobuf::Message& from) final;
   void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const FingerTable& from);
-  void MergeFrom(const FingerTable& from);
+  void CopyFrom(const NodeInfo& from);
+  void MergeFrom(const NodeInfo& from);
   PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
   bool IsInitialized() const final;
 
@@ -544,7 +2097,7 @@ class FingerTable final :
   void SharedCtor();
   void SharedDtor();
   void SetCachedSize(int size) const final;
-  void InternalSwap(FingerTable* other);
+  void InternalSwap(NodeInfo* other);
   private:
   inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
     return nullptr;
@@ -560,151 +2113,41 @@ class FingerTable final :
 
   // accessors -------------------------------------------------------
 
-  // repeated .chord.Finger fingers = 1;
-  int fingers_size() const;
-  void clear_fingers();
-  static const int kFingersFieldNumber = 1;
-  ::chord::Finger* mutable_fingers(int index);
-  ::google::protobuf::RepeatedPtrField< ::chord::Finger >*
-      mutable_fingers();
-  const ::chord::Finger& fingers(int index) const;
-  ::chord::Finger* add_fingers();
-  const ::google::protobuf::RepeatedPtrField< ::chord::Finger >&
-      fingers() const;
+  // .chord.Node self = 1;
+  bool has_self() const;
+  void clear_self();
+  static const int kSelfFieldNumber = 1;
+  const ::chord::Node& self() const;
+  ::chord::Node* release_self();
+  ::chord::Node* mutable_self();
+  void set_allocated_self(::chord::Node* self);
 
-  // @@protoc_insertion_point(class_scope:chord.FingerTable)
+  // .chord.Node succ = 2;
+  bool has_succ() const;
+  void clear_succ();
+  static const int kSuccFieldNumber = 2;
+  const ::chord::Node& succ() const;
+  ::chord::Node* release_succ();
+  ::chord::Node* mutable_succ();
+  void set_allocated_succ(::chord::Node* succ);
+
+  // .chord.Node pred = 3;
+  bool has_pred() const;
+  void clear_pred();
+  static const int kPredFieldNumber = 3;
+  const ::chord::Node& pred() const;
+  ::chord::Node* release_pred();
+  ::chord::Node* mutable_pred();
+  void set_allocated_pred(::chord::Node* pred);
+
+  // @@protoc_insertion_point(class_scope:chord.NodeInfo)
  private:
   class HasBitSetters;
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::RepeatedPtrField< ::chord::Finger > fingers_;
-  mutable ::google::protobuf::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_chord_2eproto;
-};
-// -------------------------------------------------------------------
-
-class Finger final :
-    public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:chord.Finger) */ {
- public:
-  Finger();
-  virtual ~Finger();
-
-  Finger(const Finger& from);
-
-  inline Finger& operator=(const Finger& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  #if LANG_CXX11
-  Finger(Finger&& from) noexcept
-    : Finger() {
-    *this = ::std::move(from);
-  }
-
-  inline Finger& operator=(Finger&& from) noexcept {
-    if (GetArenaNoVirtual() == from.GetArenaNoVirtual()) {
-      if (this != &from) InternalSwap(&from);
-    } else {
-      CopyFrom(from);
-    }
-    return *this;
-  }
-  #endif
-  static const ::google::protobuf::Descriptor* descriptor() {
-    return default_instance().GetDescriptor();
-  }
-  static const Finger& default_instance();
-
-  static void InitAsDefaultInstance();  // FOR INTERNAL USE ONLY
-  static inline const Finger* internal_default_instance() {
-    return reinterpret_cast<const Finger*>(
-               &_Finger_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    4;
-
-  void Swap(Finger* other);
-  friend void swap(Finger& a, Finger& b) {
-    a.Swap(&b);
-  }
-
-  // implements Message ----------------------------------------------
-
-  inline Finger* New() const final {
-    return CreateMaybeMessage<Finger>(nullptr);
-  }
-
-  Finger* New(::google::protobuf::Arena* arena) const final {
-    return CreateMaybeMessage<Finger>(arena);
-  }
-  void CopyFrom(const ::google::protobuf::Message& from) final;
-  void MergeFrom(const ::google::protobuf::Message& from) final;
-  void CopyFrom(const Finger& from);
-  void MergeFrom(const Finger& from);
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
-
-  size_t ByteSizeLong() const final;
-  #if GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-  static const char* _InternalParse(const char* begin, const char* end, void* object, ::google::protobuf::internal::ParseContext* ctx);
-  ::google::protobuf::internal::ParseFunc _ParseFunc() const final { return _InternalParse; }
-  #else
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input) final;
-  #endif  // GOOGLE_PROTOBUF_ENABLE_EXPERIMENTAL_PARSER
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const final;
-  ::google::protobuf::uint8* InternalSerializeWithCachedSizesToArray(
-      ::google::protobuf::uint8* target) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
-
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(Finger* other);
-  private:
-  inline ::google::protobuf::Arena* GetArenaNoVirtual() const {
-    return nullptr;
-  }
-  inline void* MaybeArenaPtr() const {
-    return nullptr;
-  }
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const final;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // string addr = 1;
-  void clear_addr();
-  static const int kAddrFieldNumber = 1;
-  const ::std::string& addr() const;
-  void set_addr(const ::std::string& value);
-  #if LANG_CXX11
-  void set_addr(::std::string&& value);
-  #endif
-  void set_addr(const char* value);
-  void set_addr(const char* value, size_t size);
-  ::std::string* mutable_addr();
-  ::std::string* release_addr();
-  void set_allocated_addr(::std::string* addr);
-
-  // uint32 idx = 2;
-  void clear_idx();
-  static const int kIdxFieldNumber = 2;
-  ::google::protobuf::uint32 idx() const;
-  void set_idx(::google::protobuf::uint32 value);
-
-  // @@protoc_insertion_point(class_scope:chord.Finger)
- private:
-  class HasBitSetters;
-
-  ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::internal::ArenaStringPtr addr_;
-  ::google::protobuf::uint32 idx_;
+  ::chord::Node* self_;
+  ::chord::Node* succ_;
+  ::chord::Node* pred_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_chord_2eproto;
 };
@@ -717,62 +2160,415 @@ class Finger final :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
-// DumpRequest
+// JoinReq
 
-// -------------------------------------------------------------------
-
-// DumpResponse
-
-// .chord.Node node = 1;
-inline bool DumpResponse::has_node() const {
-  return this != internal_default_instance() && node_ != nullptr;
+// .chord.Node buddy = 1;
+inline bool JoinReq::has_buddy() const {
+  return this != internal_default_instance() && buddy_ != nullptr;
 }
-inline void DumpResponse::clear_node() {
-  if (GetArenaNoVirtual() == nullptr && node_ != nullptr) {
-    delete node_;
+inline void JoinReq::clear_buddy() {
+  if (GetArenaNoVirtual() == nullptr && buddy_ != nullptr) {
+    delete buddy_;
   }
-  node_ = nullptr;
+  buddy_ = nullptr;
 }
-inline const ::chord::Node& DumpResponse::node() const {
-  const ::chord::Node* p = node_;
-  // @@protoc_insertion_point(field_get:chord.DumpResponse.node)
+inline const ::chord::Node& JoinReq::buddy() const {
+  const ::chord::Node* p = buddy_;
+  // @@protoc_insertion_point(field_get:chord.JoinReq.buddy)
   return p != nullptr ? *p : *reinterpret_cast<const ::chord::Node*>(
       &::chord::_Node_default_instance_);
 }
-inline ::chord::Node* DumpResponse::release_node() {
-  // @@protoc_insertion_point(field_release:chord.DumpResponse.node)
+inline ::chord::Node* JoinReq::release_buddy() {
+  // @@protoc_insertion_point(field_release:chord.JoinReq.buddy)
   
-  ::chord::Node* temp = node_;
-  node_ = nullptr;
+  ::chord::Node* temp = buddy_;
+  buddy_ = nullptr;
   return temp;
 }
-inline ::chord::Node* DumpResponse::mutable_node() {
+inline ::chord::Node* JoinReq::mutable_buddy() {
   
-  if (node_ == nullptr) {
+  if (buddy_ == nullptr) {
     auto* p = CreateMaybeMessage<::chord::Node>(GetArenaNoVirtual());
-    node_ = p;
+    buddy_ = p;
   }
-  // @@protoc_insertion_point(field_mutable:chord.DumpResponse.node)
-  return node_;
+  // @@protoc_insertion_point(field_mutable:chord.JoinReq.buddy)
+  return buddy_;
 }
-inline void DumpResponse::set_allocated_node(::chord::Node* node) {
+inline void JoinReq::set_allocated_buddy(::chord::Node* buddy) {
   ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == nullptr) {
-    delete node_;
+    delete buddy_;
   }
-  if (node) {
+  if (buddy) {
     ::google::protobuf::Arena* submessage_arena = nullptr;
     if (message_arena != submessage_arena) {
-      node = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, node, submessage_arena);
+      buddy = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, buddy, submessage_arena);
     }
     
   } else {
     
   }
-  node_ = node;
-  // @@protoc_insertion_point(field_set_allocated:chord.DumpResponse.node)
+  buddy_ = buddy;
+  // @@protoc_insertion_point(field_set_allocated:chord.JoinReq.buddy)
 }
+
+// -------------------------------------------------------------------
+
+// JoinResp
+
+// -------------------------------------------------------------------
+
+// GetInfoReq
+
+// -------------------------------------------------------------------
+
+// GetInfoResp
+
+// .chord.NodeInfo info = 1;
+inline bool GetInfoResp::has_info() const {
+  return this != internal_default_instance() && info_ != nullptr;
+}
+inline void GetInfoResp::clear_info() {
+  if (GetArenaNoVirtual() == nullptr && info_ != nullptr) {
+    delete info_;
+  }
+  info_ = nullptr;
+}
+inline const ::chord::NodeInfo& GetInfoResp::info() const {
+  const ::chord::NodeInfo* p = info_;
+  // @@protoc_insertion_point(field_get:chord.GetInfoResp.info)
+  return p != nullptr ? *p : *reinterpret_cast<const ::chord::NodeInfo*>(
+      &::chord::_NodeInfo_default_instance_);
+}
+inline ::chord::NodeInfo* GetInfoResp::release_info() {
+  // @@protoc_insertion_point(field_release:chord.GetInfoResp.info)
+  
+  ::chord::NodeInfo* temp = info_;
+  info_ = nullptr;
+  return temp;
+}
+inline ::chord::NodeInfo* GetInfoResp::mutable_info() {
+  
+  if (info_ == nullptr) {
+    auto* p = CreateMaybeMessage<::chord::NodeInfo>(GetArenaNoVirtual());
+    info_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:chord.GetInfoResp.info)
+  return info_;
+}
+inline void GetInfoResp::set_allocated_info(::chord::NodeInfo* info) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete info_;
+  }
+  if (info) {
+    ::google::protobuf::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      info = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, info, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  info_ = info;
+  // @@protoc_insertion_point(field_set_allocated:chord.GetInfoResp.info)
+}
+
+// -------------------------------------------------------------------
+
+// FindSuccReq
+
+// uint32 key = 1;
+inline void FindSuccReq::clear_key() {
+  key_ = 0u;
+}
+inline ::google::protobuf::uint32 FindSuccReq::key() const {
+  // @@protoc_insertion_point(field_get:chord.FindSuccReq.key)
+  return key_;
+}
+inline void FindSuccReq::set_key(::google::protobuf::uint32 value) {
+  
+  key_ = value;
+  // @@protoc_insertion_point(field_set:chord.FindSuccReq.key)
+}
+
+// -------------------------------------------------------------------
+
+// FindSuccResp
+
+// .chord.Node succ = 1;
+inline bool FindSuccResp::has_succ() const {
+  return this != internal_default_instance() && succ_ != nullptr;
+}
+inline void FindSuccResp::clear_succ() {
+  if (GetArenaNoVirtual() == nullptr && succ_ != nullptr) {
+    delete succ_;
+  }
+  succ_ = nullptr;
+}
+inline const ::chord::Node& FindSuccResp::succ() const {
+  const ::chord::Node* p = succ_;
+  // @@protoc_insertion_point(field_get:chord.FindSuccResp.succ)
+  return p != nullptr ? *p : *reinterpret_cast<const ::chord::Node*>(
+      &::chord::_Node_default_instance_);
+}
+inline ::chord::Node* FindSuccResp::release_succ() {
+  // @@protoc_insertion_point(field_release:chord.FindSuccResp.succ)
+  
+  ::chord::Node* temp = succ_;
+  succ_ = nullptr;
+  return temp;
+}
+inline ::chord::Node* FindSuccResp::mutable_succ() {
+  
+  if (succ_ == nullptr) {
+    auto* p = CreateMaybeMessage<::chord::Node>(GetArenaNoVirtual());
+    succ_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:chord.FindSuccResp.succ)
+  return succ_;
+}
+inline void FindSuccResp::set_allocated_succ(::chord::Node* succ) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete succ_;
+  }
+  if (succ) {
+    ::google::protobuf::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      succ = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, succ, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  succ_ = succ;
+  // @@protoc_insertion_point(field_set_allocated:chord.FindSuccResp.succ)
+}
+
+// -------------------------------------------------------------------
+
+// FindPredReq
+
+// uint32 key = 1;
+inline void FindPredReq::clear_key() {
+  key_ = 0u;
+}
+inline ::google::protobuf::uint32 FindPredReq::key() const {
+  // @@protoc_insertion_point(field_get:chord.FindPredReq.key)
+  return key_;
+}
+inline void FindPredReq::set_key(::google::protobuf::uint32 value) {
+  
+  key_ = value;
+  // @@protoc_insertion_point(field_set:chord.FindPredReq.key)
+}
+
+// -------------------------------------------------------------------
+
+// FindPredResp
+
+// .chord.Node pred = 1;
+inline bool FindPredResp::has_pred() const {
+  return this != internal_default_instance() && pred_ != nullptr;
+}
+inline void FindPredResp::clear_pred() {
+  if (GetArenaNoVirtual() == nullptr && pred_ != nullptr) {
+    delete pred_;
+  }
+  pred_ = nullptr;
+}
+inline const ::chord::Node& FindPredResp::pred() const {
+  const ::chord::Node* p = pred_;
+  // @@protoc_insertion_point(field_get:chord.FindPredResp.pred)
+  return p != nullptr ? *p : *reinterpret_cast<const ::chord::Node*>(
+      &::chord::_Node_default_instance_);
+}
+inline ::chord::Node* FindPredResp::release_pred() {
+  // @@protoc_insertion_point(field_release:chord.FindPredResp.pred)
+  
+  ::chord::Node* temp = pred_;
+  pred_ = nullptr;
+  return temp;
+}
+inline ::chord::Node* FindPredResp::mutable_pred() {
+  
+  if (pred_ == nullptr) {
+    auto* p = CreateMaybeMessage<::chord::Node>(GetArenaNoVirtual());
+    pred_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:chord.FindPredResp.pred)
+  return pred_;
+}
+inline void FindPredResp::set_allocated_pred(::chord::Node* pred) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete pred_;
+  }
+  if (pred) {
+    ::google::protobuf::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      pred = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, pred, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  pred_ = pred;
+  // @@protoc_insertion_point(field_set_allocated:chord.FindPredResp.pred)
+}
+
+// -------------------------------------------------------------------
+
+// ClosestPredFingerReq
+
+// uint32 key = 1;
+inline void ClosestPredFingerReq::clear_key() {
+  key_ = 0u;
+}
+inline ::google::protobuf::uint32 ClosestPredFingerReq::key() const {
+  // @@protoc_insertion_point(field_get:chord.ClosestPredFingerReq.key)
+  return key_;
+}
+inline void ClosestPredFingerReq::set_key(::google::protobuf::uint32 value) {
+  
+  key_ = value;
+  // @@protoc_insertion_point(field_set:chord.ClosestPredFingerReq.key)
+}
+
+// -------------------------------------------------------------------
+
+// ClosestPredFingerResp
+
+// .chord.Node pred_finger = 1;
+inline bool ClosestPredFingerResp::has_pred_finger() const {
+  return this != internal_default_instance() && pred_finger_ != nullptr;
+}
+inline void ClosestPredFingerResp::clear_pred_finger() {
+  if (GetArenaNoVirtual() == nullptr && pred_finger_ != nullptr) {
+    delete pred_finger_;
+  }
+  pred_finger_ = nullptr;
+}
+inline const ::chord::Node& ClosestPredFingerResp::pred_finger() const {
+  const ::chord::Node* p = pred_finger_;
+  // @@protoc_insertion_point(field_get:chord.ClosestPredFingerResp.pred_finger)
+  return p != nullptr ? *p : *reinterpret_cast<const ::chord::Node*>(
+      &::chord::_Node_default_instance_);
+}
+inline ::chord::Node* ClosestPredFingerResp::release_pred_finger() {
+  // @@protoc_insertion_point(field_release:chord.ClosestPredFingerResp.pred_finger)
+  
+  ::chord::Node* temp = pred_finger_;
+  pred_finger_ = nullptr;
+  return temp;
+}
+inline ::chord::Node* ClosestPredFingerResp::mutable_pred_finger() {
+  
+  if (pred_finger_ == nullptr) {
+    auto* p = CreateMaybeMessage<::chord::Node>(GetArenaNoVirtual());
+    pred_finger_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:chord.ClosestPredFingerResp.pred_finger)
+  return pred_finger_;
+}
+inline void ClosestPredFingerResp::set_allocated_pred_finger(::chord::Node* pred_finger) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete pred_finger_;
+  }
+  if (pred_finger) {
+    ::google::protobuf::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      pred_finger = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, pred_finger, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  pred_finger_ = pred_finger;
+  // @@protoc_insertion_point(field_set_allocated:chord.ClosestPredFingerResp.pred_finger)
+}
+
+// -------------------------------------------------------------------
+
+// StabilizeReq
+
+// -------------------------------------------------------------------
+
+// StabilizeResp
+
+// -------------------------------------------------------------------
+
+// NotifyReq
+
+// .chord.Node potential_pred = 1;
+inline bool NotifyReq::has_potential_pred() const {
+  return this != internal_default_instance() && potential_pred_ != nullptr;
+}
+inline void NotifyReq::clear_potential_pred() {
+  if (GetArenaNoVirtual() == nullptr && potential_pred_ != nullptr) {
+    delete potential_pred_;
+  }
+  potential_pred_ = nullptr;
+}
+inline const ::chord::Node& NotifyReq::potential_pred() const {
+  const ::chord::Node* p = potential_pred_;
+  // @@protoc_insertion_point(field_get:chord.NotifyReq.potential_pred)
+  return p != nullptr ? *p : *reinterpret_cast<const ::chord::Node*>(
+      &::chord::_Node_default_instance_);
+}
+inline ::chord::Node* NotifyReq::release_potential_pred() {
+  // @@protoc_insertion_point(field_release:chord.NotifyReq.potential_pred)
+  
+  ::chord::Node* temp = potential_pred_;
+  potential_pred_ = nullptr;
+  return temp;
+}
+inline ::chord::Node* NotifyReq::mutable_potential_pred() {
+  
+  if (potential_pred_ == nullptr) {
+    auto* p = CreateMaybeMessage<::chord::Node>(GetArenaNoVirtual());
+    potential_pred_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:chord.NotifyReq.potential_pred)
+  return potential_pred_;
+}
+inline void NotifyReq::set_allocated_potential_pred(::chord::Node* potential_pred) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete potential_pred_;
+  }
+  if (potential_pred) {
+    ::google::protobuf::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      potential_pred = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, potential_pred, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  potential_pred_ = potential_pred;
+  // @@protoc_insertion_point(field_set_allocated:chord.NotifyReq.potential_pred)
+}
+
+// -------------------------------------------------------------------
+
+// NotifyResp
+
+// -------------------------------------------------------------------
+
+// FixFingersReq
+
+// -------------------------------------------------------------------
+
+// FixFingersResp
 
 // -------------------------------------------------------------------
 
@@ -831,285 +2627,206 @@ inline void Node::set_allocated_addr(::std::string* addr) {
   // @@protoc_insertion_point(field_set_allocated:chord.Node.addr)
 }
 
-// uint32 m = 2;
-inline void Node::clear_m() {
-  m_ = 0u;
+// uint32 id = 2;
+inline void Node::clear_id() {
+  id_ = 0u;
 }
-inline ::google::protobuf::uint32 Node::m() const {
-  // @@protoc_insertion_point(field_get:chord.Node.m)
-  return m_;
+inline ::google::protobuf::uint32 Node::id() const {
+  // @@protoc_insertion_point(field_get:chord.Node.id)
+  return id_;
 }
-inline void Node::set_m(::google::protobuf::uint32 value) {
+inline void Node::set_id(::google::protobuf::uint32 value) {
   
-  m_ = value;
-  // @@protoc_insertion_point(field_set:chord.Node.m)
+  id_ = value;
+  // @@protoc_insertion_point(field_set:chord.Node.id)
 }
 
-// string succ = 3;
-inline void Node::clear_succ() {
-  succ_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline const ::std::string& Node::succ() const {
-  // @@protoc_insertion_point(field_get:chord.Node.succ)
-  return succ_.GetNoArena();
-}
-inline void Node::set_succ(const ::std::string& value) {
-  
-  succ_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:chord.Node.succ)
-}
-#if LANG_CXX11
-inline void Node::set_succ(::std::string&& value) {
-  
-  succ_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:chord.Node.succ)
-}
-#endif
-inline void Node::set_succ(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  
-  succ_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:chord.Node.succ)
-}
-inline void Node::set_succ(const char* value, size_t size) {
-  
-  succ_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:chord.Node.succ)
-}
-inline ::std::string* Node::mutable_succ() {
-  
-  // @@protoc_insertion_point(field_mutable:chord.Node.succ)
-  return succ_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* Node::release_succ() {
-  // @@protoc_insertion_point(field_release:chord.Node.succ)
-  
-  return succ_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void Node::set_allocated_succ(::std::string* succ) {
-  if (succ != nullptr) {
-    
-  } else {
-    
-  }
-  succ_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), succ);
-  // @@protoc_insertion_point(field_set_allocated:chord.Node.succ)
-}
+// -------------------------------------------------------------------
 
-// string pred = 4;
-inline void Node::clear_pred() {
-  pred_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline const ::std::string& Node::pred() const {
-  // @@protoc_insertion_point(field_get:chord.Node.pred)
-  return pred_.GetNoArena();
-}
-inline void Node::set_pred(const ::std::string& value) {
-  
-  pred_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:chord.Node.pred)
-}
-#if LANG_CXX11
-inline void Node::set_pred(::std::string&& value) {
-  
-  pred_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:chord.Node.pred)
-}
-#endif
-inline void Node::set_pred(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  
-  pred_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:chord.Node.pred)
-}
-inline void Node::set_pred(const char* value, size_t size) {
-  
-  pred_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:chord.Node.pred)
-}
-inline ::std::string* Node::mutable_pred() {
-  
-  // @@protoc_insertion_point(field_mutable:chord.Node.pred)
-  return pred_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* Node::release_pred() {
-  // @@protoc_insertion_point(field_release:chord.Node.pred)
-  
-  return pred_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void Node::set_allocated_pred(::std::string* pred) {
-  if (pred != nullptr) {
-    
-  } else {
-    
-  }
-  pred_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), pred);
-  // @@protoc_insertion_point(field_set_allocated:chord.Node.pred)
-}
+// NodeInfo
 
-// .chord.FingerTable tbl = 5;
-inline bool Node::has_tbl() const {
-  return this != internal_default_instance() && tbl_ != nullptr;
+// .chord.Node self = 1;
+inline bool NodeInfo::has_self() const {
+  return this != internal_default_instance() && self_ != nullptr;
 }
-inline void Node::clear_tbl() {
-  if (GetArenaNoVirtual() == nullptr && tbl_ != nullptr) {
-    delete tbl_;
+inline void NodeInfo::clear_self() {
+  if (GetArenaNoVirtual() == nullptr && self_ != nullptr) {
+    delete self_;
   }
-  tbl_ = nullptr;
+  self_ = nullptr;
 }
-inline const ::chord::FingerTable& Node::tbl() const {
-  const ::chord::FingerTable* p = tbl_;
-  // @@protoc_insertion_point(field_get:chord.Node.tbl)
-  return p != nullptr ? *p : *reinterpret_cast<const ::chord::FingerTable*>(
-      &::chord::_FingerTable_default_instance_);
+inline const ::chord::Node& NodeInfo::self() const {
+  const ::chord::Node* p = self_;
+  // @@protoc_insertion_point(field_get:chord.NodeInfo.self)
+  return p != nullptr ? *p : *reinterpret_cast<const ::chord::Node*>(
+      &::chord::_Node_default_instance_);
 }
-inline ::chord::FingerTable* Node::release_tbl() {
-  // @@protoc_insertion_point(field_release:chord.Node.tbl)
+inline ::chord::Node* NodeInfo::release_self() {
+  // @@protoc_insertion_point(field_release:chord.NodeInfo.self)
   
-  ::chord::FingerTable* temp = tbl_;
-  tbl_ = nullptr;
+  ::chord::Node* temp = self_;
+  self_ = nullptr;
   return temp;
 }
-inline ::chord::FingerTable* Node::mutable_tbl() {
+inline ::chord::Node* NodeInfo::mutable_self() {
   
-  if (tbl_ == nullptr) {
-    auto* p = CreateMaybeMessage<::chord::FingerTable>(GetArenaNoVirtual());
-    tbl_ = p;
+  if (self_ == nullptr) {
+    auto* p = CreateMaybeMessage<::chord::Node>(GetArenaNoVirtual());
+    self_ = p;
   }
-  // @@protoc_insertion_point(field_mutable:chord.Node.tbl)
-  return tbl_;
+  // @@protoc_insertion_point(field_mutable:chord.NodeInfo.self)
+  return self_;
 }
-inline void Node::set_allocated_tbl(::chord::FingerTable* tbl) {
+inline void NodeInfo::set_allocated_self(::chord::Node* self) {
   ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
   if (message_arena == nullptr) {
-    delete tbl_;
+    delete self_;
   }
-  if (tbl) {
+  if (self) {
     ::google::protobuf::Arena* submessage_arena = nullptr;
     if (message_arena != submessage_arena) {
-      tbl = ::google::protobuf::internal::GetOwnedMessage(
-          message_arena, tbl, submessage_arena);
+      self = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, self, submessage_arena);
     }
     
   } else {
     
   }
-  tbl_ = tbl;
-  // @@protoc_insertion_point(field_set_allocated:chord.Node.tbl)
+  self_ = self;
+  // @@protoc_insertion_point(field_set_allocated:chord.NodeInfo.self)
 }
 
-// -------------------------------------------------------------------
-
-// FingerTable
-
-// repeated .chord.Finger fingers = 1;
-inline int FingerTable::fingers_size() const {
-  return fingers_.size();
+// .chord.Node succ = 2;
+inline bool NodeInfo::has_succ() const {
+  return this != internal_default_instance() && succ_ != nullptr;
 }
-inline void FingerTable::clear_fingers() {
-  fingers_.Clear();
+inline void NodeInfo::clear_succ() {
+  if (GetArenaNoVirtual() == nullptr && succ_ != nullptr) {
+    delete succ_;
+  }
+  succ_ = nullptr;
 }
-inline ::chord::Finger* FingerTable::mutable_fingers(int index) {
-  // @@protoc_insertion_point(field_mutable:chord.FingerTable.fingers)
-  return fingers_.Mutable(index);
+inline const ::chord::Node& NodeInfo::succ() const {
+  const ::chord::Node* p = succ_;
+  // @@protoc_insertion_point(field_get:chord.NodeInfo.succ)
+  return p != nullptr ? *p : *reinterpret_cast<const ::chord::Node*>(
+      &::chord::_Node_default_instance_);
 }
-inline ::google::protobuf::RepeatedPtrField< ::chord::Finger >*
-FingerTable::mutable_fingers() {
-  // @@protoc_insertion_point(field_mutable_list:chord.FingerTable.fingers)
-  return &fingers_;
-}
-inline const ::chord::Finger& FingerTable::fingers(int index) const {
-  // @@protoc_insertion_point(field_get:chord.FingerTable.fingers)
-  return fingers_.Get(index);
-}
-inline ::chord::Finger* FingerTable::add_fingers() {
-  // @@protoc_insertion_point(field_add:chord.FingerTable.fingers)
-  return fingers_.Add();
-}
-inline const ::google::protobuf::RepeatedPtrField< ::chord::Finger >&
-FingerTable::fingers() const {
-  // @@protoc_insertion_point(field_list:chord.FingerTable.fingers)
-  return fingers_;
-}
-
-// -------------------------------------------------------------------
-
-// Finger
-
-// string addr = 1;
-inline void Finger::clear_addr() {
-  addr_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline const ::std::string& Finger::addr() const {
-  // @@protoc_insertion_point(field_get:chord.Finger.addr)
-  return addr_.GetNoArena();
-}
-inline void Finger::set_addr(const ::std::string& value) {
+inline ::chord::Node* NodeInfo::release_succ() {
+  // @@protoc_insertion_point(field_release:chord.NodeInfo.succ)
   
-  addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:chord.Finger.addr)
+  ::chord::Node* temp = succ_;
+  succ_ = nullptr;
+  return temp;
 }
-#if LANG_CXX11
-inline void Finger::set_addr(::std::string&& value) {
+inline ::chord::Node* NodeInfo::mutable_succ() {
   
-  addr_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:chord.Finger.addr)
+  if (succ_ == nullptr) {
+    auto* p = CreateMaybeMessage<::chord::Node>(GetArenaNoVirtual());
+    succ_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:chord.NodeInfo.succ)
+  return succ_;
 }
-#endif
-inline void Finger::set_addr(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  
-  addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:chord.Finger.addr)
-}
-inline void Finger::set_addr(const char* value, size_t size) {
-  
-  addr_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:chord.Finger.addr)
-}
-inline ::std::string* Finger::mutable_addr() {
-  
-  // @@protoc_insertion_point(field_mutable:chord.Finger.addr)
-  return addr_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* Finger::release_addr() {
-  // @@protoc_insertion_point(field_release:chord.Finger.addr)
-  
-  return addr_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void Finger::set_allocated_addr(::std::string* addr) {
-  if (addr != nullptr) {
+inline void NodeInfo::set_allocated_succ(::chord::Node* succ) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete succ_;
+  }
+  if (succ) {
+    ::google::protobuf::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      succ = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, succ, submessage_arena);
+    }
     
   } else {
     
   }
-  addr_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), addr);
-  // @@protoc_insertion_point(field_set_allocated:chord.Finger.addr)
+  succ_ = succ;
+  // @@protoc_insertion_point(field_set_allocated:chord.NodeInfo.succ)
 }
 
-// uint32 idx = 2;
-inline void Finger::clear_idx() {
-  idx_ = 0u;
+// .chord.Node pred = 3;
+inline bool NodeInfo::has_pred() const {
+  return this != internal_default_instance() && pred_ != nullptr;
 }
-inline ::google::protobuf::uint32 Finger::idx() const {
-  // @@protoc_insertion_point(field_get:chord.Finger.idx)
-  return idx_;
+inline void NodeInfo::clear_pred() {
+  if (GetArenaNoVirtual() == nullptr && pred_ != nullptr) {
+    delete pred_;
+  }
+  pred_ = nullptr;
 }
-inline void Finger::set_idx(::google::protobuf::uint32 value) {
+inline const ::chord::Node& NodeInfo::pred() const {
+  const ::chord::Node* p = pred_;
+  // @@protoc_insertion_point(field_get:chord.NodeInfo.pred)
+  return p != nullptr ? *p : *reinterpret_cast<const ::chord::Node*>(
+      &::chord::_Node_default_instance_);
+}
+inline ::chord::Node* NodeInfo::release_pred() {
+  // @@protoc_insertion_point(field_release:chord.NodeInfo.pred)
   
-  idx_ = value;
-  // @@protoc_insertion_point(field_set:chord.Finger.idx)
+  ::chord::Node* temp = pred_;
+  pred_ = nullptr;
+  return temp;
+}
+inline ::chord::Node* NodeInfo::mutable_pred() {
+  
+  if (pred_ == nullptr) {
+    auto* p = CreateMaybeMessage<::chord::Node>(GetArenaNoVirtual());
+    pred_ = p;
+  }
+  // @@protoc_insertion_point(field_mutable:chord.NodeInfo.pred)
+  return pred_;
+}
+inline void NodeInfo::set_allocated_pred(::chord::Node* pred) {
+  ::google::protobuf::Arena* message_arena = GetArenaNoVirtual();
+  if (message_arena == nullptr) {
+    delete pred_;
+  }
+  if (pred) {
+    ::google::protobuf::Arena* submessage_arena = nullptr;
+    if (message_arena != submessage_arena) {
+      pred = ::google::protobuf::internal::GetOwnedMessage(
+          message_arena, pred, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  pred_ = pred;
+  // @@protoc_insertion_point(field_set_allocated:chord.NodeInfo.pred)
 }
 
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

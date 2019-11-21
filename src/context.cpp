@@ -1,5 +1,7 @@
 #include <utility>
 
+#include <utility>
+
 //
 // Created by Inchan Hwang on 2019-11-07.
 //
@@ -9,23 +11,37 @@
 
 using namespace std;
 
-Context::Context(int m, string addr, string port): m(m), addr(std::move(addr)), port(std::move(port)) {}
+Context::Context(Node* me): me(me) {
+    this->succ = nullptr;
+    this->pred = nullptr;
+}
 
-string Context::getAddr() { return addr; }
+void Context::setSucc(Node* succ_) {
+    this->succ = succ_;
+}
 
-string Context::getPort() { return port; }
+void Context::setPred(Node* pred_) {
+    this->pred = pred_;
+}
 
-string Context::getSucc() { return succ; }
-void Context::setSucc(string succ_) { succ = move(succ_); }
+void Context::setFinger(int idx, Node* node) {
+    tbl.setNode(idx, node);
+}
 
-string Context::getPred() { return pred; }
-void Context::setPred(string pred_) { pred = move(pred_); }
+Node* Context::getFinger(int idx) {
+    return tbl.getNode(idx);
+}
 
-chord::Node Context::dumpProto() {
-    chord::Node node;
-    node.set_addr(addr + ":" + port);
-    node.set_m(m);
-    node.set_pred(pred);
-    node.set_succ(succ);
-    return node;
+chord::NodeInfo* Context::genProto() {
+    auto* proto = new chord::NodeInfo();
+
+    chord::Node* meProto = me->genProto();
+    chord::Node* succProto = succ->genProto();
+    chord::Node* predProto = pred->genProto();
+
+    proto->set_allocated_self(meProto);
+    proto->set_allocated_succ(succProto);
+    proto->set_allocated_pred(predProto);
+
+    return proto;
 }

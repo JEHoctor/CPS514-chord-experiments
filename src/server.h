@@ -12,6 +12,6 @@
 using namespace std;
 using chord::Chord;
 
-void startServer(int m, Context myContext, const string& buddyAddrPort, Chord::Service* chordService);
+void startServer(const std::string& port, Chord::Service* chordService);
 
 #endif //CHORD_SERVER_H

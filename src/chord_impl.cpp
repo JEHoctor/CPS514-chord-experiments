@@ -6,16 +6,47 @@
 #include <grpcpp/grpcpp.h>
 #include "chord_impl.h"
 #include "generated/chord.grpc.pb.h"
-#include "context.h"
 
 using grpc::ServerContext;
 using grpc::Status;
-using chord::DumpRequest;
-using chord::DumpResponse;
 
-ChordImpl::ChordImpl(Context myContext): myContext(std::move(myContext)) { }
+ChordImpl::ChordImpl(Context* myContext): myContext(myContext) { }
 
-Status ChordImpl::DumpNode(ServerContext* context, const DumpRequest* request, DumpResponse* response) {
-    response->mutable_node()->CopyFrom(myContext.dumpProto());
+//Status ChordImpl::DumpNode(ServerContext* context, const DumpRequest* request, DumpResponse* response) {
+//    response->mutable_node()->CopyFrom(myContext.dumpProto());
+//    return Status::OK;
+//}
+
+Status ChordImpl::join(ServerContext *context, const JoinReq *request, JoinResp *response) {
     return Status::OK;
 }
+
+Status ChordImpl::getInfo(ServerContext *context, const GetInfoReq *request, GetInfoResp *response) {
+    return Status::OK;
+}
+
+Status ChordImpl::findPred(ServerContext *context, const FindPredReq *request, FindPredResp *response) {
+    return Status::OK;
+}
+
+Status ChordImpl::findSucc(ServerContext *context, const FindSuccReq *request, FindSuccResp *response) {
+    return Status::OK;
+}
+
+Status ChordImpl::closestPredFinger(ServerContext *context, const ClosestPredFingerReq *request,
+                                    ClosestPredFingerResp *response) {
+    return Status::OK;
+}
+
+Status ChordImpl::stabilize(ServerContext *context, const StabilizeReq *request, StabilizeResp *response) {
+    return Status::OK;
+}
+
+Status ChordImpl::notify(ServerContext *context, const NotifyReq *request, NotifyResp *response) {
+    return Status::OK;
+}
+
+Status ChordImpl::fixFingers(ServerContext *context, const FixFingersReq *request, FixFingersResp *response) {
+    return Status::OK;
+}
+

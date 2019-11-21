@@ -37,39 +37,179 @@ class Chord final {
   class StubInterface {
    public:
     virtual ~StubInterface() {}
-    virtual ::grpc::Status DumpNode(::grpc::ClientContext* context, const ::chord::DumpRequest& request, ::chord::DumpResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::chord::DumpResponse>> AsyncDumpNode(::grpc::ClientContext* context, const ::chord::DumpRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::chord::DumpResponse>>(AsyncDumpNodeRaw(context, request, cq));
+    virtual ::grpc::Status join(::grpc::ClientContext* context, const ::chord::JoinReq& request, ::chord::JoinResp* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::chord::JoinResp>> Asyncjoin(::grpc::ClientContext* context, const ::chord::JoinReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::chord::JoinResp>>(AsyncjoinRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::chord::DumpResponse>> PrepareAsyncDumpNode(::grpc::ClientContext* context, const ::chord::DumpRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::chord::DumpResponse>>(PrepareAsyncDumpNodeRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::chord::JoinResp>> PrepareAsyncjoin(::grpc::ClientContext* context, const ::chord::JoinReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::chord::JoinResp>>(PrepareAsyncjoinRaw(context, request, cq));
+    }
+    virtual ::grpc::Status getInfo(::grpc::ClientContext* context, const ::chord::GetInfoReq& request, ::chord::GetInfoResp* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::chord::GetInfoResp>> AsyncgetInfo(::grpc::ClientContext* context, const ::chord::GetInfoReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::chord::GetInfoResp>>(AsyncgetInfoRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::chord::GetInfoResp>> PrepareAsyncgetInfo(::grpc::ClientContext* context, const ::chord::GetInfoReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::chord::GetInfoResp>>(PrepareAsyncgetInfoRaw(context, request, cq));
+    }
+    virtual ::grpc::Status findSucc(::grpc::ClientContext* context, const ::chord::FindSuccReq& request, ::chord::FindSuccResp* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::chord::FindSuccResp>> AsyncfindSucc(::grpc::ClientContext* context, const ::chord::FindSuccReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::chord::FindSuccResp>>(AsyncfindSuccRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::chord::FindSuccResp>> PrepareAsyncfindSucc(::grpc::ClientContext* context, const ::chord::FindSuccReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::chord::FindSuccResp>>(PrepareAsyncfindSuccRaw(context, request, cq));
+    }
+    virtual ::grpc::Status findPred(::grpc::ClientContext* context, const ::chord::FindPredReq& request, ::chord::FindPredResp* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::chord::FindPredResp>> AsyncfindPred(::grpc::ClientContext* context, const ::chord::FindPredReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::chord::FindPredResp>>(AsyncfindPredRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::chord::FindPredResp>> PrepareAsyncfindPred(::grpc::ClientContext* context, const ::chord::FindPredReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::chord::FindPredResp>>(PrepareAsyncfindPredRaw(context, request, cq));
+    }
+    virtual ::grpc::Status closestPredFinger(::grpc::ClientContext* context, const ::chord::ClosestPredFingerReq& request, ::chord::ClosestPredFingerResp* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::chord::ClosestPredFingerResp>> AsyncclosestPredFinger(::grpc::ClientContext* context, const ::chord::ClosestPredFingerReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::chord::ClosestPredFingerResp>>(AsyncclosestPredFingerRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::chord::ClosestPredFingerResp>> PrepareAsyncclosestPredFinger(::grpc::ClientContext* context, const ::chord::ClosestPredFingerReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::chord::ClosestPredFingerResp>>(PrepareAsyncclosestPredFingerRaw(context, request, cq));
+    }
+    virtual ::grpc::Status stabilize(::grpc::ClientContext* context, const ::chord::StabilizeReq& request, ::chord::StabilizeResp* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::chord::StabilizeResp>> Asyncstabilize(::grpc::ClientContext* context, const ::chord::StabilizeReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::chord::StabilizeResp>>(AsyncstabilizeRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::chord::StabilizeResp>> PrepareAsyncstabilize(::grpc::ClientContext* context, const ::chord::StabilizeReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::chord::StabilizeResp>>(PrepareAsyncstabilizeRaw(context, request, cq));
+    }
+    virtual ::grpc::Status notify(::grpc::ClientContext* context, const ::chord::NotifyReq& request, ::chord::NotifyResp* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::chord::NotifyResp>> Asyncnotify(::grpc::ClientContext* context, const ::chord::NotifyReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::chord::NotifyResp>>(AsyncnotifyRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::chord::NotifyResp>> PrepareAsyncnotify(::grpc::ClientContext* context, const ::chord::NotifyReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::chord::NotifyResp>>(PrepareAsyncnotifyRaw(context, request, cq));
+    }
+    virtual ::grpc::Status fixFingers(::grpc::ClientContext* context, const ::chord::FixFingersReq& request, ::chord::FixFingersResp* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::chord::FixFingersResp>> AsyncfixFingers(::grpc::ClientContext* context, const ::chord::FixFingersReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::chord::FixFingersResp>>(AsyncfixFingersRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::chord::FixFingersResp>> PrepareAsyncfixFingers(::grpc::ClientContext* context, const ::chord::FixFingersReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::chord::FixFingersResp>>(PrepareAsyncfixFingersRaw(context, request, cq));
     }
     class experimental_async_interface {
      public:
       virtual ~experimental_async_interface() {}
-      virtual void DumpNode(::grpc::ClientContext* context, const ::chord::DumpRequest* request, ::chord::DumpResponse* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void DumpNode(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::chord::DumpResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void join(::grpc::ClientContext* context, const ::chord::JoinReq* request, ::chord::JoinResp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void join(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::chord::JoinResp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void getInfo(::grpc::ClientContext* context, const ::chord::GetInfoReq* request, ::chord::GetInfoResp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void getInfo(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::chord::GetInfoResp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void findSucc(::grpc::ClientContext* context, const ::chord::FindSuccReq* request, ::chord::FindSuccResp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void findSucc(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::chord::FindSuccResp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void findPred(::grpc::ClientContext* context, const ::chord::FindPredReq* request, ::chord::FindPredResp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void findPred(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::chord::FindPredResp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void closestPredFinger(::grpc::ClientContext* context, const ::chord::ClosestPredFingerReq* request, ::chord::ClosestPredFingerResp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void closestPredFinger(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::chord::ClosestPredFingerResp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void stabilize(::grpc::ClientContext* context, const ::chord::StabilizeReq* request, ::chord::StabilizeResp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void stabilize(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::chord::StabilizeResp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void notify(::grpc::ClientContext* context, const ::chord::NotifyReq* request, ::chord::NotifyResp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void notify(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::chord::NotifyResp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void fixFingers(::grpc::ClientContext* context, const ::chord::FixFingersReq* request, ::chord::FixFingersResp* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void fixFingers(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::chord::FixFingersResp* response, std::function<void(::grpc::Status)>) = 0;
     };
     virtual class experimental_async_interface* experimental_async() { return nullptr; }
   private:
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::chord::DumpResponse>* AsyncDumpNodeRaw(::grpc::ClientContext* context, const ::chord::DumpRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::chord::DumpResponse>* PrepareAsyncDumpNodeRaw(::grpc::ClientContext* context, const ::chord::DumpRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::chord::JoinResp>* AsyncjoinRaw(::grpc::ClientContext* context, const ::chord::JoinReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::chord::JoinResp>* PrepareAsyncjoinRaw(::grpc::ClientContext* context, const ::chord::JoinReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::chord::GetInfoResp>* AsyncgetInfoRaw(::grpc::ClientContext* context, const ::chord::GetInfoReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::chord::GetInfoResp>* PrepareAsyncgetInfoRaw(::grpc::ClientContext* context, const ::chord::GetInfoReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::chord::FindSuccResp>* AsyncfindSuccRaw(::grpc::ClientContext* context, const ::chord::FindSuccReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::chord::FindSuccResp>* PrepareAsyncfindSuccRaw(::grpc::ClientContext* context, const ::chord::FindSuccReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::chord::FindPredResp>* AsyncfindPredRaw(::grpc::ClientContext* context, const ::chord::FindPredReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::chord::FindPredResp>* PrepareAsyncfindPredRaw(::grpc::ClientContext* context, const ::chord::FindPredReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::chord::ClosestPredFingerResp>* AsyncclosestPredFingerRaw(::grpc::ClientContext* context, const ::chord::ClosestPredFingerReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::chord::ClosestPredFingerResp>* PrepareAsyncclosestPredFingerRaw(::grpc::ClientContext* context, const ::chord::ClosestPredFingerReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::chord::StabilizeResp>* AsyncstabilizeRaw(::grpc::ClientContext* context, const ::chord::StabilizeReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::chord::StabilizeResp>* PrepareAsyncstabilizeRaw(::grpc::ClientContext* context, const ::chord::StabilizeReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::chord::NotifyResp>* AsyncnotifyRaw(::grpc::ClientContext* context, const ::chord::NotifyReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::chord::NotifyResp>* PrepareAsyncnotifyRaw(::grpc::ClientContext* context, const ::chord::NotifyReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::chord::FixFingersResp>* AsyncfixFingersRaw(::grpc::ClientContext* context, const ::chord::FixFingersReq& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::chord::FixFingersResp>* PrepareAsyncfixFingersRaw(::grpc::ClientContext* context, const ::chord::FixFingersReq& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
     Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel);
-    ::grpc::Status DumpNode(::grpc::ClientContext* context, const ::chord::DumpRequest& request, ::chord::DumpResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::chord::DumpResponse>> AsyncDumpNode(::grpc::ClientContext* context, const ::chord::DumpRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::chord::DumpResponse>>(AsyncDumpNodeRaw(context, request, cq));
+    ::grpc::Status join(::grpc::ClientContext* context, const ::chord::JoinReq& request, ::chord::JoinResp* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::chord::JoinResp>> Asyncjoin(::grpc::ClientContext* context, const ::chord::JoinReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::chord::JoinResp>>(AsyncjoinRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::chord::DumpResponse>> PrepareAsyncDumpNode(::grpc::ClientContext* context, const ::chord::DumpRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::chord::DumpResponse>>(PrepareAsyncDumpNodeRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::chord::JoinResp>> PrepareAsyncjoin(::grpc::ClientContext* context, const ::chord::JoinReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::chord::JoinResp>>(PrepareAsyncjoinRaw(context, request, cq));
+    }
+    ::grpc::Status getInfo(::grpc::ClientContext* context, const ::chord::GetInfoReq& request, ::chord::GetInfoResp* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::chord::GetInfoResp>> AsyncgetInfo(::grpc::ClientContext* context, const ::chord::GetInfoReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::chord::GetInfoResp>>(AsyncgetInfoRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::chord::GetInfoResp>> PrepareAsyncgetInfo(::grpc::ClientContext* context, const ::chord::GetInfoReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::chord::GetInfoResp>>(PrepareAsyncgetInfoRaw(context, request, cq));
+    }
+    ::grpc::Status findSucc(::grpc::ClientContext* context, const ::chord::FindSuccReq& request, ::chord::FindSuccResp* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::chord::FindSuccResp>> AsyncfindSucc(::grpc::ClientContext* context, const ::chord::FindSuccReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::chord::FindSuccResp>>(AsyncfindSuccRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::chord::FindSuccResp>> PrepareAsyncfindSucc(::grpc::ClientContext* context, const ::chord::FindSuccReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::chord::FindSuccResp>>(PrepareAsyncfindSuccRaw(context, request, cq));
+    }
+    ::grpc::Status findPred(::grpc::ClientContext* context, const ::chord::FindPredReq& request, ::chord::FindPredResp* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::chord::FindPredResp>> AsyncfindPred(::grpc::ClientContext* context, const ::chord::FindPredReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::chord::FindPredResp>>(AsyncfindPredRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::chord::FindPredResp>> PrepareAsyncfindPred(::grpc::ClientContext* context, const ::chord::FindPredReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::chord::FindPredResp>>(PrepareAsyncfindPredRaw(context, request, cq));
+    }
+    ::grpc::Status closestPredFinger(::grpc::ClientContext* context, const ::chord::ClosestPredFingerReq& request, ::chord::ClosestPredFingerResp* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::chord::ClosestPredFingerResp>> AsyncclosestPredFinger(::grpc::ClientContext* context, const ::chord::ClosestPredFingerReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::chord::ClosestPredFingerResp>>(AsyncclosestPredFingerRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::chord::ClosestPredFingerResp>> PrepareAsyncclosestPredFinger(::grpc::ClientContext* context, const ::chord::ClosestPredFingerReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::chord::ClosestPredFingerResp>>(PrepareAsyncclosestPredFingerRaw(context, request, cq));
+    }
+    ::grpc::Status stabilize(::grpc::ClientContext* context, const ::chord::StabilizeReq& request, ::chord::StabilizeResp* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::chord::StabilizeResp>> Asyncstabilize(::grpc::ClientContext* context, const ::chord::StabilizeReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::chord::StabilizeResp>>(AsyncstabilizeRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::chord::StabilizeResp>> PrepareAsyncstabilize(::grpc::ClientContext* context, const ::chord::StabilizeReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::chord::StabilizeResp>>(PrepareAsyncstabilizeRaw(context, request, cq));
+    }
+    ::grpc::Status notify(::grpc::ClientContext* context, const ::chord::NotifyReq& request, ::chord::NotifyResp* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::chord::NotifyResp>> Asyncnotify(::grpc::ClientContext* context, const ::chord::NotifyReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::chord::NotifyResp>>(AsyncnotifyRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::chord::NotifyResp>> PrepareAsyncnotify(::grpc::ClientContext* context, const ::chord::NotifyReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::chord::NotifyResp>>(PrepareAsyncnotifyRaw(context, request, cq));
+    }
+    ::grpc::Status fixFingers(::grpc::ClientContext* context, const ::chord::FixFingersReq& request, ::chord::FixFingersResp* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::chord::FixFingersResp>> AsyncfixFingers(::grpc::ClientContext* context, const ::chord::FixFingersReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::chord::FixFingersResp>>(AsyncfixFingersRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::chord::FixFingersResp>> PrepareAsyncfixFingers(::grpc::ClientContext* context, const ::chord::FixFingersReq& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::chord::FixFingersResp>>(PrepareAsyncfixFingersRaw(context, request, cq));
     }
     class experimental_async final :
       public StubInterface::experimental_async_interface {
      public:
-      void DumpNode(::grpc::ClientContext* context, const ::chord::DumpRequest* request, ::chord::DumpResponse* response, std::function<void(::grpc::Status)>) override;
-      void DumpNode(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::chord::DumpResponse* response, std::function<void(::grpc::Status)>) override;
+      void join(::grpc::ClientContext* context, const ::chord::JoinReq* request, ::chord::JoinResp* response, std::function<void(::grpc::Status)>) override;
+      void join(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::chord::JoinResp* response, std::function<void(::grpc::Status)>) override;
+      void getInfo(::grpc::ClientContext* context, const ::chord::GetInfoReq* request, ::chord::GetInfoResp* response, std::function<void(::grpc::Status)>) override;
+      void getInfo(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::chord::GetInfoResp* response, std::function<void(::grpc::Status)>) override;
+      void findSucc(::grpc::ClientContext* context, const ::chord::FindSuccReq* request, ::chord::FindSuccResp* response, std::function<void(::grpc::Status)>) override;
+      void findSucc(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::chord::FindSuccResp* response, std::function<void(::grpc::Status)>) override;
+      void findPred(::grpc::ClientContext* context, const ::chord::FindPredReq* request, ::chord::FindPredResp* response, std::function<void(::grpc::Status)>) override;
+      void findPred(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::chord::FindPredResp* response, std::function<void(::grpc::Status)>) override;
+      void closestPredFinger(::grpc::ClientContext* context, const ::chord::ClosestPredFingerReq* request, ::chord::ClosestPredFingerResp* response, std::function<void(::grpc::Status)>) override;
+      void closestPredFinger(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::chord::ClosestPredFingerResp* response, std::function<void(::grpc::Status)>) override;
+      void stabilize(::grpc::ClientContext* context, const ::chord::StabilizeReq* request, ::chord::StabilizeResp* response, std::function<void(::grpc::Status)>) override;
+      void stabilize(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::chord::StabilizeResp* response, std::function<void(::grpc::Status)>) override;
+      void notify(::grpc::ClientContext* context, const ::chord::NotifyReq* request, ::chord::NotifyResp* response, std::function<void(::grpc::Status)>) override;
+      void notify(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::chord::NotifyResp* response, std::function<void(::grpc::Status)>) override;
+      void fixFingers(::grpc::ClientContext* context, const ::chord::FixFingersReq* request, ::chord::FixFingersResp* response, std::function<void(::grpc::Status)>) override;
+      void fixFingers(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::chord::FixFingersResp* response, std::function<void(::grpc::Status)>) override;
      private:
       friend class Stub;
       explicit experimental_async(Stub* stub): stub_(stub) { }
@@ -81,9 +221,30 @@ class Chord final {
    private:
     std::shared_ptr< ::grpc::ChannelInterface> channel_;
     class experimental_async async_stub_{this};
-    ::grpc::ClientAsyncResponseReader< ::chord::DumpResponse>* AsyncDumpNodeRaw(::grpc::ClientContext* context, const ::chord::DumpRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::chord::DumpResponse>* PrepareAsyncDumpNodeRaw(::grpc::ClientContext* context, const ::chord::DumpRequest& request, ::grpc::CompletionQueue* cq) override;
-    const ::grpc::internal::RpcMethod rpcmethod_DumpNode_;
+    ::grpc::ClientAsyncResponseReader< ::chord::JoinResp>* AsyncjoinRaw(::grpc::ClientContext* context, const ::chord::JoinReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::chord::JoinResp>* PrepareAsyncjoinRaw(::grpc::ClientContext* context, const ::chord::JoinReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::chord::GetInfoResp>* AsyncgetInfoRaw(::grpc::ClientContext* context, const ::chord::GetInfoReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::chord::GetInfoResp>* PrepareAsyncgetInfoRaw(::grpc::ClientContext* context, const ::chord::GetInfoReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::chord::FindSuccResp>* AsyncfindSuccRaw(::grpc::ClientContext* context, const ::chord::FindSuccReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::chord::FindSuccResp>* PrepareAsyncfindSuccRaw(::grpc::ClientContext* context, const ::chord::FindSuccReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::chord::FindPredResp>* AsyncfindPredRaw(::grpc::ClientContext* context, const ::chord::FindPredReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::chord::FindPredResp>* PrepareAsyncfindPredRaw(::grpc::ClientContext* context, const ::chord::FindPredReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::chord::ClosestPredFingerResp>* AsyncclosestPredFingerRaw(::grpc::ClientContext* context, const ::chord::ClosestPredFingerReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::chord::ClosestPredFingerResp>* PrepareAsyncclosestPredFingerRaw(::grpc::ClientContext* context, const ::chord::ClosestPredFingerReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::chord::StabilizeResp>* AsyncstabilizeRaw(::grpc::ClientContext* context, const ::chord::StabilizeReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::chord::StabilizeResp>* PrepareAsyncstabilizeRaw(::grpc::ClientContext* context, const ::chord::StabilizeReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::chord::NotifyResp>* AsyncnotifyRaw(::grpc::ClientContext* context, const ::chord::NotifyReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::chord::NotifyResp>* PrepareAsyncnotifyRaw(::grpc::ClientContext* context, const ::chord::NotifyReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::chord::FixFingersResp>* AsyncfixFingersRaw(::grpc::ClientContext* context, const ::chord::FixFingersReq& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::chord::FixFingersResp>* PrepareAsyncfixFingersRaw(::grpc::ClientContext* context, const ::chord::FixFingersReq& request, ::grpc::CompletionQueue* cq) override;
+    const ::grpc::internal::RpcMethod rpcmethod_join_;
+    const ::grpc::internal::RpcMethod rpcmethod_getInfo_;
+    const ::grpc::internal::RpcMethod rpcmethod_findSucc_;
+    const ::grpc::internal::RpcMethod rpcmethod_findPred_;
+    const ::grpc::internal::RpcMethod rpcmethod_closestPredFinger_;
+    const ::grpc::internal::RpcMethod rpcmethod_stabilize_;
+    const ::grpc::internal::RpcMethod rpcmethod_notify_;
+    const ::grpc::internal::RpcMethod rpcmethod_fixFingers_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -91,140 +252,1036 @@ class Chord final {
    public:
     Service();
     virtual ~Service();
-    virtual ::grpc::Status DumpNode(::grpc::ServerContext* context, const ::chord::DumpRequest* request, ::chord::DumpResponse* response);
+    virtual ::grpc::Status join(::grpc::ServerContext* context, const ::chord::JoinReq* request, ::chord::JoinResp* response);
+    virtual ::grpc::Status getInfo(::grpc::ServerContext* context, const ::chord::GetInfoReq* request, ::chord::GetInfoResp* response);
+    virtual ::grpc::Status findSucc(::grpc::ServerContext* context, const ::chord::FindSuccReq* request, ::chord::FindSuccResp* response);
+    virtual ::grpc::Status findPred(::grpc::ServerContext* context, const ::chord::FindPredReq* request, ::chord::FindPredResp* response);
+    virtual ::grpc::Status closestPredFinger(::grpc::ServerContext* context, const ::chord::ClosestPredFingerReq* request, ::chord::ClosestPredFingerResp* response);
+    virtual ::grpc::Status stabilize(::grpc::ServerContext* context, const ::chord::StabilizeReq* request, ::chord::StabilizeResp* response);
+    virtual ::grpc::Status notify(::grpc::ServerContext* context, const ::chord::NotifyReq* request, ::chord::NotifyResp* response);
+    virtual ::grpc::Status fixFingers(::grpc::ServerContext* context, const ::chord::FixFingersReq* request, ::chord::FixFingersResp* response);
   };
   template <class BaseClass>
-  class WithAsyncMethod_DumpNode : public BaseClass {
+  class WithAsyncMethod_join : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
-    WithAsyncMethod_DumpNode() {
+    WithAsyncMethod_join() {
       ::grpc::Service::MarkMethodAsync(0);
     }
-    ~WithAsyncMethod_DumpNode() override {
+    ~WithAsyncMethod_join() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status DumpNode(::grpc::ServerContext* context, const ::chord::DumpRequest* request, ::chord::DumpResponse* response) override {
+    ::grpc::Status join(::grpc::ServerContext* context, const ::chord::JoinReq* request, ::chord::JoinResp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestDumpNode(::grpc::ServerContext* context, ::chord::DumpRequest* request, ::grpc::ServerAsyncResponseWriter< ::chord::DumpResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void Requestjoin(::grpc::ServerContext* context, ::chord::JoinReq* request, ::grpc::ServerAsyncResponseWriter< ::chord::JoinResp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_DumpNode<Service > AsyncService;
   template <class BaseClass>
-  class ExperimentalWithCallbackMethod_DumpNode : public BaseClass {
+  class WithAsyncMethod_getInfo : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
-    ExperimentalWithCallbackMethod_DumpNode() {
+    WithAsyncMethod_getInfo() {
+      ::grpc::Service::MarkMethodAsync(1);
+    }
+    ~WithAsyncMethod_getInfo() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getInfo(::grpc::ServerContext* context, const ::chord::GetInfoReq* request, ::chord::GetInfoResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestgetInfo(::grpc::ServerContext* context, ::chord::GetInfoReq* request, ::grpc::ServerAsyncResponseWriter< ::chord::GetInfoResp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_findSucc : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_findSucc() {
+      ::grpc::Service::MarkMethodAsync(2);
+    }
+    ~WithAsyncMethod_findSucc() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status findSucc(::grpc::ServerContext* context, const ::chord::FindSuccReq* request, ::chord::FindSuccResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestfindSucc(::grpc::ServerContext* context, ::chord::FindSuccReq* request, ::grpc::ServerAsyncResponseWriter< ::chord::FindSuccResp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_findPred : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_findPred() {
+      ::grpc::Service::MarkMethodAsync(3);
+    }
+    ~WithAsyncMethod_findPred() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status findPred(::grpc::ServerContext* context, const ::chord::FindPredReq* request, ::chord::FindPredResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestfindPred(::grpc::ServerContext* context, ::chord::FindPredReq* request, ::grpc::ServerAsyncResponseWriter< ::chord::FindPredResp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_closestPredFinger : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_closestPredFinger() {
+      ::grpc::Service::MarkMethodAsync(4);
+    }
+    ~WithAsyncMethod_closestPredFinger() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status closestPredFinger(::grpc::ServerContext* context, const ::chord::ClosestPredFingerReq* request, ::chord::ClosestPredFingerResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestclosestPredFinger(::grpc::ServerContext* context, ::chord::ClosestPredFingerReq* request, ::grpc::ServerAsyncResponseWriter< ::chord::ClosestPredFingerResp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_stabilize : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_stabilize() {
+      ::grpc::Service::MarkMethodAsync(5);
+    }
+    ~WithAsyncMethod_stabilize() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status stabilize(::grpc::ServerContext* context, const ::chord::StabilizeReq* request, ::chord::StabilizeResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void Requeststabilize(::grpc::ServerContext* context, ::chord::StabilizeReq* request, ::grpc::ServerAsyncResponseWriter< ::chord::StabilizeResp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_notify : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_notify() {
+      ::grpc::Service::MarkMethodAsync(6);
+    }
+    ~WithAsyncMethod_notify() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status notify(::grpc::ServerContext* context, const ::chord::NotifyReq* request, ::chord::NotifyResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void Requestnotify(::grpc::ServerContext* context, ::chord::NotifyReq* request, ::grpc::ServerAsyncResponseWriter< ::chord::NotifyResp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_fixFingers : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithAsyncMethod_fixFingers() {
+      ::grpc::Service::MarkMethodAsync(7);
+    }
+    ~WithAsyncMethod_fixFingers() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status fixFingers(::grpc::ServerContext* context, const ::chord::FixFingersReq* request, ::chord::FixFingersResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestfixFingers(::grpc::ServerContext* context, ::chord::FixFingersReq* request, ::grpc::ServerAsyncResponseWriter< ::chord::FixFingersResp>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_join<WithAsyncMethod_getInfo<WithAsyncMethod_findSucc<WithAsyncMethod_findPred<WithAsyncMethod_closestPredFinger<WithAsyncMethod_stabilize<WithAsyncMethod_notify<WithAsyncMethod_fixFingers<Service > > > > > > > > AsyncService;
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_join : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_join() {
       ::grpc::Service::experimental().MarkMethodCallback(0,
-        new ::grpc::internal::CallbackUnaryHandler< ::chord::DumpRequest, ::chord::DumpResponse>(
+        new ::grpc::internal::CallbackUnaryHandler< ::chord::JoinReq, ::chord::JoinResp>(
           [this](::grpc::ServerContext* context,
-                 const ::chord::DumpRequest* request,
-                 ::chord::DumpResponse* response,
+                 const ::chord::JoinReq* request,
+                 ::chord::JoinResp* response,
                  ::grpc::experimental::ServerCallbackRpcController* controller) {
-                   return this->DumpNode(context, request, response, controller);
+                   return this->join(context, request, response, controller);
                  }));
     }
-    ~ExperimentalWithCallbackMethod_DumpNode() override {
+    ~ExperimentalWithCallbackMethod_join() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status DumpNode(::grpc::ServerContext* context, const ::chord::DumpRequest* request, ::chord::DumpResponse* response) override {
+    ::grpc::Status join(::grpc::ServerContext* context, const ::chord::JoinReq* request, ::chord::JoinResp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual void DumpNode(::grpc::ServerContext* context, const ::chord::DumpRequest* request, ::chord::DumpResponse* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+    virtual void join(::grpc::ServerContext* context, const ::chord::JoinReq* request, ::chord::JoinResp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
-  typedef ExperimentalWithCallbackMethod_DumpNode<Service > ExperimentalCallbackService;
   template <class BaseClass>
-  class WithGenericMethod_DumpNode : public BaseClass {
+  class ExperimentalWithCallbackMethod_getInfo : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
-    WithGenericMethod_DumpNode() {
+    ExperimentalWithCallbackMethod_getInfo() {
+      ::grpc::Service::experimental().MarkMethodCallback(1,
+        new ::grpc::internal::CallbackUnaryHandler< ::chord::GetInfoReq, ::chord::GetInfoResp>(
+          [this](::grpc::ServerContext* context,
+                 const ::chord::GetInfoReq* request,
+                 ::chord::GetInfoResp* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   return this->getInfo(context, request, response, controller);
+                 }));
+    }
+    ~ExperimentalWithCallbackMethod_getInfo() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getInfo(::grpc::ServerContext* context, const ::chord::GetInfoReq* request, ::chord::GetInfoResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getInfo(::grpc::ServerContext* context, const ::chord::GetInfoReq* request, ::chord::GetInfoResp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_findSucc : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_findSucc() {
+      ::grpc::Service::experimental().MarkMethodCallback(2,
+        new ::grpc::internal::CallbackUnaryHandler< ::chord::FindSuccReq, ::chord::FindSuccResp>(
+          [this](::grpc::ServerContext* context,
+                 const ::chord::FindSuccReq* request,
+                 ::chord::FindSuccResp* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   return this->findSucc(context, request, response, controller);
+                 }));
+    }
+    ~ExperimentalWithCallbackMethod_findSucc() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status findSucc(::grpc::ServerContext* context, const ::chord::FindSuccReq* request, ::chord::FindSuccResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void findSucc(::grpc::ServerContext* context, const ::chord::FindSuccReq* request, ::chord::FindSuccResp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_findPred : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_findPred() {
+      ::grpc::Service::experimental().MarkMethodCallback(3,
+        new ::grpc::internal::CallbackUnaryHandler< ::chord::FindPredReq, ::chord::FindPredResp>(
+          [this](::grpc::ServerContext* context,
+                 const ::chord::FindPredReq* request,
+                 ::chord::FindPredResp* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   return this->findPred(context, request, response, controller);
+                 }));
+    }
+    ~ExperimentalWithCallbackMethod_findPred() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status findPred(::grpc::ServerContext* context, const ::chord::FindPredReq* request, ::chord::FindPredResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void findPred(::grpc::ServerContext* context, const ::chord::FindPredReq* request, ::chord::FindPredResp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_closestPredFinger : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_closestPredFinger() {
+      ::grpc::Service::experimental().MarkMethodCallback(4,
+        new ::grpc::internal::CallbackUnaryHandler< ::chord::ClosestPredFingerReq, ::chord::ClosestPredFingerResp>(
+          [this](::grpc::ServerContext* context,
+                 const ::chord::ClosestPredFingerReq* request,
+                 ::chord::ClosestPredFingerResp* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   return this->closestPredFinger(context, request, response, controller);
+                 }));
+    }
+    ~ExperimentalWithCallbackMethod_closestPredFinger() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status closestPredFinger(::grpc::ServerContext* context, const ::chord::ClosestPredFingerReq* request, ::chord::ClosestPredFingerResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void closestPredFinger(::grpc::ServerContext* context, const ::chord::ClosestPredFingerReq* request, ::chord::ClosestPredFingerResp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_stabilize : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_stabilize() {
+      ::grpc::Service::experimental().MarkMethodCallback(5,
+        new ::grpc::internal::CallbackUnaryHandler< ::chord::StabilizeReq, ::chord::StabilizeResp>(
+          [this](::grpc::ServerContext* context,
+                 const ::chord::StabilizeReq* request,
+                 ::chord::StabilizeResp* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   return this->stabilize(context, request, response, controller);
+                 }));
+    }
+    ~ExperimentalWithCallbackMethod_stabilize() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status stabilize(::grpc::ServerContext* context, const ::chord::StabilizeReq* request, ::chord::StabilizeResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void stabilize(::grpc::ServerContext* context, const ::chord::StabilizeReq* request, ::chord::StabilizeResp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_notify : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_notify() {
+      ::grpc::Service::experimental().MarkMethodCallback(6,
+        new ::grpc::internal::CallbackUnaryHandler< ::chord::NotifyReq, ::chord::NotifyResp>(
+          [this](::grpc::ServerContext* context,
+                 const ::chord::NotifyReq* request,
+                 ::chord::NotifyResp* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   return this->notify(context, request, response, controller);
+                 }));
+    }
+    ~ExperimentalWithCallbackMethod_notify() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status notify(::grpc::ServerContext* context, const ::chord::NotifyReq* request, ::chord::NotifyResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void notify(::grpc::ServerContext* context, const ::chord::NotifyReq* request, ::chord::NotifyResp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_fixFingers : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithCallbackMethod_fixFingers() {
+      ::grpc::Service::experimental().MarkMethodCallback(7,
+        new ::grpc::internal::CallbackUnaryHandler< ::chord::FixFingersReq, ::chord::FixFingersResp>(
+          [this](::grpc::ServerContext* context,
+                 const ::chord::FixFingersReq* request,
+                 ::chord::FixFingersResp* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   return this->fixFingers(context, request, response, controller);
+                 }));
+    }
+    ~ExperimentalWithCallbackMethod_fixFingers() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status fixFingers(::grpc::ServerContext* context, const ::chord::FixFingersReq* request, ::chord::FixFingersResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void fixFingers(::grpc::ServerContext* context, const ::chord::FixFingersReq* request, ::chord::FixFingersResp* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  typedef ExperimentalWithCallbackMethod_join<ExperimentalWithCallbackMethod_getInfo<ExperimentalWithCallbackMethod_findSucc<ExperimentalWithCallbackMethod_findPred<ExperimentalWithCallbackMethod_closestPredFinger<ExperimentalWithCallbackMethod_stabilize<ExperimentalWithCallbackMethod_notify<ExperimentalWithCallbackMethod_fixFingers<Service > > > > > > > > ExperimentalCallbackService;
+  template <class BaseClass>
+  class WithGenericMethod_join : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_join() {
       ::grpc::Service::MarkMethodGeneric(0);
     }
-    ~WithGenericMethod_DumpNode() override {
+    ~WithGenericMethod_join() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status DumpNode(::grpc::ServerContext* context, const ::chord::DumpRequest* request, ::chord::DumpResponse* response) override {
+    ::grpc::Status join(::grpc::ServerContext* context, const ::chord::JoinReq* request, ::chord::JoinResp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
   };
   template <class BaseClass>
-  class WithRawMethod_DumpNode : public BaseClass {
+  class WithGenericMethod_getInfo : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
-    WithRawMethod_DumpNode() {
-      ::grpc::Service::MarkMethodRaw(0);
+    WithGenericMethod_getInfo() {
+      ::grpc::Service::MarkMethodGeneric(1);
     }
-    ~WithRawMethod_DumpNode() override {
+    ~WithGenericMethod_getInfo() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status DumpNode(::grpc::ServerContext* context, const ::chord::DumpRequest* request, ::chord::DumpResponse* response) override {
+    ::grpc::Status getInfo(::grpc::ServerContext* context, const ::chord::GetInfoReq* request, ::chord::GetInfoResp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestDumpNode(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+  };
+  template <class BaseClass>
+  class WithGenericMethod_findSucc : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_findSucc() {
+      ::grpc::Service::MarkMethodGeneric(2);
+    }
+    ~WithGenericMethod_findSucc() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status findSucc(::grpc::ServerContext* context, const ::chord::FindSuccReq* request, ::chord::FindSuccResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_findPred : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_findPred() {
+      ::grpc::Service::MarkMethodGeneric(3);
+    }
+    ~WithGenericMethod_findPred() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status findPred(::grpc::ServerContext* context, const ::chord::FindPredReq* request, ::chord::FindPredResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_closestPredFinger : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_closestPredFinger() {
+      ::grpc::Service::MarkMethodGeneric(4);
+    }
+    ~WithGenericMethod_closestPredFinger() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status closestPredFinger(::grpc::ServerContext* context, const ::chord::ClosestPredFingerReq* request, ::chord::ClosestPredFingerResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_stabilize : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_stabilize() {
+      ::grpc::Service::MarkMethodGeneric(5);
+    }
+    ~WithGenericMethod_stabilize() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status stabilize(::grpc::ServerContext* context, const ::chord::StabilizeReq* request, ::chord::StabilizeResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_notify : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_notify() {
+      ::grpc::Service::MarkMethodGeneric(6);
+    }
+    ~WithGenericMethod_notify() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status notify(::grpc::ServerContext* context, const ::chord::NotifyReq* request, ::chord::NotifyResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_fixFingers : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithGenericMethod_fixFingers() {
+      ::grpc::Service::MarkMethodGeneric(7);
+    }
+    ~WithGenericMethod_fixFingers() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status fixFingers(::grpc::ServerContext* context, const ::chord::FixFingersReq* request, ::chord::FixFingersResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_join : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_join() {
+      ::grpc::Service::MarkMethodRaw(0);
+    }
+    ~WithRawMethod_join() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status join(::grpc::ServerContext* context, const ::chord::JoinReq* request, ::chord::JoinResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void Requestjoin(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class ExperimentalWithRawCallbackMethod_DumpNode : public BaseClass {
+  class WithRawMethod_getInfo : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
-    ExperimentalWithRawCallbackMethod_DumpNode() {
+    WithRawMethod_getInfo() {
+      ::grpc::Service::MarkMethodRaw(1);
+    }
+    ~WithRawMethod_getInfo() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getInfo(::grpc::ServerContext* context, const ::chord::GetInfoReq* request, ::chord::GetInfoResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestgetInfo(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_findSucc : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_findSucc() {
+      ::grpc::Service::MarkMethodRaw(2);
+    }
+    ~WithRawMethod_findSucc() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status findSucc(::grpc::ServerContext* context, const ::chord::FindSuccReq* request, ::chord::FindSuccResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestfindSucc(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_findPred : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_findPred() {
+      ::grpc::Service::MarkMethodRaw(3);
+    }
+    ~WithRawMethod_findPred() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status findPred(::grpc::ServerContext* context, const ::chord::FindPredReq* request, ::chord::FindPredResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestfindPred(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_closestPredFinger : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_closestPredFinger() {
+      ::grpc::Service::MarkMethodRaw(4);
+    }
+    ~WithRawMethod_closestPredFinger() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status closestPredFinger(::grpc::ServerContext* context, const ::chord::ClosestPredFingerReq* request, ::chord::ClosestPredFingerResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestclosestPredFinger(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_stabilize : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_stabilize() {
+      ::grpc::Service::MarkMethodRaw(5);
+    }
+    ~WithRawMethod_stabilize() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status stabilize(::grpc::ServerContext* context, const ::chord::StabilizeReq* request, ::chord::StabilizeResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void Requeststabilize(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_notify : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_notify() {
+      ::grpc::Service::MarkMethodRaw(6);
+    }
+    ~WithRawMethod_notify() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status notify(::grpc::ServerContext* context, const ::chord::NotifyReq* request, ::chord::NotifyResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void Requestnotify(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_fixFingers : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithRawMethod_fixFingers() {
+      ::grpc::Service::MarkMethodRaw(7);
+    }
+    ~WithRawMethod_fixFingers() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status fixFingers(::grpc::ServerContext* context, const ::chord::FixFingersReq* request, ::chord::FixFingersResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestfixFingers(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_join : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_join() {
       ::grpc::Service::experimental().MarkMethodRawCallback(0,
         new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
           [this](::grpc::ServerContext* context,
                  const ::grpc::ByteBuffer* request,
                  ::grpc::ByteBuffer* response,
                  ::grpc::experimental::ServerCallbackRpcController* controller) {
-                   this->DumpNode(context, request, response, controller);
+                   this->join(context, request, response, controller);
                  }));
     }
-    ~ExperimentalWithRawCallbackMethod_DumpNode() override {
+    ~ExperimentalWithRawCallbackMethod_join() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status DumpNode(::grpc::ServerContext* context, const ::chord::DumpRequest* request, ::chord::DumpResponse* response) override {
+    ::grpc::Status join(::grpc::ServerContext* context, const ::chord::JoinReq* request, ::chord::JoinResp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual void DumpNode(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+    virtual void join(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
   };
   template <class BaseClass>
-  class WithStreamedUnaryMethod_DumpNode : public BaseClass {
+  class ExperimentalWithRawCallbackMethod_getInfo : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service *service) {}
    public:
-    WithStreamedUnaryMethod_DumpNode() {
-      ::grpc::Service::MarkMethodStreamed(0,
-        new ::grpc::internal::StreamedUnaryHandler< ::chord::DumpRequest, ::chord::DumpResponse>(std::bind(&WithStreamedUnaryMethod_DumpNode<BaseClass>::StreamedDumpNode, this, std::placeholders::_1, std::placeholders::_2)));
+    ExperimentalWithRawCallbackMethod_getInfo() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(1,
+        new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->getInfo(context, request, response, controller);
+                 }));
     }
-    ~WithStreamedUnaryMethod_DumpNode() override {
+    ~ExperimentalWithRawCallbackMethod_getInfo() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getInfo(::grpc::ServerContext* context, const ::chord::GetInfoReq* request, ::chord::GetInfoResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void getInfo(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_findSucc : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_findSucc() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(2,
+        new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->findSucc(context, request, response, controller);
+                 }));
+    }
+    ~ExperimentalWithRawCallbackMethod_findSucc() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status findSucc(::grpc::ServerContext* context, const ::chord::FindSuccReq* request, ::chord::FindSuccResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void findSucc(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_findPred : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_findPred() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(3,
+        new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->findPred(context, request, response, controller);
+                 }));
+    }
+    ~ExperimentalWithRawCallbackMethod_findPred() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status findPred(::grpc::ServerContext* context, const ::chord::FindPredReq* request, ::chord::FindPredResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void findPred(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_closestPredFinger : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_closestPredFinger() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(4,
+        new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->closestPredFinger(context, request, response, controller);
+                 }));
+    }
+    ~ExperimentalWithRawCallbackMethod_closestPredFinger() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status closestPredFinger(::grpc::ServerContext* context, const ::chord::ClosestPredFingerReq* request, ::chord::ClosestPredFingerResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void closestPredFinger(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_stabilize : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_stabilize() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(5,
+        new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->stabilize(context, request, response, controller);
+                 }));
+    }
+    ~ExperimentalWithRawCallbackMethod_stabilize() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status stabilize(::grpc::ServerContext* context, const ::chord::StabilizeReq* request, ::chord::StabilizeResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void stabilize(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_notify : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_notify() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(6,
+        new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->notify(context, request, response, controller);
+                 }));
+    }
+    ~ExperimentalWithRawCallbackMethod_notify() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status notify(::grpc::ServerContext* context, const ::chord::NotifyReq* request, ::chord::NotifyResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void notify(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_fixFingers : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    ExperimentalWithRawCallbackMethod_fixFingers() {
+      ::grpc::Service::experimental().MarkMethodRawCallback(7,
+        new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+          [this](::grpc::ServerContext* context,
+                 const ::grpc::ByteBuffer* request,
+                 ::grpc::ByteBuffer* response,
+                 ::grpc::experimental::ServerCallbackRpcController* controller) {
+                   this->fixFingers(context, request, response, controller);
+                 }));
+    }
+    ~ExperimentalWithRawCallbackMethod_fixFingers() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status fixFingers(::grpc::ServerContext* context, const ::chord::FixFingersReq* request, ::chord::FixFingersResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual void fixFingers(::grpc::ServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response, ::grpc::experimental::ServerCallbackRpcController* controller) { controller->Finish(::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "")); }
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_join : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithStreamedUnaryMethod_join() {
+      ::grpc::Service::MarkMethodStreamed(0,
+        new ::grpc::internal::StreamedUnaryHandler< ::chord::JoinReq, ::chord::JoinResp>(std::bind(&WithStreamedUnaryMethod_join<BaseClass>::Streamedjoin, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_join() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status DumpNode(::grpc::ServerContext* context, const ::chord::DumpRequest* request, ::chord::DumpResponse* response) override {
+    ::grpc::Status join(::grpc::ServerContext* context, const ::chord::JoinReq* request, ::chord::JoinResp* response) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedDumpNode(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::chord::DumpRequest,::chord::DumpResponse>* server_unary_streamer) = 0;
+    virtual ::grpc::Status Streamedjoin(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::chord::JoinReq,::chord::JoinResp>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_DumpNode<Service > StreamedUnaryService;
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_getInfo : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithStreamedUnaryMethod_getInfo() {
+      ::grpc::Service::MarkMethodStreamed(1,
+        new ::grpc::internal::StreamedUnaryHandler< ::chord::GetInfoReq, ::chord::GetInfoResp>(std::bind(&WithStreamedUnaryMethod_getInfo<BaseClass>::StreamedgetInfo, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_getInfo() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status getInfo(::grpc::ServerContext* context, const ::chord::GetInfoReq* request, ::chord::GetInfoResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedgetInfo(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::chord::GetInfoReq,::chord::GetInfoResp>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_findSucc : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithStreamedUnaryMethod_findSucc() {
+      ::grpc::Service::MarkMethodStreamed(2,
+        new ::grpc::internal::StreamedUnaryHandler< ::chord::FindSuccReq, ::chord::FindSuccResp>(std::bind(&WithStreamedUnaryMethod_findSucc<BaseClass>::StreamedfindSucc, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_findSucc() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status findSucc(::grpc::ServerContext* context, const ::chord::FindSuccReq* request, ::chord::FindSuccResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedfindSucc(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::chord::FindSuccReq,::chord::FindSuccResp>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_findPred : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithStreamedUnaryMethod_findPred() {
+      ::grpc::Service::MarkMethodStreamed(3,
+        new ::grpc::internal::StreamedUnaryHandler< ::chord::FindPredReq, ::chord::FindPredResp>(std::bind(&WithStreamedUnaryMethod_findPred<BaseClass>::StreamedfindPred, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_findPred() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status findPred(::grpc::ServerContext* context, const ::chord::FindPredReq* request, ::chord::FindPredResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedfindPred(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::chord::FindPredReq,::chord::FindPredResp>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_closestPredFinger : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithStreamedUnaryMethod_closestPredFinger() {
+      ::grpc::Service::MarkMethodStreamed(4,
+        new ::grpc::internal::StreamedUnaryHandler< ::chord::ClosestPredFingerReq, ::chord::ClosestPredFingerResp>(std::bind(&WithStreamedUnaryMethod_closestPredFinger<BaseClass>::StreamedclosestPredFinger, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_closestPredFinger() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status closestPredFinger(::grpc::ServerContext* context, const ::chord::ClosestPredFingerReq* request, ::chord::ClosestPredFingerResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedclosestPredFinger(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::chord::ClosestPredFingerReq,::chord::ClosestPredFingerResp>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_stabilize : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithStreamedUnaryMethod_stabilize() {
+      ::grpc::Service::MarkMethodStreamed(5,
+        new ::grpc::internal::StreamedUnaryHandler< ::chord::StabilizeReq, ::chord::StabilizeResp>(std::bind(&WithStreamedUnaryMethod_stabilize<BaseClass>::Streamedstabilize, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_stabilize() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status stabilize(::grpc::ServerContext* context, const ::chord::StabilizeReq* request, ::chord::StabilizeResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status Streamedstabilize(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::chord::StabilizeReq,::chord::StabilizeResp>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_notify : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithStreamedUnaryMethod_notify() {
+      ::grpc::Service::MarkMethodStreamed(6,
+        new ::grpc::internal::StreamedUnaryHandler< ::chord::NotifyReq, ::chord::NotifyResp>(std::bind(&WithStreamedUnaryMethod_notify<BaseClass>::Streamednotify, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_notify() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status notify(::grpc::ServerContext* context, const ::chord::NotifyReq* request, ::chord::NotifyResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status Streamednotify(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::chord::NotifyReq,::chord::NotifyResp>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_fixFingers : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service *service) {}
+   public:
+    WithStreamedUnaryMethod_fixFingers() {
+      ::grpc::Service::MarkMethodStreamed(7,
+        new ::grpc::internal::StreamedUnaryHandler< ::chord::FixFingersReq, ::chord::FixFingersResp>(std::bind(&WithStreamedUnaryMethod_fixFingers<BaseClass>::StreamedfixFingers, this, std::placeholders::_1, std::placeholders::_2)));
+    }
+    ~WithStreamedUnaryMethod_fixFingers() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status fixFingers(::grpc::ServerContext* context, const ::chord::FixFingersReq* request, ::chord::FixFingersResp* response) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedfixFingers(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::chord::FixFingersReq,::chord::FixFingersResp>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_join<WithStreamedUnaryMethod_getInfo<WithStreamedUnaryMethod_findSucc<WithStreamedUnaryMethod_findPred<WithStreamedUnaryMethod_closestPredFinger<WithStreamedUnaryMethod_stabilize<WithStreamedUnaryMethod_notify<WithStreamedUnaryMethod_fixFingers<Service > > > > > > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_DumpNode<Service > StreamedService;
+  typedef WithStreamedUnaryMethod_join<WithStreamedUnaryMethod_getInfo<WithStreamedUnaryMethod_findSucc<WithStreamedUnaryMethod_findPred<WithStreamedUnaryMethod_closestPredFinger<WithStreamedUnaryMethod_stabilize<WithStreamedUnaryMethod_notify<WithStreamedUnaryMethod_fixFingers<Service > > > > > > > > StreamedService;
 };
 
 }  // namespace chord

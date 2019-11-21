@@ -3,31 +3,49 @@ syntax = "proto3";
 package chord;
 
 service Chord {
-    rpc DumpNode (DumpRequest) returns (DumpResponse) {}
+    rpc join(JoinReq) returns(JoinResp) {}
+
+    rpc getInfo(GetInfoReq) returns(GetInfoResp) {}
+
+    rpc findSucc(FindSuccReq) returns(FindSuccResp) {}
+    rpc findPred(FindPredReq) returns(FindPredResp) {}
+    rpc closestPredFinger(ClosestPredFingerReq) returns(ClosestPredFingerResp) {}
+
+    rpc stabilize(StabilizeReq) returns(StabilizeResp) {}
+    rpc notify(NotifyReq) returns(NotifyResp) {}
+    rpc fixFingers(FixFingersReq) returns(FixFingersResp) {}
 }
 
-message DumpRequest {
-     // nothing for now ,
-     // but we might add some fields here for logging
+message JoinReq { Node buddy = 1; }
+message JoinResp { }
+
+message GetInfoReq { }
+message GetInfoResp {
+    NodeInfo info = 1;
 }
 
-message DumpResponse {
-    Node node = 1;
-}
+message FindSuccReq { uint32 key = 1; }
+message FindSuccResp { Node succ = 1; }
+message FindPredReq { uint32 key = 1; }
+message FindPredResp { Node pred = 1; }
+message ClosestPredFingerReq { uint32 key = 1; }
+message ClosestPredFingerResp { Node pred_finger = 1; }
+
+message StabilizeReq {}
+message StabilizeResp {}
+message NotifyReq { Node potential_pred = 1; }
+message NotifyResp { }
+message FixFingersReq {}
+message FixFingersResp {}
 
 message Node {
     string addr = 1;
-    uint32 m = 2;
-    string succ = 3;
-    string pred = 4;
-    FingerTable tbl = 5;
+    uint32 id = 2;
 }
 
-message FingerTable {
-    repeated Finger fingers = 1;
+message NodeInfo {
+    Node self = 1;
+    Node succ = 2;
+    Node pred = 3;
 }
 
-message Finger {
-    string addr = 1;
-    uint32 idx = 2;
-}

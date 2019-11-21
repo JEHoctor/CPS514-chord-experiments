@@ -5,33 +5,25 @@
 #ifndef CHORD_CONTEXT_H
 #define CHORD_CONTEXT_H
 
-#include <string>
-#include "generated/chord.pb.h"
-
-using namespace std;
+#include "node.h"
+#include "finger_table.h"
+#include "generated/chord.grpc.pb.h"
 
 class Context {
 private:
-    int m;
-    string addr;
-    string port;
-    string succ = "";
-    string pred = "";
+    Node* me;
+    Node* succ;
+    Node* pred;
+    FingerTable tbl;
 
 public:
-    Context(int m, string addr, string port);
+    explicit Context(Node* me);
+    void setSucc(Node* succ_);
+    void setPred(Node* pred_);
+    void setFinger(int idx, Node* node);
+    Node* getFinger(int idx);
 
-    string getAddr();
-
-    string getPort();
-
-    string getSucc();
-    void setSucc(string succ_);
-
-    string getPred();
-    void setPred(string pred_);
-
-    chord::Node dumpProto();
+    chord::NodeInfo* genProto();
 };
 
 #endif //CHORD_CONTEXT_H

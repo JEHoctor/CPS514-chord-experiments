@@ -8,14 +8,13 @@
 #include "context.h"
 #include "generated/chord.grpc.pb.h"
 
-using namespace std;
 using chord::Chord;
 
-void startServer(int m, Context myContext, const string& buddyAddrPort, Chord::Service* chordService) {
+void startServer(const std::string& port, Chord::Service* chordService) {
     grpc::ServerBuilder builder;
-    builder.AddListeningPort("0.0.0.0:"+myContext.getPort(), grpc::InsecureServerCredentials());
+    builder.AddListeningPort("0.0.0.0:"+port, grpc::InsecureServerCredentials());
     builder.RegisterService(chordService);
-    unique_ptr<grpc::Server> server(builder.BuildAndStart());
-    cout << "Server listening on " << myContext.getPort() << endl;
+    std::unique_ptr<grpc::Server> server(builder.BuildAndStart());
+    std::cout << "Server listening on " << port << std::endl;
     server->Wait();
 }

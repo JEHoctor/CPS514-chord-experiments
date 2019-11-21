@@ -19,7 +19,14 @@
 namespace chord {
 
 static const char* Chord_method_names[] = {
-  "/chord.Chord/DumpNode",
+  "/chord.Chord/join",
+  "/chord.Chord/getInfo",
+  "/chord.Chord/findSucc",
+  "/chord.Chord/findPred",
+  "/chord.Chord/closestPredFinger",
+  "/chord.Chord/stabilize",
+  "/chord.Chord/notify",
+  "/chord.Chord/fixFingers",
 };
 
 std::unique_ptr< Chord::Stub> Chord::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -29,41 +36,272 @@ std::unique_ptr< Chord::Stub> Chord::NewStub(const std::shared_ptr< ::grpc::Chan
 }
 
 Chord::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel)
-  : channel_(channel), rpcmethod_DumpNode_(Chord_method_names[0], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  : channel_(channel), rpcmethod_join_(Chord_method_names[0], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_getInfo_(Chord_method_names[1], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_findSucc_(Chord_method_names[2], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_findPred_(Chord_method_names[3], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_closestPredFinger_(Chord_method_names[4], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_stabilize_(Chord_method_names[5], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_notify_(Chord_method_names[6], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_fixFingers_(Chord_method_names[7], ::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
-::grpc::Status Chord::Stub::DumpNode(::grpc::ClientContext* context, const ::chord::DumpRequest& request, ::chord::DumpResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_DumpNode_, context, request, response);
+::grpc::Status Chord::Stub::join(::grpc::ClientContext* context, const ::chord::JoinReq& request, ::chord::JoinResp* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_join_, context, request, response);
 }
 
-void Chord::Stub::experimental_async::DumpNode(::grpc::ClientContext* context, const ::chord::DumpRequest* request, ::chord::DumpResponse* response, std::function<void(::grpc::Status)> f) {
-  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_DumpNode_, context, request, response, std::move(f));
+void Chord::Stub::experimental_async::join(::grpc::ClientContext* context, const ::chord::JoinReq* request, ::chord::JoinResp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_join_, context, request, response, std::move(f));
 }
 
-void Chord::Stub::experimental_async::DumpNode(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::chord::DumpResponse* response, std::function<void(::grpc::Status)> f) {
-  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_DumpNode_, context, request, response, std::move(f));
+void Chord::Stub::experimental_async::join(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::chord::JoinResp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_join_, context, request, response, std::move(f));
 }
 
-::grpc::ClientAsyncResponseReader< ::chord::DumpResponse>* Chord::Stub::AsyncDumpNodeRaw(::grpc::ClientContext* context, const ::chord::DumpRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::chord::DumpResponse>::Create(channel_.get(), cq, rpcmethod_DumpNode_, context, request, true);
+::grpc::ClientAsyncResponseReader< ::chord::JoinResp>* Chord::Stub::AsyncjoinRaw(::grpc::ClientContext* context, const ::chord::JoinReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::chord::JoinResp>::Create(channel_.get(), cq, rpcmethod_join_, context, request, true);
 }
 
-::grpc::ClientAsyncResponseReader< ::chord::DumpResponse>* Chord::Stub::PrepareAsyncDumpNodeRaw(::grpc::ClientContext* context, const ::chord::DumpRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::chord::DumpResponse>::Create(channel_.get(), cq, rpcmethod_DumpNode_, context, request, false);
+::grpc::ClientAsyncResponseReader< ::chord::JoinResp>* Chord::Stub::PrepareAsyncjoinRaw(::grpc::ClientContext* context, const ::chord::JoinReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::chord::JoinResp>::Create(channel_.get(), cq, rpcmethod_join_, context, request, false);
+}
+
+::grpc::Status Chord::Stub::getInfo(::grpc::ClientContext* context, const ::chord::GetInfoReq& request, ::chord::GetInfoResp* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_getInfo_, context, request, response);
+}
+
+void Chord::Stub::experimental_async::getInfo(::grpc::ClientContext* context, const ::chord::GetInfoReq* request, ::chord::GetInfoResp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_getInfo_, context, request, response, std::move(f));
+}
+
+void Chord::Stub::experimental_async::getInfo(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::chord::GetInfoResp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_getInfo_, context, request, response, std::move(f));
+}
+
+::grpc::ClientAsyncResponseReader< ::chord::GetInfoResp>* Chord::Stub::AsyncgetInfoRaw(::grpc::ClientContext* context, const ::chord::GetInfoReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::chord::GetInfoResp>::Create(channel_.get(), cq, rpcmethod_getInfo_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::chord::GetInfoResp>* Chord::Stub::PrepareAsyncgetInfoRaw(::grpc::ClientContext* context, const ::chord::GetInfoReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::chord::GetInfoResp>::Create(channel_.get(), cq, rpcmethod_getInfo_, context, request, false);
+}
+
+::grpc::Status Chord::Stub::findSucc(::grpc::ClientContext* context, const ::chord::FindSuccReq& request, ::chord::FindSuccResp* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_findSucc_, context, request, response);
+}
+
+void Chord::Stub::experimental_async::findSucc(::grpc::ClientContext* context, const ::chord::FindSuccReq* request, ::chord::FindSuccResp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_findSucc_, context, request, response, std::move(f));
+}
+
+void Chord::Stub::experimental_async::findSucc(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::chord::FindSuccResp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_findSucc_, context, request, response, std::move(f));
+}
+
+::grpc::ClientAsyncResponseReader< ::chord::FindSuccResp>* Chord::Stub::AsyncfindSuccRaw(::grpc::ClientContext* context, const ::chord::FindSuccReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::chord::FindSuccResp>::Create(channel_.get(), cq, rpcmethod_findSucc_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::chord::FindSuccResp>* Chord::Stub::PrepareAsyncfindSuccRaw(::grpc::ClientContext* context, const ::chord::FindSuccReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::chord::FindSuccResp>::Create(channel_.get(), cq, rpcmethod_findSucc_, context, request, false);
+}
+
+::grpc::Status Chord::Stub::findPred(::grpc::ClientContext* context, const ::chord::FindPredReq& request, ::chord::FindPredResp* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_findPred_, context, request, response);
+}
+
+void Chord::Stub::experimental_async::findPred(::grpc::ClientContext* context, const ::chord::FindPredReq* request, ::chord::FindPredResp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_findPred_, context, request, response, std::move(f));
+}
+
+void Chord::Stub::experimental_async::findPred(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::chord::FindPredResp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_findPred_, context, request, response, std::move(f));
+}
+
+::grpc::ClientAsyncResponseReader< ::chord::FindPredResp>* Chord::Stub::AsyncfindPredRaw(::grpc::ClientContext* context, const ::chord::FindPredReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::chord::FindPredResp>::Create(channel_.get(), cq, rpcmethod_findPred_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::chord::FindPredResp>* Chord::Stub::PrepareAsyncfindPredRaw(::grpc::ClientContext* context, const ::chord::FindPredReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::chord::FindPredResp>::Create(channel_.get(), cq, rpcmethod_findPred_, context, request, false);
+}
+
+::grpc::Status Chord::Stub::closestPredFinger(::grpc::ClientContext* context, const ::chord::ClosestPredFingerReq& request, ::chord::ClosestPredFingerResp* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_closestPredFinger_, context, request, response);
+}
+
+void Chord::Stub::experimental_async::closestPredFinger(::grpc::ClientContext* context, const ::chord::ClosestPredFingerReq* request, ::chord::ClosestPredFingerResp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_closestPredFinger_, context, request, response, std::move(f));
+}
+
+void Chord::Stub::experimental_async::closestPredFinger(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::chord::ClosestPredFingerResp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_closestPredFinger_, context, request, response, std::move(f));
+}
+
+::grpc::ClientAsyncResponseReader< ::chord::ClosestPredFingerResp>* Chord::Stub::AsyncclosestPredFingerRaw(::grpc::ClientContext* context, const ::chord::ClosestPredFingerReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::chord::ClosestPredFingerResp>::Create(channel_.get(), cq, rpcmethod_closestPredFinger_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::chord::ClosestPredFingerResp>* Chord::Stub::PrepareAsyncclosestPredFingerRaw(::grpc::ClientContext* context, const ::chord::ClosestPredFingerReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::chord::ClosestPredFingerResp>::Create(channel_.get(), cq, rpcmethod_closestPredFinger_, context, request, false);
+}
+
+::grpc::Status Chord::Stub::stabilize(::grpc::ClientContext* context, const ::chord::StabilizeReq& request, ::chord::StabilizeResp* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_stabilize_, context, request, response);
+}
+
+void Chord::Stub::experimental_async::stabilize(::grpc::ClientContext* context, const ::chord::StabilizeReq* request, ::chord::StabilizeResp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_stabilize_, context, request, response, std::move(f));
+}
+
+void Chord::Stub::experimental_async::stabilize(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::chord::StabilizeResp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_stabilize_, context, request, response, std::move(f));
+}
+
+::grpc::ClientAsyncResponseReader< ::chord::StabilizeResp>* Chord::Stub::AsyncstabilizeRaw(::grpc::ClientContext* context, const ::chord::StabilizeReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::chord::StabilizeResp>::Create(channel_.get(), cq, rpcmethod_stabilize_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::chord::StabilizeResp>* Chord::Stub::PrepareAsyncstabilizeRaw(::grpc::ClientContext* context, const ::chord::StabilizeReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::chord::StabilizeResp>::Create(channel_.get(), cq, rpcmethod_stabilize_, context, request, false);
+}
+
+::grpc::Status Chord::Stub::notify(::grpc::ClientContext* context, const ::chord::NotifyReq& request, ::chord::NotifyResp* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_notify_, context, request, response);
+}
+
+void Chord::Stub::experimental_async::notify(::grpc::ClientContext* context, const ::chord::NotifyReq* request, ::chord::NotifyResp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_notify_, context, request, response, std::move(f));
+}
+
+void Chord::Stub::experimental_async::notify(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::chord::NotifyResp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_notify_, context, request, response, std::move(f));
+}
+
+::grpc::ClientAsyncResponseReader< ::chord::NotifyResp>* Chord::Stub::AsyncnotifyRaw(::grpc::ClientContext* context, const ::chord::NotifyReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::chord::NotifyResp>::Create(channel_.get(), cq, rpcmethod_notify_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::chord::NotifyResp>* Chord::Stub::PrepareAsyncnotifyRaw(::grpc::ClientContext* context, const ::chord::NotifyReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::chord::NotifyResp>::Create(channel_.get(), cq, rpcmethod_notify_, context, request, false);
+}
+
+::grpc::Status Chord::Stub::fixFingers(::grpc::ClientContext* context, const ::chord::FixFingersReq& request, ::chord::FixFingersResp* response) {
+  return ::grpc::internal::BlockingUnaryCall(channel_.get(), rpcmethod_fixFingers_, context, request, response);
+}
+
+void Chord::Stub::experimental_async::fixFingers(::grpc::ClientContext* context, const ::chord::FixFingersReq* request, ::chord::FixFingersResp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_fixFingers_, context, request, response, std::move(f));
+}
+
+void Chord::Stub::experimental_async::fixFingers(::grpc::ClientContext* context, const ::grpc::ByteBuffer* request, ::chord::FixFingersResp* response, std::function<void(::grpc::Status)> f) {
+  return ::grpc::internal::CallbackUnaryCall(stub_->channel_.get(), stub_->rpcmethod_fixFingers_, context, request, response, std::move(f));
+}
+
+::grpc::ClientAsyncResponseReader< ::chord::FixFingersResp>* Chord::Stub::AsyncfixFingersRaw(::grpc::ClientContext* context, const ::chord::FixFingersReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::chord::FixFingersResp>::Create(channel_.get(), cq, rpcmethod_fixFingers_, context, request, true);
+}
+
+::grpc::ClientAsyncResponseReader< ::chord::FixFingersResp>* Chord::Stub::PrepareAsyncfixFingersRaw(::grpc::ClientContext* context, const ::chord::FixFingersReq& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderFactory< ::chord::FixFingersResp>::Create(channel_.get(), cq, rpcmethod_fixFingers_, context, request, false);
 }
 
 Chord::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       Chord_method_names[0],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< Chord::Service, ::chord::DumpRequest, ::chord::DumpResponse>(
-          std::mem_fn(&Chord::Service::DumpNode), this)));
+      new ::grpc::internal::RpcMethodHandler< Chord::Service, ::chord::JoinReq, ::chord::JoinResp>(
+          std::mem_fn(&Chord::Service::join), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Chord_method_names[1],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Chord::Service, ::chord::GetInfoReq, ::chord::GetInfoResp>(
+          std::mem_fn(&Chord::Service::getInfo), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Chord_method_names[2],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Chord::Service, ::chord::FindSuccReq, ::chord::FindSuccResp>(
+          std::mem_fn(&Chord::Service::findSucc), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Chord_method_names[3],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Chord::Service, ::chord::FindPredReq, ::chord::FindPredResp>(
+          std::mem_fn(&Chord::Service::findPred), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Chord_method_names[4],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Chord::Service, ::chord::ClosestPredFingerReq, ::chord::ClosestPredFingerResp>(
+          std::mem_fn(&Chord::Service::closestPredFinger), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Chord_method_names[5],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Chord::Service, ::chord::StabilizeReq, ::chord::StabilizeResp>(
+          std::mem_fn(&Chord::Service::stabilize), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Chord_method_names[6],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Chord::Service, ::chord::NotifyReq, ::chord::NotifyResp>(
+          std::mem_fn(&Chord::Service::notify), this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      Chord_method_names[7],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< Chord::Service, ::chord::FixFingersReq, ::chord::FixFingersResp>(
+          std::mem_fn(&Chord::Service::fixFingers), this)));
 }
 
 Chord::Service::~Service() {
 }
 
-::grpc::Status Chord::Service::DumpNode(::grpc::ServerContext* context, const ::chord::DumpRequest* request, ::chord::DumpResponse* response) {
+::grpc::Status Chord::Service::join(::grpc::ServerContext* context, const ::chord::JoinReq* request, ::chord::JoinResp* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Chord::Service::getInfo(::grpc::ServerContext* context, const ::chord::GetInfoReq* request, ::chord::GetInfoResp* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Chord::Service::findSucc(::grpc::ServerContext* context, const ::chord::FindSuccReq* request, ::chord::FindSuccResp* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Chord::Service::findPred(::grpc::ServerContext* context, const ::chord::FindPredReq* request, ::chord::FindPredResp* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Chord::Service::closestPredFinger(::grpc::ServerContext* context, const ::chord::ClosestPredFingerReq* request, ::chord::ClosestPredFingerResp* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Chord::Service::stabilize(::grpc::ServerContext* context, const ::chord::StabilizeReq* request, ::chord::StabilizeResp* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Chord::Service::notify(::grpc::ServerContext* context, const ::chord::NotifyReq* request, ::chord::NotifyResp* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status Chord::Service::fixFingers(::grpc::ServerContext* context, const ::chord::FixFingersReq* request, ::chord::FixFingersResp* response) {
   (void) context;
   (void) request;
   (void) response;

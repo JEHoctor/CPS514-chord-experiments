@@ -1,3 +1,5 @@
+#include <utility>
+
 //
 // Created by Inchan Hwang on 2019-11-07.
 //
@@ -8,17 +10,16 @@
 
 using namespace std;
 
-FingerTable::FingerTable(int size_): size(size_) {
-    tbl.reserve(size);
-    for(int i = 0 ; i < size ; i ++) {
-        tbl.emplace_back("");
+FingerTable::FingerTable() = default;
+
+Node* FingerTable::getNode(int idx) {
+    if(tbl.find(idx) == tbl.end()) {
+        return nullptr;
+    } else {
+        return tbl[idx];
     }
 }
 
-string FingerTable::getAddr(int idx) {
-    return tbl[idx];
-}
-
-void FingerTable::setAddr(int idx, string addr) {
-    tbl.at(idx) = move(addr);
+void FingerTable::setNode(int idx, Node* node) {
+    tbl[idx] = std::move(node);
 }

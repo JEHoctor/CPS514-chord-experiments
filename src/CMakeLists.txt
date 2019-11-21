@@ -12,10 +12,11 @@ file(GLOB_RECURSE SRCS LIST_DIRECTORIES true *.h *.cpp)
 add_executable(${BINARY}
         ${SRCS}
         ${PROTO_SRCS}
-        ${GRPC_SRCS} server.h chord_impl.h)
+        ${GRPC_SRCS})
 target_link_libraries(${BINARY}
         gRPC::grpc++_reflection
         protobuf::libprotobuf
+        OpenSSL::Crypto
 )
 add_library(${BINARY}_lib STATIC
         ${SRCS}
@@ -24,4 +25,5 @@ add_library(${BINARY}_lib STATIC
 target_link_libraries(${BINARY}_lib
         gRPC::grpc++_reflection
         protobuf::libprotobuf
+        OpenSSL::Crypto
 )

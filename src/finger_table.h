@@ -7,21 +7,18 @@
 
 #include <string>
 #include <stdlib.h>
-#include <vector>
-
-using namespace std;
+#include <node.h>
+#include <unordered_map>
 
 class FingerTable {
 private:
-    int size;
-    vector<string> tbl;
+    std::unordered_map<int, Node*> tbl;
 
 public:
-    explicit FingerTable(int size);
+    explicit FingerTable();
 
-    // "" if the address of the node isn't found yet
-    string getAddr(int idx);
-    void setAddr(int idx, string addr);
+    Node* getNode(int idx);
+    void setNode(int idx, Node* node);
 };
 
 #endif //CHORD_FINGER_TABLE_H
