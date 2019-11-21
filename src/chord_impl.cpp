@@ -1,12 +1,9 @@
-#include <utility>
-
-#include <utility>
-
 //
 // Created by Inchan Hwang on 2019-11-07.
 //
 
 #include <utility>
+#include <random>
 #include <grpcpp/grpcpp.h>
 #include "chord_impl.h"
 #include "generated/chord.grpc.pb.h"
@@ -164,7 +161,7 @@ void ChordImpl::handleStabilize() {
     chord::NodeInfo info;
     if(callGetInfo(myCtx.getSucc(), &info)) {
         auto pred = Node(info.pred());
-        if(isInside(myCtx.getMe().getID()+1, myCtx.getSucc().getID()-1, pred.getID()) {
+        if(isInside(myCtx.getMe().getID()+1, myCtx.getSucc().getID()-1, pred.getID())) {
             myCtx.setSucc(pred);
         }
         callNotify(myCtx.getSucc(), myCtx.getMe());
@@ -179,7 +176,16 @@ void ChordImpl::handleNotify(Node potentialPred) {
 }
 
 void ChordImpl::handleFixFingers() {
-    
+    int i = (std::rand() % 31) + 2; // [2, 32]
+
+    uint64_t id = myCtx.getMe().getID();
+    id += (1ull << (i-1));
+    id = id % (1ull << 32);
+
+    Node res;
+    if(handleFindSucc(id, &res)) {
+        myCtx.setFinger(i, res);
+    }
 }
 
 

@@ -12,6 +12,8 @@ int main(int argc, char **argv) {
         return 1;
     }
 
+    std::srand(std::time(nullptr)); // use current time as seed for random generator
+
     string myHost = argv[1];
     string myPort = argv[2];
 

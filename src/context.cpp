@@ -26,6 +26,7 @@ Node Context::getPred() { return pred; }
 
 void Context::setSucc(Node succ_) {
     this->succ = std::move(succ_);
+    setFinger(1, this->succ);
 }
 
 void Context::setPred(Node pred_) {
