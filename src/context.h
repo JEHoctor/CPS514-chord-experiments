@@ -17,7 +17,7 @@ private:
     FingerTable tbl;
 
 public:
-    explicit Context(Node me);
+    explicit Context(const Node& me);
 
     Node getMe();
     Node getSucc();

@@ -7,6 +7,7 @@
 #include "node.h"
 
 Node::Node() {
+    addr = "";
     id = 0;
     isValid = false;
 }
@@ -17,7 +18,8 @@ Node::Node(const std::string &addr): addr(addr) {
 }
 
 Node::Node(const chord::Node& proto) {
-    set(proto.addr());
+    if(proto.is_valid()) set(proto.addr());
+    else isValid = false;
 }
 
 void Node::set(std::string addr_) {
@@ -34,5 +36,6 @@ chord::Node* Node::genProto() {
     auto* proto = new chord::Node();
     proto->set_addr(this->addr);
     proto->set_id(this->id);
+    proto->set_is_valid(this->isValid);
     return proto;
 }

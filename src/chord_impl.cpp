@@ -99,7 +99,7 @@ bool isInside(uint32_t from, uint32_t to, uint32_t toTest) {
     if(from <= to) {
         return from <= toTest && toTest <= to;
     } else {
-        return !(to <= toTest && toTest <= from);
+        return !(to < toTest && toTest < from);
     }
 }
 
@@ -136,12 +136,10 @@ bool ChordImpl::handleFindPred(uint32_t key, Node* dst) {
     Node n = myCtx.getMe();
     chord::NodeInfo* info = myCtx.genProto();
 
-    while(!isInside(n.getID()+1, info->succ().id(), key)) {
+    while(!info->succ().is_valid() || !isInside(n.getID()+1, info->succ().id(), key)) {
         callGetClosestFinger(n, key, &n);
-        delete info;
         callGetInfo(n, info);
     }
-    delete info;
 
     dst->set(n.getAddr());
     return true;
@@ -150,7 +148,7 @@ bool ChordImpl::handleFindPred(uint32_t key, Node* dst) {
 bool ChordImpl::handleFindSucc(uint32_t key, Node* dst) {
     Node node;
     chord::NodeInfo info;
-    if(callFindPred(myCtx.getMe(), key, &node) && callGetInfo(node, &info)) {
+    if(handleFindPred(key, &node) && callGetInfo(node, &info) && info.succ().is_valid()) {
         dst->set(info.succ().addr());
         return true;
     }
@@ -159,9 +157,9 @@ bool ChordImpl::handleFindSucc(uint32_t key, Node* dst) {
 
 void ChordImpl::handleStabilize() {
     chord::NodeInfo info;
-    if(callGetInfo(myCtx.getSucc(), &info)) {
+    if(myCtx.getSucc().getIsValid() && callGetInfo(myCtx.getSucc(), &info)) {
         auto pred = Node(info.pred());
-        if(isInside(myCtx.getMe().getID()+1, myCtx.getSucc().getID()-1, pred.getID())) {
+        if(pred.getIsValid() && isInside(myCtx.getMe().getID()+1, myCtx.getSucc().getID()-1, pred.getID())) {
             myCtx.setSucc(pred);
         }
         callNotify(myCtx.getSucc(), myCtx.getMe());
@@ -171,7 +169,7 @@ void ChordImpl::handleStabilize() {
 void ChordImpl::handleNotify(Node potentialPred) {
     Node pred = myCtx.getPred();
     if(!pred.getIsValid() || isInside(pred.getID()+1, myCtx.getMe().getID()-1, potentialPred.getID())) {
-        pred.set(potentialPred.getAddr());
+        myCtx.setPred(potentialPred);
     }
 }
 

@@ -2006,6 +2006,12 @@ class Node final :
   ::google::protobuf::uint32 id() const;
   void set_id(::google::protobuf::uint32 value);
 
+  // bool is_valid = 3;
+  void clear_is_valid();
+  static const int kIsValidFieldNumber = 3;
+  bool is_valid() const;
+  void set_is_valid(bool value);
+
   // @@protoc_insertion_point(class_scope:chord.Node)
  private:
   class HasBitSetters;
@@ -2013,6 +2019,7 @@ class Node final :
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::ArenaStringPtr addr_;
   ::google::protobuf::uint32 id_;
+  bool is_valid_;
   mutable ::google::protobuf::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_chord_2eproto;
 };
@@ -2639,6 +2646,20 @@ inline void Node::set_id(::google::protobuf::uint32 value) {
   
   id_ = value;
   // @@protoc_insertion_point(field_set:chord.Node.id)
+}
+
+// bool is_valid = 3;
+inline void Node::clear_is_valid() {
+  is_valid_ = false;
+}
+inline bool Node::is_valid() const {
+  // @@protoc_insertion_point(field_get:chord.Node.is_valid)
+  return is_valid_;
+}
+inline void Node::set_is_valid(bool value) {
+  
+  is_valid_ = value;
+  // @@protoc_insertion_point(field_set:chord.Node.is_valid)
 }
 
 // -------------------------------------------------------------------

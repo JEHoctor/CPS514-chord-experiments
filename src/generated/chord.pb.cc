@@ -473,6 +473,7 @@ const ::google::protobuf::uint32 TableStruct_chord_2eproto::offsets[] PROTOBUF_S
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::chord::Node, addr_),
   PROTOBUF_FIELD_OFFSET(::chord::Node, id_),
+  PROTOBUF_FIELD_OFFSET(::chord::Node, is_valid_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::chord::NodeInfo, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -500,7 +501,7 @@ static const ::google::protobuf::internal::MigrationSchema schemas[] PROTOBUF_SE
   { 79, -1, sizeof(::chord::FixFingersReq)},
   { 84, -1, sizeof(::chord::FixFingersResp)},
   { 89, -1, sizeof(::chord::Node)},
-  { 96, -1, sizeof(::chord::NodeInfo)},
+  { 97, -1, sizeof(::chord::NodeInfo)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
@@ -543,27 +544,27 @@ const char descriptor_table_protodef_chord_2eproto[] =
   "hord.Node\"\016\n\014StabilizeReq\"\017\n\rStabilizeRe"
   "sp\"0\n\tNotifyReq\022#\n\016potential_pred\030\001 \001(\0132"
   "\013.chord.Node\"\014\n\nNotifyResp\"\017\n\rFixFingers"
-  "Req\"\020\n\016FixFingersResp\" \n\004Node\022\014\n\004addr\030\001 "
-  "\001(\t\022\n\n\002id\030\002 \001(\r\"[\n\010NodeInfo\022\031\n\004self\030\001 \001("
-  "\0132\013.chord.Node\022\031\n\004succ\030\002 \001(\0132\013.chord.Nod"
-  "e\022\031\n\004pred\030\003 \001(\0132\013.chord.Node2\316\003\n\005Chord\022)"
-  "\n\004join\022\016.chord.JoinReq\032\017.chord.JoinResp\""
-  "\000\0222\n\007getInfo\022\021.chord.GetInfoReq\032\022.chord."
-  "GetInfoResp\"\000\0225\n\010findSucc\022\022.chord.FindSu"
-  "ccReq\032\023.chord.FindSuccResp\"\000\0225\n\010findPred"
-  "\022\022.chord.FindPredReq\032\023.chord.FindPredRes"
-  "p\"\000\022P\n\021closestPredFinger\022\033.chord.Closest"
-  "PredFingerReq\032\034.chord.ClosestPredFingerR"
-  "esp\"\000\0228\n\tstabilize\022\023.chord.StabilizeReq\032"
-  "\024.chord.StabilizeResp\"\000\022/\n\006notify\022\020.chor"
-  "d.NotifyReq\032\021.chord.NotifyResp\"\000\022;\n\nfixF"
-  "ingers\022\024.chord.FixFingersReq\032\025.chord.Fix"
-  "FingersResp\"\000b\006proto3"
+  "Req\"\020\n\016FixFingersResp\"2\n\004Node\022\014\n\004addr\030\001 "
+  "\001(\t\022\n\n\002id\030\002 \001(\r\022\020\n\010is_valid\030\003 \001(\010\"[\n\010Nod"
+  "eInfo\022\031\n\004self\030\001 \001(\0132\013.chord.Node\022\031\n\004succ"
+  "\030\002 \001(\0132\013.chord.Node\022\031\n\004pred\030\003 \001(\0132\013.chor"
+  "d.Node2\316\003\n\005Chord\022)\n\004join\022\016.chord.JoinReq"
+  "\032\017.chord.JoinResp\"\000\0222\n\007getInfo\022\021.chord.G"
+  "etInfoReq\032\022.chord.GetInfoResp\"\000\0225\n\010findS"
+  "ucc\022\022.chord.FindSuccReq\032\023.chord.FindSucc"
+  "Resp\"\000\0225\n\010findPred\022\022.chord.FindPredReq\032\023"
+  ".chord.FindPredResp\"\000\022P\n\021closestPredFing"
+  "er\022\033.chord.ClosestPredFingerReq\032\034.chord."
+  "ClosestPredFingerResp\"\000\0228\n\tstabilize\022\023.c"
+  "hord.StabilizeReq\032\024.chord.StabilizeResp\""
+  "\000\022/\n\006notify\022\020.chord.NotifyReq\032\021.chord.No"
+  "tifyResp\"\000\022;\n\nfixFingers\022\024.chord.FixFing"
+  "ersReq\032\025.chord.FixFingersResp\"\000b\006proto3"
   ;
 ::google::protobuf::internal::DescriptorTable descriptor_table_chord_2eproto = {
   false, InitDefaults_chord_2eproto, 
   descriptor_table_protodef_chord_2eproto,
-  "chord.proto", &assign_descriptors_table_chord_2eproto, 1101,
+  "chord.proto", &assign_descriptors_table_chord_2eproto, 1119,
 };
 
 void AddDescriptors_chord_2eproto() {
@@ -4553,6 +4554,7 @@ class Node::HasBitSetters {
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
 const int Node::kAddrFieldNumber;
 const int Node::kIdFieldNumber;
+const int Node::kIsValidFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 Node::Node()
@@ -4568,7 +4570,9 @@ Node::Node(const Node& from)
   if (from.addr().size() > 0) {
     addr_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.addr_);
   }
-  id_ = from.id_;
+  ::memcpy(&id_, &from.id_,
+    static_cast<size_t>(reinterpret_cast<char*>(&is_valid_) -
+    reinterpret_cast<char*>(&id_)) + sizeof(is_valid_));
   // @@protoc_insertion_point(copy_constructor:chord.Node)
 }
 
@@ -4576,7 +4580,9 @@ void Node::SharedCtor() {
   ::google::protobuf::internal::InitSCC(
       &scc_info_Node_chord_2eproto.base);
   addr_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  id_ = 0u;
+  ::memset(&id_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&is_valid_) -
+      reinterpret_cast<char*>(&id_)) + sizeof(is_valid_));
 }
 
 Node::~Node() {
@@ -4604,7 +4610,9 @@ void Node::Clear() {
   (void) cached_has_bits;
 
   addr_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  id_ = 0u;
+  ::memset(&id_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&is_valid_) -
+      reinterpret_cast<char*>(&id_)) + sizeof(is_valid_));
   _internal_metadata_.Clear();
 }
 
@@ -4641,6 +4649,13 @@ const char* Node::_InternalParse(const char* begin, const char* end, void* objec
       case 2: {
         if (static_cast<::google::protobuf::uint8>(tag) != 16) goto handle_unusual;
         msg->set_id(::google::protobuf::internal::ReadVarint(&ptr));
+        GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
+        break;
+      }
+      // bool is_valid = 3;
+      case 3: {
+        if (static_cast<::google::protobuf::uint8>(tag) != 24) goto handle_unusual;
+        msg->set_is_valid(::google::protobuf::internal::ReadVarint(&ptr));
         GOOGLE_PROTOBUF_PARSER_ASSERT(ptr);
         break;
       }
@@ -4706,6 +4721,19 @@ bool Node::MergePartialFromCodedStream(
         break;
       }
 
+      // bool is_valid = 3;
+      case 3: {
+        if (static_cast< ::google::protobuf::uint8>(tag) == (24 & 0xFF)) {
+
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &is_valid_)));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
       default: {
       handle_unusual:
         if (tag == 0) {
@@ -4748,6 +4776,11 @@ void Node::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt32(2, this->id(), output);
   }
 
+  // bool is_valid = 3;
+  if (this->is_valid() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->is_valid(), output);
+  }
+
   if (_internal_metadata_.have_unknown_fields()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         _internal_metadata_.unknown_fields(), output);
@@ -4775,6 +4808,11 @@ void Node::SerializeWithCachedSizes(
   // uint32 id = 2;
   if (this->id() != 0) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt32ToArray(2, this->id(), target);
+  }
+
+  // bool is_valid = 3;
+  if (this->is_valid() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(3, this->is_valid(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -4812,6 +4850,11 @@ size_t Node::ByteSizeLong() const {
         this->id());
   }
 
+  // bool is_valid = 3;
+  if (this->is_valid() != 0) {
+    total_size += 1 + 1;
+  }
+
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
   SetCachedSize(cached_size);
   return total_size;
@@ -4846,6 +4889,9 @@ void Node::MergeFrom(const Node& from) {
   if (from.id() != 0) {
     set_id(from.id());
   }
+  if (from.is_valid() != 0) {
+    set_is_valid(from.is_valid());
+  }
 }
 
 void Node::CopyFrom(const ::google::protobuf::Message& from) {
@@ -4876,6 +4922,7 @@ void Node::InternalSwap(Node* other) {
   addr_.Swap(&other->addr_, &::google::protobuf::internal::GetEmptyStringAlreadyInited(),
     GetArenaNoVirtual());
   swap(id_, other->id_);
+  swap(is_valid_, other->is_valid_);
 }
 
 ::google::protobuf::Metadata Node::GetMetadata() const {

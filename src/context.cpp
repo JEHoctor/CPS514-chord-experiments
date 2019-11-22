@@ -15,8 +15,8 @@
 
 using namespace std;
 
-Context::Context(Node me): me(std::move(me)) {
-    this->succ = Node();
+Context::Context(const Node& me): me(me) {
+    this->succ = me;
     this->pred = Node();
 }
 

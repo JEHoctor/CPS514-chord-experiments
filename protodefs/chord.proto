@@ -41,6 +41,7 @@ message FixFingersResp {}
 message Node {
     string addr = 1;
     uint32 id = 2;
+    bool is_valid = 3;
 }
 
 message NodeInfo {
