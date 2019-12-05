@@ -1,5 +1,23 @@
 ## Build & Run
 
+### Installing dependencies in a Ubuntu 14.04 mininet VM
+
+Getting an acceptable g++ is easy:
+```
+sudo apt-get install g++
+```
+
+Unfortunately, the version of cmake provided in the ubuntu 14.04 repositories is too old, so we must
+install cmake from Kitware's website.
+```
+wget https://github.com/Kitware/CMake/releases/download/v3.16.0/cmake-3.16.0-Linux-x86_64.sh
+chmod +x cmake-3.16.0-Linux-x86_64.sh
+yes | ./cmake-3.16.0-Linux-x86_64.sh
+cd cmake-3.16.0-Linux-x86_64/
+echo 'PATH=$PATH:'$(pwd)'/bin' >> ~/.bashrc
+PATH=$PATH:$(pwd)/bin
+```
+
 ### Installing Protobuf and gRPC
 
 ```
