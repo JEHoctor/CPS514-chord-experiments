@@ -177,6 +177,19 @@ int server_main(ServerArguments &server_arguments) {
 
     Context myContext(me);
 
+    if(server_arguments.other_node_indicated) {
+        Node other(server_arguments.otherHost+":"+server_arguments.otherPort);
+        ChordClient client;
+        Node succ;
+        uint32_t key = me.getID();
+        bool success = client.findSucc(other, key, &succ);
+        if(!success) {
+            cout << "Failed to use other node to find successor of this new node. Exiting." << endl;
+            return EXIT_FAILURE;
+        }
+        myContext.setSucc(succ);
+    }
+
     ChordImpl chord(myContext);
 
     startServer(server_arguments.myPort, &chord);
@@ -185,12 +198,68 @@ int server_main(ServerArguments &server_arguments) {
 }
 
 int client_main(ClientArguments &client_arguments) {
-    cout << "Client mode requested." << endl;
-    cout << "otherHost: " << client_arguments.otherHost << endl;
-    cout << "otherPort: " << client_arguments.otherPort << endl;
-    cout << "action:    " << client_arguments.action << endl;
+    ChordClient client;
+    Node other(client_arguments.otherHost+":"+client_arguments.otherPort);
 
-    return EXIT_FAILURE;
+    if(client_arguments.action == client_get_info) {
+        chord::NodeInfo info;
+        bool status = client.getInfo(other, &info);
+        if(!status) {
+            cout << "Failed to get get the status of that chord server." << endl;
+            return EXIT_FAILURE;
+        }
+
+        if(info.has_self()) {
+            cout << "The reponse contains a self node:" << endl;
+            const chord::Node &others_self_node = info.self();
+            cout << "       addr:" << others_self_node.addr() << endl;
+            cout << "         id:" << others_self_node.id() << endl;
+            cout << "   is_valid:" << others_self_node.is_valid() << endl;
+        }
+        else {
+            cout << "The reponse contains no self node." << endl;
+        }
+
+        if(info.has_succ()) {
+            cout << "The reponse contains a successor node:" << endl;
+            const chord::Node &others_succ_node = info.succ();
+            cout << "       addr:" << others_succ_node.addr() << endl;
+            cout << "         id:" << others_succ_node.id() << endl;
+            cout << "   is_valid:" << others_succ_node.is_valid() << endl;
+        }
+        else {
+            cout << "The reponse contains no sucessor node." << endl;
+        }
+
+        if(info.has_pred()) {
+            cout << "The reponse contains a predecessor node:" << endl;
+            const chord::Node &others_pred_node = info.pred();
+            cout << "       addr:" << others_pred_node.addr() << endl;
+            cout << "         id:" << others_pred_node.id() << endl;
+            cout << "   is_valid:" << others_pred_node.is_valid() << endl;
+        }
+        else {
+            cout << "The reponse contains no predecessor node." << endl;
+        }
+    }
+    else if(client_arguments.action == client_find_succ) {
+        cout << "Error. Not implemented." << endl;
+        return EXIT_FAILURE;
+    }
+    else if(client_arguments.action == client_find_pred) {
+        cout << "Error. Not implemented." << endl;
+        return EXIT_FAILURE;
+    }
+    else if(client_arguments.action == client_get_closest_finger) {
+        cout << "Error. Not implemented." << endl;
+        return EXIT_FAILURE;
+    }
+    else if(client_arguments.action == client_notify) {
+        cout << "Error. Not implemented." << endl;
+        return EXIT_FAILURE;
+    }
+
+    return EXIT_SUCCESS;
 }
 //-----
 
