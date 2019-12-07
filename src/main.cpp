@@ -57,7 +57,7 @@ struct ParsedArguments
 
 //----- Functions for interpreting the command line arguments
 int print_usage(char **argv) {
-	cout << "usage: " << argv[0] << " client <client_action> <server_host>:<server_port>" << endl;
+    cout << "usage: " << argv[0] << " client <client_action> <server_host>:<server_port>" << endl;
     cout << "   or: " << argv[0] << " server <my_host>:<my_port> [-t <other_host>:<other_port>]" << endl << endl;
 
     cout << "Where <client_action> is one of:" << endl;
@@ -71,100 +71,100 @@ int print_usage(char **argv) {
 }
 
 int parse_host_colon_port(const string& input, string& host, string& port) {
-	size_t colon_loc = input.find(':');
-	if(colon_loc == string::npos) { // colon character not found
-		cout << "Problem parsing <host>:<port>" << endl;
-		cout << "No colon character found." << endl;
-		return 1; // failure
-	}
-	// TODO: Validate these strings.
-	host = input.substr(0, colon_loc);
-	port = input.substr(colon_loc + 1);
-	return 0; //success
+    size_t colon_loc = input.find(':');
+    if(colon_loc == string::npos) { // colon character not found
+        cout << "Problem parsing <host>:<port>" << endl;
+        cout << "No colon character found." << endl;
+        return 1; // failure
+    }
+    // TODO: Validate these strings.
+    host = input.substr(0, colon_loc);
+    port = input.substr(colon_loc + 1);
+    return 0; //success
 }
 
 int parse_arguments(ParsedArguments& dest, int argc, char **argv) {
-	int status = 0;
-	if(argc < 2) {
-		cout << "Not enough command line arguments." << endl;
-		return print_usage(argv);
-	}
-	else {
-		string mode_string(argv[1]);
-		if(mode_string == "client") {
-			dest.run_mode = run_as_client;
-			dest.client_arguments = new ClientArguments();
-			if(argc != 4) {
-				cout << "Wrong number of command line arguments for use with client operating mode." << endl;
-				return print_usage(argv);
-			}
-			string client_action_string(argv[2]);
-			if(client_action_string == "get-info") {
-				dest.client_arguments->action = client_get_info;
-			}
-			else if(client_action_string == "find-successor") {
-				dest.client_arguments->action = client_find_succ;
-			}
-			else if(client_action_string == "find-predecessor") {
-				dest.client_arguments->action = client_find_pred;
-			}
-			else if(client_action_string == "find-closest-finger") {
-				dest.client_arguments->action = client_get_closest_finger;
-			}
-			else if(client_action_string == "notify") {
-				dest.client_arguments->action = client_notify;
+    int status = 0;
+    if(argc < 2) {
+        cout << "Not enough command line arguments." << endl;
+        return print_usage(argv);
+    }
+    else {
+        string mode_string(argv[1]);
+        if(mode_string == "client") {
+            dest.run_mode = run_as_client;
+            dest.client_arguments = new ClientArguments();
+            if(argc != 4) {
+                cout << "Wrong number of command line arguments for use with client operating mode." << endl;
+                return print_usage(argv);
             }
-			else {
-				cout << "Invalid <client_action>." << endl;
-				return print_usage(argv);
-			}
-			string server_host_colon_port_string(argv[3]);
-			status = parse_host_colon_port(server_host_colon_port_string, dest.client_arguments->otherHost, dest.client_arguments->otherPort);
-			if(1 == status) {
-				cout << "The problem was encountered in <server_host>:<server_port>" << endl;
-				return print_usage(argv);
-			}
-		}
-		else if (mode_string == "server") {
-			dest.run_mode = run_as_server;
-			dest.server_arguments = new ServerArguments();
-			dest.server_arguments->other_node_indicated = false;
-			string dash_t_string;
-			string existing_server_host_colon_port_string;
-			string my_host_colon_port_string;
-			switch(argc) {
-				case 5:
-						dash_t_string = argv[3];
-						if(dash_t_string != "-t") {
-							cout << "When specifiying an existing chord server, use -t." << endl;
-							return print_usage(argv);
-						}
-						existing_server_host_colon_port_string = argv[4];
-						status = parse_host_colon_port(existing_server_host_colon_port_string, dest.server_arguments->otherHost, dest.server_arguments->otherPort);
-						if(1 == status) {
-							cout << "The problem was encountered in <other_host>:<other_port>" << endl;
-							return print_usage(argv);
-						}
-						dest.server_arguments->other_node_indicated = true;
-				case 3:
-						my_host_colon_port_string = argv[2];
-						status = parse_host_colon_port(my_host_colon_port_string, dest.server_arguments->myHost, dest.server_arguments->myPort);
-						if(1 == status) {
-							cout << "The problem was encountered in <my_host>:<my_port>" << endl;
-							return print_usage(argv);
-						}
-						break;
-				default:
-						cout << "Wrong number of command line arguments for use with server operating mode." << endl;
-				        return print_usage(argv);
-			}
-		}
-		else {
-			cout << "Invalid operating mode '" << mode_string << "'." << endl;
-			return print_usage(argv);
-		}
-	}
-	return 0;
+            string client_action_string(argv[2]);
+            if(client_action_string == "get-info") {
+                dest.client_arguments->action = client_get_info;
+            }
+            else if(client_action_string == "find-successor") {
+                dest.client_arguments->action = client_find_succ;
+            }
+            else if(client_action_string == "find-predecessor") {
+                dest.client_arguments->action = client_find_pred;
+            }
+            else if(client_action_string == "find-closest-finger") {
+                dest.client_arguments->action = client_get_closest_finger;
+            }
+            else if(client_action_string == "notify") {
+                dest.client_arguments->action = client_notify;
+            }
+            else {
+                cout << "Invalid <client_action>." << endl;
+                return print_usage(argv);
+            }
+            string server_host_colon_port_string(argv[3]);
+            status = parse_host_colon_port(server_host_colon_port_string, dest.client_arguments->otherHost, dest.client_arguments->otherPort);
+            if(1 == status) {
+                cout << "The problem was encountered in <server_host>:<server_port>" << endl;
+                return print_usage(argv);
+            }
+        }
+        else if (mode_string == "server") {
+            dest.run_mode = run_as_server;
+            dest.server_arguments = new ServerArguments();
+            dest.server_arguments->other_node_indicated = false;
+            string dash_t_string;
+            string existing_server_host_colon_port_string;
+            string my_host_colon_port_string;
+            switch(argc) {
+                case 5:
+                        dash_t_string = argv[3];
+                        if(dash_t_string != "-t") {
+                            cout << "When specifiying an existing chord server, use -t." << endl;
+                            return print_usage(argv);
+                        }
+                        existing_server_host_colon_port_string = argv[4];
+                        status = parse_host_colon_port(existing_server_host_colon_port_string, dest.server_arguments->otherHost, dest.server_arguments->otherPort);
+                        if(1 == status) {
+                            cout << "The problem was encountered in <other_host>:<other_port>" << endl;
+                            return print_usage(argv);
+                        }
+                        dest.server_arguments->other_node_indicated = true;
+                case 3:
+                        my_host_colon_port_string = argv[2];
+                        status = parse_host_colon_port(my_host_colon_port_string, dest.server_arguments->myHost, dest.server_arguments->myPort);
+                        if(1 == status) {
+                            cout << "The problem was encountered in <my_host>:<my_port>" << endl;
+                            return print_usage(argv);
+                        }
+                        break;
+                default:
+                        cout << "Wrong number of command line arguments for use with server operating mode." << endl;
+                        return print_usage(argv);
+            }
+        }
+        else {
+            cout << "Invalid operating mode '" << mode_string << "'." << endl;
+            return print_usage(argv);
+        }
+    }
+    return 0;
 }
 //-----
 
@@ -185,12 +185,12 @@ int server_main(ServerArguments &server_arguments) {
 }
 
 int client_main(ClientArguments &client_arguments) {
-	cout << "Client mode requested." << endl;
-	cout << "otherHost: " << client_arguments.otherHost << endl;
-	cout << "otherPort: " << client_arguments.otherPort << endl;
-	cout << "action:    " << client_arguments.action << endl;
+    cout << "Client mode requested." << endl;
+    cout << "otherHost: " << client_arguments.otherHost << endl;
+    cout << "otherPort: " << client_arguments.otherPort << endl;
+    cout << "action:    " << client_arguments.action << endl;
 
-	return EXIT_FAILURE;
+    return EXIT_FAILURE;
 }
 //-----
 
@@ -200,13 +200,13 @@ int main(int argc, char **argv) {
 
     int status = parse_arguments(parsed_arguments, argc, argv);
     if(status) {
-		return status;
-	}
+        return status;
+    }
 
-	if(parsed_arguments.run_mode == run_as_client) {
-		return client_main( *(parsed_arguments.client_arguments) );
-	}
-	else /*if(parsed_arguments.run_mode == run_as_server)*/ {
-		return server_main( *(parsed_arguments.server_arguments) );
-	}
+    if(parsed_arguments.run_mode == run_as_client) {
+        return client_main( *(parsed_arguments.client_arguments) );
+    }
+    else /*if(parsed_arguments.run_mode == run_as_server)*/ {
+        return server_main( *(parsed_arguments.server_arguments) );
+    }
 }
