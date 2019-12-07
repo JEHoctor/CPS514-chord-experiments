@@ -169,6 +169,32 @@ int parse_arguments(ParsedArguments& dest, int argc, char **argv) {
 //-----
 
 
+//----- Specialized main functions for client and server mode.
+int server_main(ServerArguments &server_arguments) {
+    std::srand(std::time(nullptr)); // use current time as seed for random generator
+
+    Node me(server_arguments.myHost+":"+server_arguments.myPort);
+
+    Context myContext(me);
+
+    ChordImpl chord(myContext);
+
+    startServer(server_arguments.myPort, &chord);
+
+    return EXIT_SUCCESS;
+}
+
+int client_main(ClientArguments &client_arguments) {
+	cout << "Client mode requested." << endl;
+	cout << "otherHost: " << client_arguments.otherHost << endl;
+	cout << "otherPort: " << client_arguments.otherPort << endl;
+	cout << "action:    " << client_arguments.action << endl;
+
+	return EXIT_FAILURE;
+}
+//-----
+
+
 int main(int argc, char **argv) {
     ParsedArguments parsed_arguments;
 
@@ -177,19 +203,10 @@ int main(int argc, char **argv) {
 		return status;
 	}
 
-
-    std::srand(std::time(nullptr)); // use current time as seed for random generator
-
-    string myHost = argv[1];
-    string myPort = argv[2];
-
-    Node me(myHost+":"+myPort);
-
-    Context myContext(me);
-
-    ChordImpl chord(myContext);
-
-    startServer(myPort, &chord);
-
-    return 0;
+	if(parsed_arguments.run_mode == run_as_client) {
+		return client_main( *(parsed_arguments.client_arguments) );
+	}
+	else /*if(parsed_arguments.run_mode == run_as_server)*/ {
+		return server_main( *(parsed_arguments.server_arguments) );
+	}
 }
