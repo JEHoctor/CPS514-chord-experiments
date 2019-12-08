@@ -23,6 +23,8 @@ public:
     bool findPred(Node target, uint32_t key, Node* dst);
     void getClosestFinger(Node target, uint32_t key, Node* dst);
     void notify(Node target, Node potentialPred);
+    void stabilize(Node target);
+    void fixFingers(Node target);
 };
 
 
