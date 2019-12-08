@@ -15,7 +15,9 @@ enum ClientAction { client_get_info,
                     client_find_succ,
                     client_find_pred,
                     client_get_closest_finger,
-                    client_notify };
+                    client_notify,
+                    client_stabilize,
+                    client_fix_fingers };
 
 struct ClientArguments
 {
@@ -64,6 +66,8 @@ int print_usage(char **argv) {
     cout << "   or: " << argv[0] << " client <server-host>:<server-port> find-predecessor <chord-id>" << endl;
     cout << "   or: " << argv[0] << " client <server-host>:<server-port> find-closest-finger <chord-id>" << endl;
     cout << "   or: " << argv[0] << " client <server-host>:<server-port> notify <potential-predecessor-host>:<potential-predecessor-port>" << endl;
+    cout << "   or: " << argv[0] << " client <server-host>:<server-port> stabilize" << endl;
+    cout << "   or: " << argv[0] << " client <server-host>:<server-port> fix-fingers" << endl;
     cout << "   or: " << argv[0] << " server <new-server-host>:<new-server-port> [-t <other-host>:<other-port>]" << endl;
 
     return EXIT_FAILURE;
@@ -179,6 +183,20 @@ int parse_arguments(ParsedArguments& dest, int argc, char **argv) {
                 status = parse_host_colon_port(potential_predecessor_host_colon_port_string, dest.client_arguments->potentialPredHost, dest.client_arguments->potentialPredPort);
                 if(1 == status) {
                     cout << "The problem was encountered in <potential-predecessor-host>:<potential-predecessor-port>" << endl;
+                    return print_usage(argv);
+                }
+            }
+            else if(client_action_string == "stabilize") {
+                dest.client_arguments->action = client_stabilize;
+                if(argc > 4) {
+                    cout << "Too many arguments for use with the stabilize action." << endl;
+                    return print_usage(argv);
+                }
+            }
+            else if(client_action_string == "fix-fingers") {
+                dest.client_arguments->action = client_fix_fingers;
+                if(argc > 4) {
+                    cout << "Too many arguments for use with the fix-fingers action." << endl;
                     return print_usage(argv);
                 }
             }
@@ -344,6 +362,14 @@ int client_main(ClientArguments &client_arguments) {
         client.notify(other, potentialPred);
         cout << "Notified " << client_arguments.otherHost << ":" << client_arguments.otherPort
              << " that " << client_arguments.potentialPredHost << ":" << client_arguments.potentialPredPort << " may be its predecessor." << endl;
+    }
+    else if(client_arguments.action == client_stabilize) {
+        cout << "Error not implemented." << endl;
+        return EXIT_FAILURE;
+    }
+    else if(client_arguments.action == client_fix_fingers) {
+        cout << "Error not implemented." << endl;
+        return EXIT_FAILURE;
     }
 
     return EXIT_SUCCESS;
