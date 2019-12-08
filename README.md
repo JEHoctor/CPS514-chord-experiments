@@ -57,6 +57,8 @@ make
 *On Mac OS, we need to run an additional command before running the executable*
 `$ export DYLD_LIBRARY_PATH=.:/opt/grpc/lib:/opt/protobuf/lib`
 
+The executable is produced in `build/src`.
+
 ### Get the gRPC python modules
 This is not needed and won't work in the mininet vm. Don't do this:
 ```
