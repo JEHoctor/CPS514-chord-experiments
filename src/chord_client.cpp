@@ -100,3 +100,25 @@ void ChordClient::notify(Node target, Node potentialPred) {
 
     stub->notify(&clientCtx, req, &resp);
 }
+
+void ChordClient::fixFingers(Node target) {
+    auto channel = makeChannel(std::move(target));
+    auto stub = chord::Chord::NewStub(channel);
+    ClientContext clientCtx;
+
+    chord::FixFingersReq req;
+    chord::FixFingersResp resp;
+
+    stub->fixFingers(&clientCtx, req, &resp);
+}
+
+void ChordClient::stabilize(Node target) {
+    auto channel = makeChannel(std::move(target));
+    auto stub = chord::Chord::NewStub(channel);
+    ClientContext clientCtx;
+
+    chord::StabilizeReq req;
+    chord::StabilizeResp resp;
+
+    stub->stabilize(&clientCtx, req, &resp);
+}
