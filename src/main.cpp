@@ -126,7 +126,7 @@ int parse_arguments(ParsedArguments& dest, int argc, char **argv) {
                 }
                 unsigned long chord_id_ul= stoul(argv[4]);
                 if(chord_id_ul > numeric_limits<uint32_t>::max()) {
-                    cout << "That chord ID is too large (greater than 2^32 - 1)." << endl;
+                    cout << "That chord ID is out of range. It should be in [0, 2^32 - 1]." << endl;
                     return print_usage(argv);
                 }
                 dest.client_arguments->chord_id = chord_id_ul;
@@ -143,7 +143,7 @@ int parse_arguments(ParsedArguments& dest, int argc, char **argv) {
                 }
                 unsigned long chord_id_ul= stoul(argv[4]);
                 if(chord_id_ul > numeric_limits<uint32_t>::max()) {
-                    cout << "That chord ID is too large (greater than 2^32 - 1)." << endl;
+                    cout << "That chord ID is out of range. It should be in [0, 2^32 - 1]." << endl;
                     return print_usage(argv);
                 }
                 dest.client_arguments->chord_id = chord_id_ul;
@@ -160,7 +160,7 @@ int parse_arguments(ParsedArguments& dest, int argc, char **argv) {
                 }
                 unsigned long chord_id_ul= stoul(argv[4]);
                 if(chord_id_ul > numeric_limits<uint32_t>::max()) {
-                    cout << "That chord ID is too large (greater than 2^32 - 1)." << endl;
+                    cout << "That chord ID is out of range. It should be in [0, 2^32 - 1]." << endl;
                     return print_usage(argv);
                 }
                 dest.client_arguments->chord_id = chord_id_ul;
