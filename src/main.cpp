@@ -364,12 +364,12 @@ int client_main(ClientArguments &client_arguments) {
              << " that " << client_arguments.potentialPredHost << ":" << client_arguments.potentialPredPort << " may be its predecessor." << endl;
     }
     else if(client_arguments.action == client_stabilize) {
-        cout << "Error not implemented." << endl;
-        return EXIT_FAILURE;
+        client.stabilize(other);
+        cout << "Sent a stabilize message to " << client_arguments.otherHost << ":" << client_arguments.otherPort << endl;
     }
     else if(client_arguments.action == client_fix_fingers) {
-        cout << "Error not implemented." << endl;
-        return EXIT_FAILURE;
+        client.fixFingers(other);
+        cout << "Sent a fix-fingers message to " << client_arguments.otherHost << ":" << client_arguments.otherPort << endl;
     }
 
     return EXIT_SUCCESS;
