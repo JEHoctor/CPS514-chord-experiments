@@ -1,7 +1,8 @@
-// Behold the power of gradware!
+// Behold: the power of gradware!
 
 #include <iostream>
 #include <string>
+#include <limits>
 #include "server.h"
 #include "chord_client.h"
 #include "chord_impl.h"
@@ -20,9 +21,10 @@ struct ClientArguments
 {
     string otherHost;
     string otherPort;
-    //string myHost;
-    //string myPort;
     ClientAction action;
+    uint32_t chord_id;
+    string potentialPredHost;
+    string potentialPredPort;
 };
 //-----
 
@@ -57,15 +59,12 @@ struct ParsedArguments
 
 //----- Functions for interpreting the command line arguments
 int print_usage(char **argv) {
-    cout << "usage: " << argv[0] << " client <client_action> <server_host>:<server_port>" << endl;
-    cout << "   or: " << argv[0] << " server <my_host>:<my_port> [-t <other_host>:<other_port>]" << endl << endl;
-
-    cout << "Where <client_action> is one of:" << endl;
-    cout << "   get-info" << endl;
-    cout << "   find-successor" << endl;
-    cout << "   find-predecessor" << endl;
-    cout << "   find-closest-finger" << endl;
-    cout << "   notify" << endl;
+    cout << "usage: " << argv[0] << " client <server-host>:<server-port> get-info" << endl;
+    cout << "   or: " << argv[0] << " client <server-host>:<server-port> find-successor <chord-id>" << endl;
+    cout << "   or: " << argv[0] << " client <server-host>:<server-port> find-predecessor <chord-id>" << endl;
+    cout << "   or: " << argv[0] << " client <server-host>:<server-port> find-closest-finger <chord-id>" << endl;
+    cout << "   or: " << argv[0] << " client <server-host>:<server-port> notify <potential-predecessor-host>:<potential-predecessor-port>" << endl;
+    cout << "   or: " << argv[0] << " server <new-server-host>:<new-server-port> [-t <other-host>:<other-port>]" << endl;
 
     return EXIT_FAILURE;
 }
@@ -94,34 +93,97 @@ int parse_arguments(ParsedArguments& dest, int argc, char **argv) {
         if(mode_string == "client") {
             dest.run_mode = run_as_client;
             dest.client_arguments = new ClientArguments();
-            if(argc != 4) {
-                cout << "Wrong number of command line arguments for use with client operating mode." << endl;
+
+            if(argc < 4) {
+                cout << "Not enough command line arguments for client operating mode." << endl;
                 return print_usage(argv);
             }
-            string client_action_string(argv[2]);
+
+            string server_host_colon_port_string(argv[2]);
+            status = parse_host_colon_port(server_host_colon_port_string, dest.client_arguments->otherHost, dest.client_arguments->otherPort);
+            if(1 == status) {
+                cout << "The problem was encountered in <server-host>:<server-port>" << endl;
+                return print_usage(argv);
+            }
+
+            string client_action_string(argv[3]);
             if(client_action_string == "get-info") {
+                if(argc != 4) {
+                    cout << "Too many arguments for use with the get-info action." << endl;
+                    return print_usage(argv);
+                }
                 dest.client_arguments->action = client_get_info;
             }
             else if(client_action_string == "find-successor") {
                 dest.client_arguments->action = client_find_succ;
+                if(argc < 5) {
+                    cout << "The find-successor action requires a chord ID." << endl;
+                    return print_usage(argv);
+                }
+                if(argc > 5) {
+                    cout << "Too many arguments for use with the find-successor action." << endl;
+                    return print_usage(argv);
+                }
+                unsigned long chord_id_ul= stoul(argv[4]);
+                if(chord_id_ul > numeric_limits<uint32_t>::max()) {
+                    cout << "That chord ID is too large (greater than 2^32 - 1)." << endl;
+                    return print_usage(argv);
+                }
+                dest.client_arguments->chord_id = chord_id_ul;
             }
             else if(client_action_string == "find-predecessor") {
                 dest.client_arguments->action = client_find_pred;
+                if(argc < 5) {
+                    cout << "The find-predecessor action requires a chord ID." << endl;
+                    return print_usage(argv);
+                }
+                if(argc > 5) {
+                    cout << "Too many arguments for use with the find-predecessor action." << endl;
+                    return print_usage(argv);
+                }
+                unsigned long chord_id_ul= stoul(argv[4]);
+                if(chord_id_ul > numeric_limits<uint32_t>::max()) {
+                    cout << "That chord ID is too large (greater than 2^32 - 1)." << endl;
+                    return print_usage(argv);
+                }
+                dest.client_arguments->chord_id = chord_id_ul;
             }
             else if(client_action_string == "find-closest-finger") {
                 dest.client_arguments->action = client_get_closest_finger;
+                if(argc < 5) {
+                    cout << "The find-closest-finger action requires a chord ID." << endl;
+                    return print_usage(argv);
+                }
+                if(argc > 5) {
+                    cout << "Too many arguments for use with the find-closest-finger action." << endl;
+                    return print_usage(argv);
+                }
+                unsigned long chord_id_ul= stoul(argv[4]);
+                if(chord_id_ul > numeric_limits<uint32_t>::max()) {
+                    cout << "That chord ID is too large (greater than 2^32 - 1)." << endl;
+                    return print_usage(argv);
+                }
+                dest.client_arguments->chord_id = chord_id_ul;
             }
             else if(client_action_string == "notify") {
                 dest.client_arguments->action = client_notify;
+                if(argc < 5) {
+                    cout << "The notify action requires a host and port for a potential predecessor node." << endl;
+                    return print_usage(argv);
+                }
+                if(argc > 5) {
+                    cout << "Too many arguments for use with the notify action." << endl;
+                    return print_usage(argv);
+                }
+                string potential_predecessor_host_colon_port_string(argv[4]);
+                status = parse_host_colon_port(potential_predecessor_host_colon_port_string, dest.client_arguments->potentialPredHost, dest.client_arguments->potentialPredPort);
+                if(1 == status) {
+                    cout << "The problem was encountered in <potential-predecessor-host>:<potential-predecessor-port>" << endl;
+                    return print_usage(argv);
+                }
             }
             else {
                 cout << "Invalid <client_action>." << endl;
-                return print_usage(argv);
-            }
-            string server_host_colon_port_string(argv[3]);
-            status = parse_host_colon_port(server_host_colon_port_string, dest.client_arguments->otherHost, dest.client_arguments->otherPort);
-            if(1 == status) {
-                cout << "The problem was encountered in <server_host>:<server_port>" << endl;
                 return print_usage(argv);
             }
         }
@@ -136,13 +198,13 @@ int parse_arguments(ParsedArguments& dest, int argc, char **argv) {
                 case 5:
                         dash_t_string = argv[3];
                         if(dash_t_string != "-t") {
-                            cout << "When specifiying an existing chord server, use -t." << endl;
+                            cout << "When specifiying an existing chord server, use '-t <other-host>:<other-port>'." << endl;
                             return print_usage(argv);
                         }
                         existing_server_host_colon_port_string = argv[4];
                         status = parse_host_colon_port(existing_server_host_colon_port_string, dest.server_arguments->otherHost, dest.server_arguments->otherPort);
                         if(1 == status) {
-                            cout << "The problem was encountered in <other_host>:<other_port>" << endl;
+                            cout << "The problem was encountered in <other-host>:<other-port>" << endl;
                             return print_usage(argv);
                         }
                         dest.server_arguments->other_node_indicated = true;
@@ -150,7 +212,7 @@ int parse_arguments(ParsedArguments& dest, int argc, char **argv) {
                         my_host_colon_port_string = argv[2];
                         status = parse_host_colon_port(my_host_colon_port_string, dest.server_arguments->myHost, dest.server_arguments->myPort);
                         if(1 == status) {
-                            cout << "The problem was encountered in <my_host>:<my_port>" << endl;
+                            cout << "The problem was encountered in <new-server-host>:<new-server-port>" << endl;
                             return print_usage(argv);
                         }
                         break;
@@ -205,7 +267,7 @@ int client_main(ClientArguments &client_arguments) {
         chord::NodeInfo info;
         bool status = client.getInfo(other, &info);
         if(!status) {
-            cout << "Failed to get get the status of that chord server." << endl;
+            cout << "Failed to get the status of that chord server." << endl;
             return EXIT_FAILURE;
         }
 
@@ -243,20 +305,45 @@ int client_main(ClientArguments &client_arguments) {
         }
     }
     else if(client_arguments.action == client_find_succ) {
-        cout << "Error. Not implemented." << endl;
-        return EXIT_FAILURE;
+        Node succ;
+        bool status = client.findSucc(other, client_arguments.chord_id, &succ);
+        if(!status) {
+            cout << "Failed use that server to find the successor of that ID." << endl;
+            return EXIT_FAILURE;
+        }
+
+        cout << "The reponse is a node:" << endl;
+        cout << "       addr:" << succ.getAddr() << endl;
+        cout << "         id:" << succ.getID() << endl;
+        cout << "   is_valid:" << succ.getIsValid() << endl;
     }
     else if(client_arguments.action == client_find_pred) {
-        cout << "Error. Not implemented." << endl;
-        return EXIT_FAILURE;
+        Node pred;
+        bool status = client.findPred(other, client_arguments.chord_id, &pred);
+        if(!status) {
+            cout << "Failed use that server to find the predecessor of that ID." << endl;
+            return EXIT_FAILURE;
+        }
+
+        cout << "The reponse is a node:" << endl;
+        cout << "       addr:" << pred.getAddr() << endl;
+        cout << "         id:" << pred.getID() << endl;
+        cout << "   is_valid:" << pred.getIsValid() << endl;
     }
     else if(client_arguments.action == client_get_closest_finger) {
-        cout << "Error. Not implemented." << endl;
-        return EXIT_FAILURE;
+        Node finger_node;
+        client.getClosestFinger(other, client_arguments.chord_id, &finger_node);
+
+        cout << "The reponse is a node:" << endl;
+        cout << "       addr:" << finger_node.getAddr() << endl;
+        cout << "         id:" << finger_node.getID() << endl;
+        cout << "   is_valid:" << finger_node.getIsValid() << endl;
     }
     else if(client_arguments.action == client_notify) {
-        cout << "Error. Not implemented." << endl;
-        return EXIT_FAILURE;
+        Node potentialPred(client_arguments.potentialPredHost+":"+client_arguments.potentialPredPort);
+        client.notify(other, potentialPred);
+        cout << "Notified " << client_arguments.otherHost << ":" << client_arguments.otherPort
+             << " that " << client_arguments.potentialPredHost << ":" << client_arguments.potentialPredPort << " may be its predecessor." << endl;
     }
 
     return EXIT_SUCCESS;
