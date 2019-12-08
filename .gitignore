@@ -40,3 +40,9 @@ third-party
 *.exe
 *.out
 *.app
+
+# Python byte-compiled / optimized / DLL files
+# from https://github.com/github/gitignore/blob/master/Python.gitignore
+__pycache__/
+*.py[cod]
+*$py.class
