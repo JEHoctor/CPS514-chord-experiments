@@ -5,7 +5,7 @@ import random
 
 T = 1000
 
-N = 10
+N = 20
 
 S = 10
 

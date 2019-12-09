@@ -135,11 +135,14 @@ bool ChordImpl::handleFindPred(uint32_t key, Node* dst) {
     Node n = myCtx.getMe();
     chord::NodeInfo* info = myCtx.genProto();
 
+    int cnt = 0;
     while(!info->succ().is_valid() || !isInside(n.getID()+1, info->succ().id(), key)) {
         callGetClosestFinger(n, key, &n);
         callGetInfo(n, info);
 //        info->PrintDebugString();
+        cnt ++;
     }
+    printf("Handle findPred() completed in %d steps\n", cnt);
 
     dst->set(n.getAddr());
     return true;
