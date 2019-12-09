@@ -11,6 +11,7 @@ from mininet.cli import CLI
 
 import time
 import random
+from pprint import pprint
 
 
 def get_node_name(i):
@@ -65,6 +66,34 @@ def run_chord_client_on(host, server_ip, rest_of_command, port_number=chord_port
     return output
 
 
+def get_info(host, ip_addr, port):
+    output = run_chord_client_on(host, ip_addr, 'get-info', port_number=port)
+    lines = [l for l in output.split('\r\n') if l != '']
+    if lines == ['Failed to get the status of that chord server.']:
+        return None # failure condition, must check for this
+    ret = {}
+    if '1' in lines[3]:
+        addr, port = lines[1][12:].split(':')
+        ret['self'] = {'addr': addr, 'port': int(port), 'ID': int(lines[2][12:])}
+    else:
+        ret['self'] = None
+    if '1' in lines[7]:
+        addr, port = lines[5][12:].split(':')
+        ret['succ'] = {'addr': addr, 'port': int(port), 'ID': int(lines[6][12:])}
+    else:
+        ret['succ'] = None
+    if '1' in lines[11]:
+        addr, port = lines[9][12:].split(':')
+        ret['pred'] = {'addr': addr, 'port': int(port), 'ID': int(lines[10][12:])}
+    else:
+        ret['pred'] = None
+    return ret
+
+
+def sample_topology(hosts):
+    pass
+
+
 def main(n_hosts = 10):
     topo = StarTopo(n=n_hosts, bw_host=1000,
                     delay='%sms' % 50)
@@ -84,15 +113,17 @@ def main(n_hosts = 10):
         ip_address, port_number = start_chord_server_on(h, buddy_ip_address=buddy_ip_address)
         host_to_ip_port[h] = (ip_address, port_number)
 
+    time.sleep(0.5) # give the servers some time before they get bombarded with RPCs
+
     for h, (ip_addr, port) in host_to_ip_port.items():
-        print run_chord_client_on(h, ip_addr, 'get-info')
+        pprint(get_info(h, ip_addr, port))
     print('*****')
     for i in xrange(5):
         for h, (ip_addr, port) in host_to_ip_port.items():
             run_chord_client_on(h, ip_addr, 'stabilize')
     print('*****')
     for h, (ip_addr, port) in host_to_ip_port.items():
-        print run_chord_client_on(h, ip_addr, 'get-info')
+        pprint(get_info(h, ip_addr, port))
 
 
 if __name__ == '__main__':
