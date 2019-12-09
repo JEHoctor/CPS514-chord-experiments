@@ -7,9 +7,10 @@ T = 1000
 
 N = 10
 
-S = 50
+S = 10
 
 ports = list(range(3000, 3000+N))
+joined_ports = []
 
 setup.build_proto()
 
@@ -24,12 +25,17 @@ print("Servers/Channels set up")
 print("Have the servers join")
 
 for port in ports:
+	joined_ports.append(port)
 	if port == 3000: continue
 	cc.join(port, 3000)
+	print("joining " + str(port))
 	for _ in range(0, S):
-		port = random.choice(ports)
-		cc.stabilize(port)
-		cc.fixFingers(port)
+		futs = []
+		for joined in joined_ports:
+			futs.append(cc.stabilize(joined))
+			futs.append(cc.fixFingers(joined))
+		for fut in futs:
+			fut.result() # wait for all the futures to complete
 
 (ids, infos) = cc.get_all_info()
 #print(infos)
@@ -72,13 +78,17 @@ for t in range(0, T):
 print("Killing a node")
 setup.kill_servers_on([ports[0]])
 cc.removeChannel([ports[0]])
+joined_ports.remove(ports[0])
 N-=1
 
 print("stabilizing")
 for _ in range(0, S):
-	port = random.choice(ports)
-	cc.stabilize(port)
-	cc.fixFingers(port)
+	futs = []
+	for joined in joined_ports:
+		futs.append(cc.stabilize(joined))
+		futs.append(cc.fixFingers(joined))
+	for fut in futs:
+		fut.result() # wait for all the futures to complete
 
 (ids, infos) = cc.get_all_info()
 print(infos);

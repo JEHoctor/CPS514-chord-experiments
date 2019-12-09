@@ -46,11 +46,11 @@ def find_succ(key):
 
 def stabilize(port):
 	stub = chord_pb2_grpc.ChordStub(getRandomChannel())
-	return stub.stabilize(chord_pb2.StabilizeReq())
+	return stub.stabilize.future(chord_pb2.StabilizeReq())
 
 def fixFingers(port):
 	stub = chord_pb2_grpc.ChordStub(getRandomChannel())
-	return stub.fixFingers(chord_pb2.FixFingersReq())
+	return stub.fixFingers.future(chord_pb2.FixFingersReq())
 
 def setup_channels(ports):
 	global channels
