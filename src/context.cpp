@@ -1,11 +1,3 @@
-#include <utility>
-
-#include <utility>
-
-#include <utility>
-
-#include <utility>
-
 //
 // Created by Inchan Hwang on 2019-11-07.
 //
@@ -15,18 +7,18 @@
 
 using namespace std;
 
-Context::Context(const Node& me): me(me) {
-    this->succ = me;
-    this->pred = Node();
+Context::Context(Node me): me(me), succs(SuccessorList(me.getID())) {
+    setSucc(me);
+    pred = Node();
 }
 
 Node Context::getMe() { return me; }
-Node Context::getSucc() { return succ; }
+Node Context::getSucc() { return succs.successor(); }
 Node Context::getPred() { return pred; }
 
-void Context::setSucc(Node succ_) {
-    this->succ = std::move(succ_);
-    setFinger(1, this->succ);
+void Context::setSucc(const Node& succ_) {
+    succs.addNode(succ_, me.getID());
+    setFinger(1, succ_);
 }
 
 void Context::setPred(Node pred_) {
@@ -34,18 +26,34 @@ void Context::setPred(Node pred_) {
 }
 
 void Context::setFinger(int idx, Node node) {
-    tbl.setNode(idx, std::move(node));
+    if(node.getIsValid()) {
+        tbl.setNode(idx, std::move(node));
+    } else {
+        tbl.delNode(idx);
+    }
 }
 
 bool Context::getFinger(int idx, Node* dst) {
     return tbl.getNode(idx, dst);
 }
 
+void Context::insertSucc(Node succ_, int predID) {
+    succs.addNode(std::move(succ_), predID);
+}
+
+void Context::removeSucc() {
+    succs.removeNode(succs.successor().getID());
+}
+
+void Context::removeSucc(int id) {
+    succs.removeNode(id);
+}
+
 chord::NodeInfo* Context::genProto() {
     auto* proto = new chord::NodeInfo();
 
     chord::Node* meProto = me.genProto();
-    chord::Node* succProto = succ.genProto();
+    chord::Node* succProto = succs.successor().genProto();
     chord::Node* predProto = pred.genProto();
 
     proto->set_allocated_self(meProto);

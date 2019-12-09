@@ -19,6 +19,7 @@ public:
 
     bool getNode(int idx, Node* dst);
     void setNode(int idx, Node node);
+    void delNode(int idx);
 };
 
 #endif //CHORD_FINGER_TABLE_H

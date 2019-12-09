@@ -23,3 +23,7 @@ bool FingerTable::getNode(int idx, Node* dst) {
 void FingerTable::setNode(int idx, Node node) {
     tbl[idx] = std::move(node);
 }
+
+void FingerTable::delNode(int idx) {
+    tbl.erase(idx);
+}

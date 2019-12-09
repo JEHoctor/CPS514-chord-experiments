@@ -12,6 +12,10 @@ def getRandomChannel():
 def getChannel(port):
 	return channels[str(port)]
 
+def removeChannel(ports):
+	for port in ports: 
+		del channels[str(port)]
+
 def makeNodeObj(port):
 	return chord_pb2.Node(addr='localhost:{}'.format(port), is_valid=True)
 

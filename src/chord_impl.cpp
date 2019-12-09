@@ -103,13 +103,12 @@ bool isInside(uint32_t from, uint32_t to, uint32_t toTest) {
     }
 }
 
-bool ChordImpl::handleJoin(Node buddy) {
+bool ChordImpl::handleJoin(const Node& buddy) {
     Node succ;
-    if(callFindSucc(std::move(buddy), myCtx.getMe().getID(), &succ)) {
+    if(callFindSucc(buddy, myCtx.getMe().getID(), &succ)) {
         myCtx.setSucc(succ);
         return true;
     }
-
     return false;
 }
 
@@ -139,6 +138,7 @@ bool ChordImpl::handleFindPred(uint32_t key, Node* dst) {
     while(!info->succ().is_valid() || !isInside(n.getID()+1, info->succ().id(), key)) {
         callGetClosestFinger(n, key, &n);
         callGetInfo(n, info);
+//        info->PrintDebugString();
     }
 
     dst->set(n.getAddr());
@@ -155,34 +155,70 @@ bool ChordImpl::handleFindSucc(uint32_t key, Node* dst) {
     return false;
 }
 
+void ChordImpl::buildSuccessorList() {
+    int predID = myCtx.getMe().getID();
+    Node succ;
+    chord::NodeInfo info;
+    int cnt = 0;
+    while(cnt < 32 && handleFindSucc(predID+1, &succ) && callGetInfo(succ, &info)) {
+        myCtx.insertSucc(succ, predID);
+        predID = succ.getID();
+        cnt ++;
+    }
+
+//    printf("build successor list completed with %d %d\n", cnt, myCtx.size());
+}
+
 void ChordImpl::handleStabilize() {
     chord::NodeInfo info;
-    if(myCtx.getSucc().getIsValid() && callGetInfo(myCtx.getSucc(), &info)) {
-        auto pred = Node(info.pred());
-        if(pred.getIsValid() && isInside(myCtx.getMe().getID()+1, myCtx.getSucc().getID()-1, pred.getID())) {
-            myCtx.setSucc(pred);
+
+    if(myCtx.getSucc().getIsValid()) {
+        if(callGetInfo(myCtx.getSucc(), &info)) { // yo you ok?
+            auto pred = Node(info.pred());
+            if(pred.getIsValid() && isInside(myCtx.getMe().getID()+1, myCtx.getSucc().getID()-1, pred.getID())) {
+                myCtx.setSucc(pred);
+            }
+            buildSuccessorList();
+            callNotify(myCtx.getSucc(), myCtx.getMe());
+        } else {
+//            printf("%s Something's wrong with my successor %s\n", myCtx.getMe().getAddr().c_str(), myCtx.getSucc().getAddr().c_str());
+            myCtx.removeSucc();
+            callNotify(myCtx.getSucc(), myCtx.getMe());
+//            printf("It's Now %s\n", myCtx.getSucc().getAddr().c_str());
         }
-        callNotify(myCtx.getSucc(), myCtx.getMe());
     }
 }
 
 void ChordImpl::handleNotify(Node potentialPred) {
     Node pred = myCtx.getPred();
-    if(!pred.getIsValid() || isInside(pred.getID()+1, myCtx.getMe().getID()-1, potentialPred.getID())) {
+    chord::NodeInfo info;
+    if(!callGetInfo(pred, &info) || isInside(pred.getID()+1, myCtx.getMe().getID()-1, potentialPred.getID())) {
         myCtx.setPred(potentialPred);
     }
 }
 
 void ChordImpl::handleFixFingers() {
-    int i = (std::rand() % 31) + 2; // [2, 32]
+//    int i = (std::rand() % 31) + 2; // [2, 32]
+//
+//    uint64_t id = myCtx.getMe().getID();
+//    id += (1ull << (i-1));
+//    id = id % (1ull << 32);
+//
+//    Node res;
+//    if(handleFindSucc(id, &res)) {
+//        myCtx.setFinger(i, res);
+//    }
+    for(int i = 1 ; i <= 32 ; i ++) {
+        uint64_t id = myCtx.getMe().getID();
+        id += (1ull << (i-1));
+        id = id % (1ull << 32);
 
-    uint64_t id = myCtx.getMe().getID();
-    id += (1ull << (i-1));
-    id = id % (1ull << 32);
-
-    Node res;
-    if(handleFindSucc(id, &res)) {
-        myCtx.setFinger(i, res);
+        Node res;
+        chord::NodeInfo info;
+        if(handleFindSucc(id, &res)) {
+            if(i == 1) myCtx.setSucc(res);
+            else myCtx.setFinger(i, res);
+        }
     }
 }
 

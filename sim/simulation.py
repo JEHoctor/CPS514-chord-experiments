@@ -3,9 +3,12 @@ import chord_client as cc
 import time
 import random
 
-T = 100000
+T = 1000
 
-N = 5
+N = 10
+
+S = 50
+
 ports = list(range(3000, 3000+N))
 
 setup.build_proto()
@@ -23,18 +26,21 @@ print("Have the servers join")
 for port in ports:
 	if port == 3000: continue
 	cc.join(port, 3000)
+	for _ in range(0, S):
+		port = random.choice(ports)
+		cc.stabilize(port)
+		cc.fixFingers(port)
 
 (ids, infos) = cc.get_all_info()
 #print(infos)
 
 print("Running stabilizations")
 
-for _ in range(0, 30):
-	for port in ports:
-		cc.stabilize(port)
-		cc.fixFingers(port)
 
 (ids, infos) = cc.get_all_info()
+intervals = [ (ids[i], ids[(i+1)%N]) for i in range(0, N) ]
+
+print(infos)
 
 print("Verifying stabilization")
 for info in infos:
@@ -49,8 +55,6 @@ for info in infos:
 	assert (predIdx+1)%N == selfIdx 
 	assert (selfIdx+1)%N == succIdx 
 
-intervals = [ (ids[i], ids[(i+1)%N]) for i in range(0, N) ]
-
 # it's left-open since we're looking for successors
 def is_inside(interval, test):
 	(l, r) = interval
@@ -58,12 +62,33 @@ def is_inside(interval, test):
 	else: return not (r <= test and test < l)
 
 print("Verifying query correctness")
-for _ in range(0, T):
+for t in range(0, T):
 	key = random.randrange(0, 4294967296)
-	print(key)
 	succ_id = cc.find_succ(key).id
 	for interval in intervals:
 		if is_inside(interval, key):
 			assert succ_id == interval[1]
-			
 		
+print("Killing a node")
+setup.kill_servers_on([ports[0]])
+cc.removeChannel([ports[0]])
+N-=1
+
+print("stabilizing")
+for _ in range(0, S):
+	port = random.choice(ports)
+	cc.stabilize(port)
+	cc.fixFingers(port)
+
+(ids, infos) = cc.get_all_info()
+print(infos);
+intervals = [ (ids[i], ids[(i+1)%N]) for i in range(0, N) ]
+
+print("Verifying query correctness")
+for t in range(0, T):
+	key = random.randrange(0, 4294967296)
+	succ_id = cc.find_succ(key).id
+	for interval in intervals:
+		if is_inside(interval, key):
+			assert succ_id == interval[1]
+

@@ -40,6 +40,8 @@ private:
     Context myCtx;
     ChordClient client;
 
+    void buildSuccessorList();
+
     // methods that call the right (local or remote) method for a given
     bool callGetInfo(Node target, chord::NodeInfo* dst);
     void callGetClosestFinger(Node target, uint32_t key, Node* dst);
@@ -48,7 +50,7 @@ private:
     void callNotify(Node target, const Node& potentialPred);
 
     // local handlers
-    bool handleJoin(Node buddy);
+    bool handleJoin(const Node& buddy);
     bool handleGetInfo(chord::NodeInfo* dst);
     bool handleFindSucc(uint32_t key, Node* dst);
     bool handleFindPred(uint32_t key, Node* dst);

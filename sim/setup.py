@@ -1,4 +1,7 @@
 import subprocess as sp;
+import time
+
+pipes = {}
 
 def build_proto():
 	sp.run([
@@ -19,7 +22,7 @@ def start_servers(ports):
 	kill_servers_on(ports)
 
 	for port in ports:
-		sp.Popen(["../build/src/chord", "localhost", str(port)], env=runtime_envs())
+		pipes[port] = sp.Popen(["../build/src/chord", "server", "localhost:"+str(port)], env=runtime_envs())
 
 def start_servers_gdb(ports):
 	kill_servers_on(ports)
@@ -30,11 +33,19 @@ def start_servers_gdb(ports):
 
 def kill_servers_on(ports):
 	for port in ports:
-		pid = (sp
-				.run(["lsof", "-i:{}".format(port), "-t"], capture_output=True, text=True)
-				.stdout
-				.strip()
-		)
+		pipe = pipes.get(port)
+		if pipe:
+			print("Killing " + str(port))
+			pipe.kill()
+			time.sleep(5)
+			del pipes[port]
+			print("Poll " + str(pipe.poll()))
+		else:
+			pid = (sp
+					.run(["lsof", "-i:{}".format(port), "-t"], capture_output=True, text=True)
+					.stdout
+					.strip()
+			)
 
-		pid and sp.run(["kill", "-TERM", pid])
+			pid and sp.run(["kill", "-9", pid])
 
